@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - "0.12"
+  - "6"
 
 branches:
   only:
@@ -18,14 +18,11 @@ install:
   - npm install
 
 script:
-  - git submodule init      # 用于更新主题
-  - git submodule update
+  # - git submodule init      # 用于更新主题
+  # - git submodule update
   - hexo clean
-  - hexo generate
+  - hexo d -g
 
 cache:
   directories:
     - node_modules
-
-after_success:
-  - hexo deploy
