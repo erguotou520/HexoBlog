@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - "4"
+
+before_install:
+  - git config --global push.default matching
+  - git config --global user.name "erguotou"
+  - git config --global user.email "erguotou525@gmail.com"
+  - sed -i'' "/^ *repo/s~github\.com~${ACCESS_TOKEN}@github.com~" _config.yml
+
+install:
+  - npm install hexo-cli -g
+  - npm install
+
+script:
+  - hexo clean
+  - hexo d -g --silent
+
+cache:
+  directories:
+    - node_modules
