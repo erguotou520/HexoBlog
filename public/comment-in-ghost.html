@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Ghost中添加评论系统 | 大道至简</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Ghost系统默认是没有评论系统的，虽然官方也在关注这个问题，不过短时间内应该是不会有所进展，所以现在如果要在Ghost中使用评论，还是先使用第三方服务吧。下面介绍几种常见的评论系统，如果有更好的，欢迎来补充。　　1. Disqus 一个国外的评论系统。首先注册一个账号，这个不多介绍，记得激活邮箱。进去后点击头像旁边的设置下拉里面的”Add Disqus To Site”,然后在弹出的页面中根据情">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ghost中添加评论系统">
+<meta property="og:url" content="http://blog.erguotou.me/comment-in-ghost.html">
+<meta property="og:site_name" content="大道至简">
+<meta property="og:description" content="Ghost系统默认是没有评论系统的，虽然官方也在关注这个问题，不过短时间内应该是不会有所进展，所以现在如果要在Ghost中使用评论，还是先使用第三方服务吧。下面介绍几种常见的评论系统，如果有更好的，欢迎来补充。　　1. Disqus 一个国外的评论系统。首先注册一个账号，这个不多介绍，记得激活邮箱。进去后点击头像旁边的设置下拉里面的”Add Disqus To Site”,然后在弹出的页面中根据情">
+<meta property="og:image" content="http://blog.erguotou.me/images/ghost/disqus.png">
+<meta property="og:image" content="http://blog.erguotou.me/images/ghost/disqus-profile.png">
+<meta property="og:image" content="http://blog.erguotou.me/images/ghost/disqus-code-selection.png">
+<meta property="og:image" content="http://blog.erguotou.me/images/ghost/duoshuo.png">
+<meta property="og:updated_time" content="2016-07-23T12:12:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ghost中添加评论系统">
+<meta name="twitter:description" content="Ghost系统默认是没有评论系统的，虽然官方也在关注这个问题，不过短时间内应该是不会有所进展，所以现在如果要在Ghost中使用评论，还是先使用第三方服务吧。下面介绍几种常见的评论系统，如果有更好的，欢迎来补充。　　1. Disqus 一个国外的评论系统。首先注册一个账号，这个不多介绍，记得激活邮箱。进去后点击头像旁边的设置下拉里面的”Add Disqus To Site”,然后在弹出的页面中根据情">
+<meta name="twitter:image" content="http://blog.erguotou.me/images/ghost/disqus.png">
+  
+    <link rel="alternate" href="/atom.xml" title="大道至简" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">大道至简</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Less is more</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.erguotou.me"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-comment-in-ghost" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/comment-in-ghost.html" class="article-date">
+  <time datetime="2015-07-23T16:19:00.000Z" itemprop="datePublished">2015-07-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ghost中添加评论系统
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Ghost系统默认是没有评论系统的，虽然官方也在关注这个问题，不过短时间内应该是不会有所进展，所以现在如果要在Ghost中使用评论，还是先使用第三方服务吧。下面介绍几种常见的评论系统，如果有更好的，欢迎来补充。<br>　　1. <a href="https://disqus.com/">Disqus</a> 一个国外的评论系统。首先注册一个账号，这个不多介绍，记得激活邮箱。进去后点击头像旁边的设置下拉里面的”Add Disqus To Site”,<br><img src="/images/ghost/disqus.png" alt="Disqus"><br>然后在弹出的页面中根据情况设置属性，<br><img src="/images/ghost/disqus-profile.png" alt="Disqus profile"><br>完成后会跳到安装页面，在这里我们选择“Universal Code”，<br><img src="/images/ghost/disqus-code-selection.png" alt="Disqus code selection"><br>最后我们复制页面中的脚本插入到Ghost的主题文件中，位置是<code>/content/themes/[casper]/post.hbs</code>文件的<code>&lt;/article&gt;</code>结束标签之前。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></div><div class="line">   ...</div><div class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"disqus_thread"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></div><div class="line">   /* * * CONFIGURATION VARIABLES * * */</div><div class="line">   /* * * 请将此处改为你自己的 * * */</div><div class="line">   var disqus_shortname = 'erguotou';</div><div class="line"></div><div class="line">  /* * * DON'T EDIT BELOW THIS LINE * * */</div><div class="line">  (function() &#123;</div><div class="line">  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;</div><div class="line">  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';</div><div class="line">  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);</div><div class="line">  &#125;)();</div><div class="line">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">noscript</span>&gt;</span>Please enable JavaScript to view the <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://disqus.com/?ref_noscript"</span> <span class="attr">rel</span>=<span class="string">"nofollow"</span>&gt;</span>comments powered by Disqus.<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">noscript</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>到这里应该说基本是完成了，你已经可以在文章页面中看到Disqus的内容了，页面下面还有个统计评论数量的，这里不做介绍了。到这里基本上已经成功地使用上了Disqus，但是我们是不是可以做一点设置，让它更本地化，样式更好看呢？答案肯定是可以的，在Disqus的设置页面(Settings)中有很多设置，其中General选项卡中有一个<code>Language</code>，你可以选择<code>Chinese</code>，这样你的Disqus就是中文的了，这里还有很多其它设置，请自行研究。另外目前Disqus无法修改样式，虽然可以<a href="https://help.disqus.com/customer/portal/articles/545277-disqus-appearance-tweaks">微调</a>，然而并没有乱用啊。<br>　　2. <a href="http://duoshuo.com/">多说</a> 一个国内的评论系统。同样是先登录，然后点击“我要安装”，根据自己情况填写，<br><img src="/images/ghost/duoshuo.png" alt="Duoshuo">然后选择通用代码－稳定版进行复制，同样插入到<code>post.hbs</code>文件的<code>&lt;/article&gt;</code>结束标签之前。复制后我们需要对复制的代码进行一些修改，我们将第一行修改为<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ds-thread"</span> <span class="attr">data-thread-key</span>=<span class="string">"&#123;&#123;id&#125;&#125;"</span> <span class="attr">data-title</span>=<span class="string">"&#123;&#123;title&#125;&#125;"</span> <span class="attr">data-url</span>=<span class="string">"&#123;&#123;url absolute="</span><span class="attr">true</span>"&#125;&#125;"&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>这样就完成来多说的安装，在多说的设置中有很多是我们可以调节的，多说支持自定义CSS，这样我们就可以将多说的评论框调成我们自己喜欢的样子，这部分请自行研究，这里不做过多介绍，我这个博客用的就是多说评论，自己简单的改了点样式。<br>　　3. <a href="http://www.uyan.cc/getcode">友言</a>以及<a href="http://changyan.kuaizhan.com/">畅言</a>等其它的第三方社会化评论系统都有类似的功能，安装方式大抵相同，欢迎大家自己研究，给出更多教程。<br>　　另外关于各个评论的比较，大家可以看下<a href="http://changyan.sohu.com/blog/?p=126">这篇文章</a>，不过个人觉得畅言的样式更符合ghost一些。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.erguotou.me/comment-in-ghost.html" data-id="ciqz5a7i300061asevgsol0ba" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ghost/">Ghost</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/road-to-frontend.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          前端学习之路
+        
+      </div>
+    </a>
+  
+  
+    <a href="/category-in-ghost.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">在Ghost中使用分类</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Api/">Api</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom-plugin/">Atom-plugin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fonts/">Fonts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Frontend/">Frontend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ghost/">Ghost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJs/">NodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry/">Raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swiftype/">Swiftype</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vps/">Vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vsftpd/">vsftpd</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Api/" style="font-size: 10px;">Api</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/Atom-plugin/" style="font-size: 10px;">Atom-plugin</a> <a href="/tags/Fonts/" style="font-size: 10px;">Fonts</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/Ghost/" style="font-size: 20px;">Ghost</a> <a href="/tags/Git/" style="font-size: 16.67px;">Git</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/NodeJs/" style="font-size: 10px;">NodeJs</a> <a href="/tags/Raspberry/" style="font-size: 13.33px;">Raspberry</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Swiftype/" style="font-size: 10px;">Swiftype</a> <a href="/tags/Vps/" style="font-size: 10px;">Vps</a> <a href="/tags/vsftpd/" style="font-size: 10px;">vsftpd</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/raspberry-pi-samba.html">闲置树莓派捣腾记</a>
+          </li>
+        
+          <li>
+            <a href="/atom-frontend-plugins.html">Atom前端开发配置</a>
+          </li>
+        
+          <li>
+            <a href="/nodejs-share.html">NodeJs分享</a>
+          </li>
+        
+          <li>
+            <a href="/git-migration.html">Git迁移记录</a>
+          </li>
+        
+          <li>
+            <a href="/play-video-while-downloading.html">mp4视频实现边下载边播放</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 二锅头<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

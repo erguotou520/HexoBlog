@@ -3,17 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | 大道至简</title>
+  <title>mp4视频实现边下载边播放 | 大道至简</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="大道至简">
-<meta property="og:url" content="http://blog.erguotou.me/archives/index.html">
+  <meta name="description" content="在做视频播放时,出现了这样一个问题,就是网页上播放mp4视频时,必须要等到视频下载完成之后,才能播放,不能够随意拖拽,之后通过一个叫做ffmpeg的视频转码软件解决了这个问题.
+1.软件地址:链接: http://pan.baidu.com/s/1qW2ZpJe 密码: 291n
+2.windows下进入,通过cmd命令行进入该软件的目录bin文件夹下,然后,输入qt-faststart.exe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mp4视频实现边下载边播放">
+<meta property="og:url" content="http://blog.erguotou.me/play-video-while-downloading.html">
 <meta property="og:site_name" content="大道至简">
-<meta property="og:description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
+<meta property="og:description" content="在做视频播放时,出现了这样一个问题,就是网页上播放mp4视频时,必须要等到视频下载完成之后,才能播放,不能够随意拖拽,之后通过一个叫做ffmpeg的视频转码软件解决了这个问题.
+1.软件地址:链接: http://pan.baidu.com/s/1qW2ZpJe 密码: 291n
+2.windows下进入,通过cmd命令行进入该软件的目录bin文件夹下,然后,输入qt-faststart.exe">
+<meta property="og:updated_time" content="2016-07-23T11:48:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大道至简">
-<meta name="twitter:description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
+<meta name="twitter:title" content="mp4视频实现边下载边播放">
+<meta name="twitter:description" content="在做视频播放时,出现了这样一个问题,就是网页上播放mp4视频时,必须要等到视频下载完成之后,才能播放,不能够随意拖拽,之后通过一个叫做ffmpeg的视频转码软件解决了这个问题.
+1.软件地址:链接: http://pan.baidu.com/s/1qW2ZpJe 密码: 291n
+2.windows下进入,通过cmd命令行进入该软件的目录bin文件夹下,然后,输入qt-faststart.exe">
   
     <link rel="alternate" href="/atom.xml" title="大道至简" type="application/atom+xml">
   
@@ -66,225 +73,67 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/raspberry-pi-samba.html" class="archive-article-date">
-  <time datetime="2016-06-07T13:32:12.000Z" itemprop="datePublished">6月 7</time>
+        <section id="main"><article id="post-play-video-while-downloading" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/play-video-while-downloading.html" class="article-date">
+  <time datetime="2016-03-23T07:35:00.000Z" itemprop="datePublished">2016-03-23</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/raspberry-pi-samba.html">闲置树莓派捣腾记</a>
+    <h1 class="article-title" itemprop="name">
+      mp4视频实现边下载边播放
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在做视频播放时,出现了这样一个问题,就是网页上播放mp4视频时,必须要等到视频下载完成之后,才能播放,不能够随意拖拽,之后通过一个叫做ffmpeg的视频转码软件解决了这个问题.</p>
+<p>1.软件地址:链接: <a href="http://pan.baidu.com/s/1qW2ZpJe">http://pan.baidu.com/s/1qW2ZpJe</a> 密码: 291n</p>
+<p>2.windows下进入,通过cmd命令行进入该软件的目录bin文件夹下,然后,输入qt-faststart.exe 源文件.mp4 新文件.mp4 就会当前目录生成一个转过的mp4视频,</p>
+<p>3.最后,视频要通过nginx服务器作为中转来实现在线播放,具体配置如下:</p>
+<p>nginx服务器的root目录要改为具体的tomcat目录存放转换好了的视频资源路径,端口要改成一个不和tomcat冲突的端口号  </p>
+<p>jsp视频播放页面,加载视频资源的时候访问的是nginx服务器(通过nginx的端口号来访问)不访问tomcat,访问nginx之后,然后nginx寻找资源从tomcat的静态资源存放路径中去读取事先上传过来的视频,当然如果你愿意把视频直接拷到nginx的默认根目录,也可以不需要改动nginx的conf配置文件的root目录<br>这里是当时jsp页面端的部分代码,nginx的端口号改的是8080,视频播放插件用的是ckplayer<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//nginx服务器视频地址</div><div class="line">var path=location.protocol+&quot;//&quot;+window.location.host+&quot;:8080&quot;+&quot;$&#123;path&#125;&quot;;</div><div class="line">	var flashvars=&#123;</div><div class="line">		f:path,</div><div class="line">		c:0,</div><div class="line">		b:1</div><div class="line">		&#125;;</div><div class="line">var params=&#123;bgcolor:&apos;#FFF&apos;,allowFullScreen:true,allowScriptAccess:&apos;always&apos;,wmode:&apos;transparent&apos;&#125;;</div><div class="line">	CKobject.embedSWF(&quot;&lt;c:url value=&apos;/static/ckplayer6.4/ckplayer/ckplayer.swf&apos;/&gt;&quot;,&apos;a1&apos;,&apos;ckplayer_a1&apos;,&apos;800&apos;,&apos;470&apos;,flashvars,params);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.erguotou.me/play-video-while-downloading.html" data-id="ciqz5a7it000q1asex9sdp0ug" class="article-share-link">Partager</a>
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/git-migration.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          Git迁移记录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/ppt-online.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">ppt-online</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/atom-frontend-plugins.html" class="archive-article-date">
-  <time datetime="2016-05-22T10:05:18.000Z" itemprop="datePublished">5月 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/atom-frontend-plugins.html">Atom前端开发配置</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/nodejs-share.html" class="archive-article-date">
-  <time datetime="2016-04-26T12:50:25.000Z" itemprop="datePublished">4月 26</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/nodejs-share.html">NodeJs分享</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/git-migration.html" class="archive-article-date">
-  <time datetime="2016-04-12T07:32:00.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/git-migration.html">Git迁移记录</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/play-video-while-downloading.html" class="archive-article-date">
-  <time datetime="2016-03-23T07:35:00.000Z" itemprop="datePublished">3月 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/play-video-while-downloading.html">mp4视频实现边下载边播放</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/ppt-online.html" class="archive-article-date">
-  <time datetime="2016-03-23T07:01:00.000Z" itemprop="datePublished">3月 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ppt-online.html">ppt-online</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/vsftpd-config.html" class="archive-article-date">
-  <time datetime="2016-02-05T03:58:00.000Z" itemprop="datePublished">2月 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/vsftpd-config.html">vsftpd的安装配置</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/ssh-via-public-key.html" class="archive-article-date">
-  <time datetime="2015-12-23T16:12:00.000Z" itemprop="datePublished">12月 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ssh-via-public-key.html">服务器安全登录</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/pretty-webfont.html" class="archive-article-date">
-  <time datetime="2015-11-15T11:00:00.000Z" itemprop="datePublished">11月 15</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/pretty-webfont.html">优秀Web字体收集</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/ghost-on-raspberry.html" class="archive-article-date">
-  <time datetime="2015-11-07T16:45:00.000Z" itemprop="datePublished">11月 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ghost-on-raspberry.html">在树莓派上安装Ghost的一些坑</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">__('next') &raquo;</a>
-  </nav>
 </section>
         
           <aside id="sidebar">

@@ -3,17 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | 大道至简</title>
+  <title>利用Nginx让IIS和tomcat共用80端口 | 大道至简</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="大道至简">
-<meta property="og:url" content="http://blog.erguotou.me/archives/index.html">
+  <meta name="description" content="项目：《安徽省儿童医院》主网站（PHP开发）与微信（JAVA开发）共用服务器
+原来整合时使用的是jakarta桥接插件，但当时整合时就各种弄不懂，也是各种迷糊然后就好了，最终主网站用的域名是www.ahetyy.com，微信端用的是211.149.198.47/etyy。
+然后网站和微信一直都能使用，相安无事，但有一次莫名其妙地出了问题，不得其解。
+在修复时打算按照原来的方式来，可是发现又不会弄了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Nginx让IIS和tomcat共用80端口">
+<meta property="og:url" content="http://blog.erguotou.me/nginx-tomcat-iis.html">
 <meta property="og:site_name" content="大道至简">
-<meta property="og:description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
+<meta property="og:description" content="项目：《安徽省儿童医院》主网站（PHP开发）与微信（JAVA开发）共用服务器
+原来整合时使用的是jakarta桥接插件，但当时整合时就各种弄不懂，也是各种迷糊然后就好了，最终主网站用的域名是www.ahetyy.com，微信端用的是211.149.198.47/etyy。
+然后网站和微信一直都能使用，相安无事，但有一次莫名其妙地出了问题，不得其解。
+在修复时打算按照原来的方式来，可是发现又不会弄了">
+<meta property="og:updated_time" content="2016-07-23T11:40:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大道至简">
-<meta name="twitter:description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
+<meta name="twitter:title" content="利用Nginx让IIS和tomcat共用80端口">
+<meta name="twitter:description" content="项目：《安徽省儿童医院》主网站（PHP开发）与微信（JAVA开发）共用服务器
+原来整合时使用的是jakarta桥接插件，但当时整合时就各种弄不懂，也是各种迷糊然后就好了，最终主网站用的域名是www.ahetyy.com，微信端用的是211.149.198.47/etyy。
+然后网站和微信一直都能使用，相安无事，但有一次莫名其妙地出了问题，不得其解。
+在修复时打算按照原来的方式来，可是发现又不会弄了">
   
     <link rel="alternate" href="/atom.xml" title="大道至简" type="application/atom+xml">
   
@@ -66,225 +76,89 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/raspberry-pi-samba.html" class="archive-article-date">
-  <time datetime="2016-06-07T13:32:12.000Z" itemprop="datePublished">6月 7</time>
+        <section id="main"><article id="post-nginx-tomcat-iis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/nginx-tomcat-iis.html" class="article-date">
+  <time datetime="2015-01-14T08:46:00.000Z" itemprop="datePublished">2015-01-14</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/raspberry-pi-samba.html">闲置树莓派捣腾记</a>
+    <h1 class="article-title" itemprop="name">
+      利用Nginx让IIS和tomcat共用80端口
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em>项目：《安徽省儿童医院》主网站（PHP开发）与微信（JAVA开发）共用服务器</em></p>
+<p>原来整合时使用的是jakarta桥接插件，但当时整合时就各种弄不懂，也是各种迷糊然后就好了，最终主网站用的域名是<a href="www.ahetyy.com">www.ahetyy.com</a>，微信端用的是<a href="http://211.149.198.47/etyy">211.149.198.47/etyy</a>。</p>
+<p>然后网站和微信一直都能使用，相安无事，但有一次莫名其妙地出了问题，不得其解。</p>
+<p>在修复时打算按照原来的方式来，可是发现又不会弄了，因为当初怎么弄好的都不记得。</p>
+<p>无奈之下在百度搜索时发现一篇<a href="http://www.cnblogs.com/wuyou/p/3455619.html">《IIS tomcat共用80端口解决一个IP多个域名：使用Nginx反向代理方式使两者兼容》</a>的文章，受其启发，准备改用Nginx来完成。</p>
+<p>####1.下载<br><a href="http://nginx.org/en/download.html">http://nginx.org/en/download.html</a> 我当时下载的是nginx/Windows-1.7.8 版本。</p>
+<p>####2.解压</p>
+<p>####3.修改配置<br><em>nginx的配置看起来还是比较复杂的，现在的配置只是保证能使用，但不一定是最好的</em></p>
+<p>修改Nginx的conf目录下的nginx.conf文件，修改server的配置如下：</p>
+<pre><code>server {
+  listen       80;
+  server_name  www.ahetyy.com;
+  location ^~ /etyy {
+      proxy_pass   http://localhost:8080/etyy;
+      proxy_set_header Host $host;  
+      proxy_set_header X-Real-IP $remote_addr;  
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+  location / {
+          proxy_pass   http://localhost:81;
+  }
+}
+</code></pre><p>其中server_name表示对外访问的域名，第一个location的规则是 任意以”/etyy”开头的请求都转发给<a href="http://localhost:8080/etyy">http://localhost:8080/etyy</a>也就是tomcat来处理，第二个location的规则是其余请求全都发给php的主网站处理。</p>
+<p>特别注意：第一个location下的配置中的proxy_set_header的配置是必须的，否则最后打开<a href="http://www.ahetyy.com/etyy">http://www.ahetyy.com/etyy</a>时页面请求的css和js路径都会是localhost:8080的，因为tomcat那边得到的请求就是localhost:8080的，需要将请求的头信息修改为真实请求的请求路径才行。（但是现在页面的base的路径上会有一个端口80，有点小小强迫症的我就忍了~）</p>
+<p>####4.运行<br>cmd切换到nginx.exe的目录下，启动– start nginx 停止– nginx -s stop，有时会结束不掉，我就会手动关闭进程~</p>
+<p>####5.设置Nginx以服务方式启动<br>（暂时没做，网上教程看着好复杂- -！），搞定！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.erguotou.me/nginx-tomcat-iis.html" data-id="ciqz5a7iq000p1asekjbzpnsk" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/ghost-list.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          群友博文大合集
+        
+      </div>
+    </a>
+  
+  
+    <a href="/svn-git-transfer.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">SVN、GIT数据迁移</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/atom-frontend-plugins.html" class="archive-article-date">
-  <time datetime="2016-05-22T10:05:18.000Z" itemprop="datePublished">5月 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/atom-frontend-plugins.html">Atom前端开发配置</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/nodejs-share.html" class="archive-article-date">
-  <time datetime="2016-04-26T12:50:25.000Z" itemprop="datePublished">4月 26</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/nodejs-share.html">NodeJs分享</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/git-migration.html" class="archive-article-date">
-  <time datetime="2016-04-12T07:32:00.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/git-migration.html">Git迁移记录</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/play-video-while-downloading.html" class="archive-article-date">
-  <time datetime="2016-03-23T07:35:00.000Z" itemprop="datePublished">3月 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/play-video-while-downloading.html">mp4视频实现边下载边播放</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/ppt-online.html" class="archive-article-date">
-  <time datetime="2016-03-23T07:01:00.000Z" itemprop="datePublished">3月 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ppt-online.html">ppt-online</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/vsftpd-config.html" class="archive-article-date">
-  <time datetime="2016-02-05T03:58:00.000Z" itemprop="datePublished">2月 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/vsftpd-config.html">vsftpd的安装配置</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/ssh-via-public-key.html" class="archive-article-date">
-  <time datetime="2015-12-23T16:12:00.000Z" itemprop="datePublished">12月 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ssh-via-public-key.html">服务器安全登录</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/pretty-webfont.html" class="archive-article-date">
-  <time datetime="2015-11-15T11:00:00.000Z" itemprop="datePublished">11月 15</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/pretty-webfont.html">优秀Web字体收集</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/ghost-on-raspberry.html" class="archive-article-date">
-  <time datetime="2015-11-07T16:45:00.000Z" itemprop="datePublished">11月 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ghost-on-raspberry.html">在树莓派上安装Ghost的一些坑</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">__('next') &raquo;</a>
-  </nav>
 </section>
         
           <aside id="sidebar">

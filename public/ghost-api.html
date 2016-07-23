@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Ghost开发之API | 大道至简</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Ghost API 接口当前版本为0.5.8，后续更新的API不在其中。 本文写作时用的是英文版，下面所有涉及language为en_US的对应的中文版为zh_CN。下面所有的链接都是以http://your.blog.site:port开头，请注意。你可以使用Chrome的Postman工具进行调试
+登录认证POST /ghost/api/v0.1/authentication/tokenACC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ghost开发之API">
+<meta property="og:url" content="http://blog.erguotou.me/ghost-api.html">
+<meta property="og:site_name" content="大道至简">
+<meta property="og:description" content="Ghost API 接口当前版本为0.5.8，后续更新的API不在其中。 本文写作时用的是英文版，下面所有涉及language为en_US的对应的中文版为zh_CN。下面所有的链接都是以http://your.blog.site:port开头，请注意。你可以使用Chrome的Postman工具进行调试
+登录认证POST /ghost/api/v0.1/authentication/tokenACC">
+<meta property="og:image" content="http://blog.erguotou.me/images/ghost/postman.png">
+<meta property="og:updated_time" content="2016-07-23T12:20:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ghost开发之API">
+<meta name="twitter:description" content="Ghost API 接口当前版本为0.5.8，后续更新的API不在其中。 本文写作时用的是英文版，下面所有涉及language为en_US的对应的中文版为zh_CN。下面所有的链接都是以http://your.blog.site:port开头，请注意。你可以使用Chrome的Postman工具进行调试
+登录认证POST /ghost/api/v0.1/authentication/tokenACC">
+<meta name="twitter:image" content="http://blog.erguotou.me/images/ghost/postman.png">
+  
+    <link rel="alternate" href="/atom.xml" title="大道至简" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">大道至简</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Less is more</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.erguotou.me"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ghost-api" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/ghost-api.html" class="article-date">
+  <time datetime="2015-03-18T11:49:00.000Z" itemprop="datePublished">2015-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ghost开发之API
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Ghost-API-接口"><a href="#Ghost-API-接口" class="headerlink" title="Ghost API 接口"></a>Ghost API 接口</h1><p>当前版本为0.5.8，后续更新的API不在其中。 本文写作时用的是英文版，下面所有涉及<code>language</code>为<code>en_US</code>的对应的中文版为<code>zh_CN</code>。<br>下面所有的链接都是以<code>http://your.blog.site:port</code>开头，请注意。<br>你可以使用Chrome的Postman工具进行调试<br><img src="/images/ghost/postman.png" alt=""></p>
+<h2 id="登录认证"><a href="#登录认证" class="headerlink" title="登录认证"></a>登录认证</h2><p>POST <code>/ghost/api/v0.1/authentication/token</code><br>ACCEPT json<br>DATA<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">grant_type:password</div><div class="line">username:your.email@email.com(请替换为你的邮箱)</div><div class="line">password:your_password(请替换为你的登录密码)</div><div class="line">client_id:ghost-admin</div></pre></td></tr></table></figure></p>
+<p>RESULT<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  access_token: &apos;xxx&apos;,</div><div class="line">  expires_in: 3600,</div><div class="line">  refresh_token: &apos;xxx&apos;,</div><div class="line">  token_type: &quot;Bearer&quot;</div><div class="line">&#125;</div><div class="line">注意保存返回的结果</div></pre></td></tr></table></figure></p>
+<p>如果登录错误，会返回错误结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">status: 404</div><div class="line">errors[0]: &#123;message: &apos;xxx&apos;, type: &apos;xxxError&apos;&#125;</div></pre></td></tr></table></figure></p>
+<p>错误主要分为不存在的邮箱、错误的密码、密码输入错误次数过多几种<br>注意：以下所有请求涉及用户权限的，都需要在HTTP请求的头中加入<code>access_token</code>的信息，请求格式为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Request Headers中添加</div><div class="line">Authorization: Bearer your_access_token</div></pre></td></tr></table></figure></p>
+<p>如果验证信息过期，会提示错误，如果没有加Authorization的头信息也会返回类似的错误信息</p>
+<h2 id="获取登录者信息"><a href="#获取登录者信息" class="headerlink" title="获取登录者信息"></a>获取登录者信息</h2><p>GET <code>/ghost/api/v0.1/users/me/?status=all&amp;include=roles</code><br>ACCEPT json<br>Authorization 见上说明<br>RESULT<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	accessibility: null</div><div class="line">	bio: null</div><div class="line">	cover: null</div><div class="line">	created_at: &quot;2015-02-08T12:11:34.683Z&quot;</div><div class="line">	created_by: 1</div><div class="line">	email: &quot;your.email@email.com&quot;</div><div class="line">	id: 1</div><div class="line">	image: null</div><div class="line">	language: &quot;en_US&quot;</div><div class="line">	last_login: &quot;2015-03-18T08:55:30.330Z&quot;</div><div class="line">	location: null</div><div class="line">	meta_description: null</div><div class="line">	meta_title: null</div><div class="line">	name: &quot;你的名字&quot;</div><div class="line">	roles: [&#123;id: 4, uuid: &quot;9227adb4-a836-4f6c-ba41-7d5dd307968a&quot;, name: &quot;Owner&quot;, description: &quot;Blog Owner&quot;,…&#125;]</div><div class="line">	slug: &quot;your-slug&quot;</div><div class="line">	status: &quot;active&quot;</div><div class="line">	updated_at: &quot;2015-03-18T08:55:30.331Z&quot;</div><div class="line">	updated_by: 1</div><div class="line">	uuid: &quot;xxxx-uuid&quot;</div><div class="line">	website: null</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>每个字段对应的意思从单词应该可以看出来，具体不做说明，注意保存返回结果</p>
+<p>下面列出的所有api路径都是由<code>/ghost/api/v0.1</code>开头，在调用时请自行追加</p>
+<h2 id="配置相关"><a href="#配置相关" class="headerlink" title="配置相关"></a>配置相关</h2><p>系统级的配置信息的json格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;key&quot;: &quot;fileStorage&quot;,</div><div class="line">    &quot;value&quot;: true</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>GET /configuration 获取博客配置信息</li>
+<li>GET /configuration/:key 根据指定ID获取配置信息</li>
+</ul>
+<h2 id="文章相关"><a href="#文章相关" class="headerlink" title="文章相关"></a>文章相关</h2><p>新增文章的业务流程应该是(2,3步骤在Ghost中是监测输入间隔，然后发送请求)  </p>
+<ol>
+<li>获取标签等信息<code>/tags/?limit=all</code></li>
+<li>输入title后调用<code>/slugs/post/:inputed-title</code>会返回一个新的slug</li>
+<li>输入正文时保存<code>/posts/?include=tags</code>，其中发送的数据格式为<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    posts: [</div><div class="line">        &#123;</div><div class="line">            title: &apos;xxx&apos;,</div><div class="line">            slug: &apos;xxx&apos;, // 上一步获取到的slug</div><div class="line">            markdown: &apos;xxx&apos;, // 输入的markdown内容</div><div class="line">            image: &apos;xxx&apos;, // 文章的封面</div><div class="line">            featured: false, // 是否推荐</div><div class="line">            page: false, //是否单独页</div><div class="line">            status: &quot;draft&quot;, // 状态为草稿或者发布published</div><div class="line">            language: &quot;en_US&quot;, // 语言</div><div class="line">            meta_title: null, // 设置里面的meta信息，下同</div><div class="line">            meta_description: null,</div><div class="line">            author: &quot;1&quot;, // 作者id</div><div class="line">            published_by: null, // 发布者</div><div class="line">            tags:[ // 标签数组</div><div class="line">                &#123;</div><div class="line">                    description: null</div><div class="line">                    hidden: false</div><div class="line">                    image: null</div><div class="line">                    meta_description: null</div><div class="line">                    meta_title: null</div><div class="line">                    name: &quot;tag1&quot;</div><div class="line">                    post_count: null</div><div class="line">                    slug: null // 这个是新增的tag，没有uuid和slug</div><div class="line">                    uuid: null</div><div class="line">                &#125;</div><div class="line">            ]</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>此请求返回的数据里面有一个id，保存id，下次在保存文章时的地址就是<code>/posts/:id?include=tags</code></p>
+<p>文章的json结构体如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  slug: &quot;welcome-to-ghost&quot;, // 类似文章的链接</div><div class="line">  status: &quot;published&quot;, // 文章的状态 草稿 已发布等</div><div class="line">  id: 1, // 文章ID</div><div class="line">  uuid: &quot;xxxx-xxxx&quot;, // 文章的UUID</div><div class="line">  title: &quot;Welcome to Ghost&quot;, // 文章标题</div><div class="line">  markdown: xxx // 文章的markdown内容</div><div class="line">  html: xxx // 文章的html内容</div><div class="line">  image: null, // 图片</div><div class="line">  featured: false, // 推荐</div><div class="line">  page: false, // 单独页</div><div class="line">  language: &quot;en_US&quot;, // 语言</div><div class="line">  meta_title: null, // meta里面的title</div><div class="line">  meta_description: null, // meta里面的description，下面的很好理解，不做解释</div><div class="line">  created_at: &quot;2015-02-08T12:11:20.645Z&quot;,</div><div class="line">  created_by: 1,</div><div class="line">  updated_at: &quot;2015-02-08T12:11:20.645Z&quot;,</div><div class="line">  updated_by: 1,</div><div class="line">  published_at: &quot;2015-02-08T12:11:20.684Z&quot;,</div><div class="line">  published_by: 1,</div><div class="line">  author: 1,</div><div class="line">  url: &quot;/welcome-to-ghost/&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>GET /posts 获取所有文章，返回的数据里面还包含分页信息</li>
+<li>POST /posts 新增文章</li>
+<li>GET /posts/:id 根据ID获取文章</li>
+<li>GET /posts/slug/:slug 根据文章链接获取文章</li>
+<li>PUT /posts/:id 编辑文章</li>
+<li>DEL /posts/:id 根据ID删除文章</li>
+</ul>
+<h2 id="设置相关"><a href="#设置相关" class="headerlink" title="设置相关"></a>设置相关</h2><p>博客的设置数据的json格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;settings&quot;: [</div><div class="line">        &#123;</div><div class="line">            &quot;id&quot;: 5,</div><div class="line">            &quot;uuid&quot;: &quot;xxxx-xxxx&quot;,</div><div class="line">            &quot;key&quot;: &quot;title&quot;,</div><div class="line">            &quot;value&quot;: &quot;My blog&quot;,</div><div class="line">            &quot;type&quot;: &quot;blog&quot;,</div><div class="line">            &quot;created_at&quot;: &quot;2015-02-08T12:11:35.040Z&quot;,</div><div class="line">            &quot;created_by&quot;: 1,</div><div class="line">            &quot;updated_at&quot;: &quot;2015-03-18T09:47:42.464Z&quot;,</div><div class="line">            &quot;updated_by&quot;: 1</div><div class="line">        &#125;,</div><div class="line">        ...</div><div class="line">        &#123;</div><div class="line">            &quot;key&quot;: &quot;availableThemes&quot;, // 可用的主题</div><div class="line">            &quot;value&quot;: [</div><div class="line">                &#123;</div><div class="line">                    &quot;name&quot;: &quot;casper&quot;,</div><div class="line">                    &quot;package&quot;: &#123;</div><div class="line">                        &quot;name&quot;: &quot;Casper&quot;,</div><div class="line">                        &quot;version&quot;: &quot;1.1.5&quot;</div><div class="line">                    &#125;,</div><div class="line">                    &quot;active&quot;: true</div><div class="line">                &#125;</div><div class="line">            ],</div><div class="line">            &quot;type&quot;: &quot;theme&quot;</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            &quot;key&quot;: &quot;availableApps&quot;, // 可用的app，当前版本暂时还不支持app的调用？</div><div class="line">            &quot;value&quot;: [],</div><div class="line">            &quot;type&quot;: &quot;app&quot;</div><div class="line">        &#125;</div><div class="line">    ],</div><div class="line">    &quot;meta&quot;: &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>GET /settings 获取所有设置</li>
+<li>GET /settings/:key 根据指定key获取设置</li>
+<li>PUT /settings 修改设置</li>
+</ul>
+<h2 id="用户相关"><a href="#用户相关" class="headerlink" title="用户相关"></a>用户相关</h2><p>用户数据的json格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    email: &quot;your.email@email.com&quot;,</div><div class="line">    id: 1,</div><div class="line">    uuid: &quot;xxxx-xxxx&quot;,</div><div class="line">    name: &quot;你的名字&quot;,</div><div class="line">    slug: &quot;exxx&quot;, // slug，个人信息页面链接为http://your.blog.site/author/:slug</div><div class="line">    image: null, // 头像</div><div class="line">    cover: null, // 封面</div><div class="line">    bio: null, // 简介</div><div class="line">    website: null,</div><div class="line">    location: null,</div><div class="line">    accessibility: null, // 这是虾米？</div><div class="line">    status: &quot;active&quot;,</div><div class="line">    language: &quot;en_US&quot;,</div><div class="line">    meta_title: null,</div><div class="line">    meta_description: null,</div><div class="line">    last_login: &quot;2015-03-18T10:11:18.753Z&quot;,</div><div class="line">    created_at: &quot;2015-02-08T12:11:34.683Z&quot;,</div><div class="line">    created_by: 1,</div><div class="line">    updated_at: &quot;2015-03-18T10:11:18.753Z&quot;,</div><div class="line">    updated_by: 1</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>GET /users 获取所有用户</li>
+<li>GET /users/:id 根据指定Id获取用户</li>
+<li>GET /users/slug/:slug 根据用户的slug获取用户</li>
+<li>GET /users/email/:email 根据邮箱获取用户</li>
+<li>PUT /users/password 修改用户登录密码</li>
+<li>PUT /users/owner 修改用户的所有者(不懂，没测试过)</li>
+<li>PUT /users/:id 根据用户id来修改用户信息</li>
+<li>POST /users 添加用户</li>
+<li>del /users/:id 删除用户</li>
+</ul>
+<h2 id="标签相关"><a href="#标签相关" class="headerlink" title="标签相关"></a>标签相关</h2><p>标签数据的json格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;id&quot;: 1,</div><div class="line">    &quot;uuid&quot;: &quot;xxxx-xxxx&quot;,</div><div class="line">    &quot;name&quot;: &quot;Getting Started&quot;,</div><div class="line">    &quot;slug&quot;: &quot;getting-started&quot;,</div><div class="line">    &quot;description&quot;: null,</div><div class="line">    &quot;image&quot;: null,</div><div class="line">    &quot;hidden&quot;: false,</div><div class="line">    &quot;meta_title&quot;: null,</div><div class="line">    &quot;meta_description&quot;: null,</div><div class="line">    &quot;created_at&quot;: &quot;2015-02-08T12:11:20.685Z&quot;,</div><div class="line">    &quot;created_by&quot;: 1,</div><div class="line">    &quot;updated_at&quot;: &quot;2015-02-08T12:11:20.685Z&quot;,</div><div class="line">    &quot;updated_by&quot;: 1,</div><div class="line">    &quot;parent&quot;: null</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>GET /tags 获取所有表情</li>
+<li>GET /tags/:id 根据Id获取标签</li>
+<li>POST /tags 添加标签</li>
+<li>PUT /tags/:id 根据ID修改标签</li>
+<li>del /tags/:id 根据ID删除标签</li>
+</ul>
+<h2 id="角色相关"><a href="#角色相关" class="headerlink" title="角色相关"></a>角色相关</h2><p>角色数据的json格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;id&quot;: 1,</div><div class="line">    &quot;uuid&quot;: &quot;1b925c9f-92f2-45b3-9828-9244adbaaddc&quot;,</div><div class="line">    &quot;name&quot;: &quot;Administrator&quot;,</div><div class="line">    &quot;description&quot;: &quot;Administrators&quot;,</div><div class="line">    &quot;created_at&quot;: &quot;2015-02-08T12:11:20.687Z&quot;,</div><div class="line">    &quot;created_by&quot;: 1,</div><div class="line">    &quot;updated_at&quot;: &quot;2015-02-08T12:11:20.687Z&quot;,</div><div class="line">    &quot;updated_by&quot;: 1</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>GET /roles/ 获取所有的角色</li>
+</ul>
+<h2 id="Slugs"><a href="#Slugs" class="headerlink" title="Slugs"></a>Slugs</h2><ul>
+<li>GET /slugs/:type/:name 未研究，不做解释</li>
+</ul>
+<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>主题数据的json格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;uuid&quot;: &quot;casper&quot;,</div><div class="line">    &quot;name&quot;: &quot;Casper&quot;,</div><div class="line">    &quot;version&quot;: &quot;1.1.5&quot;,</div><div class="line">    &quot;active&quot;: true</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>GET /themes 获取所有主题</li>
+<li>PUT /themes/:name 修改当前的主题</li>
+</ul>
+<h2 id="通知相关"><a href="#通知相关" class="headerlink" title="通知相关"></a>通知相关</h2><p>通知信息的json结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    notifications: [</div><div class="line">        &#123;</div><div class="line">	        dismissible： true,</div><div class="line">	        location: &apos;bottom&apos;,</div><div class="line">            type&apos;: &apos;info&apos;, // 错误等级&apos;error&apos;, &apos;success&apos;, &apos;warn&apos; and &apos;info&apos;</div><div class="line">	        message: &apos;message&apos;</div><div class="line">	    &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>GET /notifications</li>
+<li>POST /notifications</li>
+<li>del /notifications/:id</li>
+</ul>
+<h2 id="DB数据库"><a href="#DB数据库" class="headerlink" title="DB数据库"></a>DB数据库</h2><p>能获得数据里的各种数据，建议不要直接操作，使用其它方法单独操作</p>
+<ul>
+<li>GET /db</li>
+<li>POST /db</li>
+<li>del /db</li>
+</ul>
+<h2 id="邮件"><a href="#邮件" class="headerlink" title="邮件"></a>邮件</h2><p>未测试</p>
+<ul>
+<li>POST /mail 发送邮件</li>
+<li>POST /mail/test 发送测试邮件</li>
+</ul>
+<h2 id="用户认证"><a href="#用户认证" class="headerlink" title="用户认证"></a>用户认证</h2><p>未测试。。</p>
+<ul>
+<li>POST /authentication/passwordreset</li>
+<li>PUT /authentication/passwordreset</li>
+<li>POST /authentication/invitation</li>
+<li>GET /authentication/invitation</li>
+<li>POST /authentication/setup</li>
+<li>GET /authentication/setup</li>
+<li>POST /authentication/token</li>
+<li>POST /authentication/revoke</li>
+</ul>
+<h2 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h2><ul>
+<li>POST /uploads<br>uploadimage file数据，上传时的图片文件</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.erguotou.me/ghost-api.html" data-id="ciqz5a7hy00041aseh3b8exwv" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Api/">Api</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ghost/">Ghost</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/git-branch-management-strategy.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          GIT分支管理策略(非Git workflow)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/some-remark.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">一些备忘</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Api/">Api</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom-plugin/">Atom-plugin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fonts/">Fonts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Frontend/">Frontend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ghost/">Ghost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJs/">NodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry/">Raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swiftype/">Swiftype</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vps/">Vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vsftpd/">vsftpd</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Api/" style="font-size: 10px;">Api</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/Atom-plugin/" style="font-size: 10px;">Atom-plugin</a> <a href="/tags/Fonts/" style="font-size: 10px;">Fonts</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/Ghost/" style="font-size: 20px;">Ghost</a> <a href="/tags/Git/" style="font-size: 16.67px;">Git</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/NodeJs/" style="font-size: 10px;">NodeJs</a> <a href="/tags/Raspberry/" style="font-size: 13.33px;">Raspberry</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Swiftype/" style="font-size: 10px;">Swiftype</a> <a href="/tags/Vps/" style="font-size: 10px;">Vps</a> <a href="/tags/vsftpd/" style="font-size: 10px;">vsftpd</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/raspberry-pi-samba.html">闲置树莓派捣腾记</a>
+          </li>
+        
+          <li>
+            <a href="/atom-frontend-plugins.html">Atom前端开发配置</a>
+          </li>
+        
+          <li>
+            <a href="/nodejs-share.html">NodeJs分享</a>
+          </li>
+        
+          <li>
+            <a href="/git-migration.html">Git迁移记录</a>
+          </li>
+        
+          <li>
+            <a href="/play-video-while-downloading.html">mp4视频实现边下载边播放</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 二锅头<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

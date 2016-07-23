@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | 大道至简</title>
+  <title>Ghost源码解读系列（一）目录结构 | 大道至简</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="大道至简">
-<meta property="og:url" content="http://blog.erguotou.me/archives/index.html">
+  <meta name="description" content="本系列文章以Ghost0.5.8安装版本为基础，后续版本升级时可能会做升级记录日志由于个人水平和理解有限，可能部分地方没有给出分析或者解读有误，欢迎指正  
+#1. Ghost目录结构├content: 内容　├apps: 以后Ghost开发的app会放在这个目录下，期待吧！　├data: 数据文件夹，请勿修改此文件下任何内容，默认sqlite数据文件会存放与此　├images: 图片文件夹，默认">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ghost源码解读系列（一）目录结构">
+<meta property="og:url" content="http://blog.erguotou.me/ghost-code-1.html">
 <meta property="og:site_name" content="大道至简">
-<meta property="og:description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
+<meta property="og:description" content="本系列文章以Ghost0.5.8安装版本为基础，后续版本升级时可能会做升级记录日志由于个人水平和理解有限，可能部分地方没有给出分析或者解读有误，欢迎指正  
+#1. Ghost目录结构├content: 内容　├apps: 以后Ghost开发的app会放在这个目录下，期待吧！　├data: 数据文件夹，请勿修改此文件下任何内容，默认sqlite数据文件会存放与此　├images: 图片文件夹，默认">
+<meta property="og:updated_time" content="2016-07-23T11:42:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大道至简">
-<meta name="twitter:description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
+<meta name="twitter:title" content="Ghost源码解读系列（一）目录结构">
+<meta name="twitter:description" content="本系列文章以Ghost0.5.8安装版本为基础，后续版本升级时可能会做升级记录日志由于个人水平和理解有限，可能部分地方没有给出分析或者解读有误，欢迎指正  
+#1. Ghost目录结构├content: 内容　├apps: 以后Ghost开发的app会放在这个目录下，期待吧！　├data: 数据文件夹，请勿修改此文件下任何内容，默认sqlite数据文件会存放与此　├images: 图片文件夹，默认">
   
     <link rel="alternate" href="/atom.xml" title="大道至简" type="application/atom+xml">
   
@@ -66,225 +70,65 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/raspberry-pi-samba.html" class="archive-article-date">
-  <time datetime="2016-06-07T13:32:12.000Z" itemprop="datePublished">6月 7</time>
+        <section id="main"><article id="post-ghost-code-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/ghost-code-1.html" class="article-date">
+  <time datetime="2015-01-28T06:04:00.000Z" itemprop="datePublished">2015-01-28</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/raspberry-pi-samba.html">闲置树莓派捣腾记</a>
+    <h1 class="article-title" itemprop="name">
+      Ghost源码解读系列（一）目录结构
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>本系列文章以Ghost0.5.8安装版本为基础，后续版本升级时可能会做升级记录日志</strong><br><em>由于个人水平和理解有限，可能部分地方没有给出分析或者解读有误，欢迎指正</em>  </p>
+<p>#1. Ghost目录结构<br>├content: 内容<br>　├apps: 以后Ghost开发的app会放在这个目录下，期待吧！<br>　├data: 数据文件夹，请勿修改此文件下任何内容，默认sqlite数据文件会存放与此<br>　├images: 图片文件夹，默认使用本地存储时，上传的图片会存于此处<br>　├themes: 主题文件夹，所有的主题文件夹存放于此，下面以默认的casper主题为例<br>　　├casper: 默认主题<br>　　　├assets: 资源目录，不做更多介绍<br>　　　├partials:<br>　　　author.hbs: 作者页面<br>　　　default.hbs:<br>　　　index.hbs: 首页<br>　　　page.hbs:<br>　　　post.hbs:<br>　　　tag.hbs:<br>├core: 核心模块<br>　├built: 用Grunt合并压缩后的js代码，不做展开介绍<br>　├client: 客户端代码，主要是js css font image等内容，后续详细介绍<br>　├server: 服务端代码，后续详细介绍<br>　├shared: 共享文件<br>　index.js: 服务器启动入口文件<br>.bower.json: bower文件配置<br>.config.example.js: 示例的配置文件<br>Gruntfile.js: grunt配置<br>index.js: 主入口函数，启动函数位置<br>LICENSE: LICENSE<br>package.json: 项目配置<br>PRIVACY.md: 隐私控制，可用的第三方功能说明，可以在config.js中修改<br>README.md: 项目说明文档  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.erguotou.me/ghost-code-1.html" data-id="ciqz5a7ib000b1asetr3m6ink" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ghost/">Ghost</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/ghost-on-banwagong.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          在搬瓦工上安装Ghost
+        
+      </div>
+    </a>
+  
+  
+    <a href="/ghost-list.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">群友博文大合集</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/atom-frontend-plugins.html" class="archive-article-date">
-  <time datetime="2016-05-22T10:05:18.000Z" itemprop="datePublished">5月 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/atom-frontend-plugins.html">Atom前端开发配置</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/nodejs-share.html" class="archive-article-date">
-  <time datetime="2016-04-26T12:50:25.000Z" itemprop="datePublished">4月 26</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/nodejs-share.html">NodeJs分享</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/git-migration.html" class="archive-article-date">
-  <time datetime="2016-04-12T07:32:00.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/git-migration.html">Git迁移记录</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/play-video-while-downloading.html" class="archive-article-date">
-  <time datetime="2016-03-23T07:35:00.000Z" itemprop="datePublished">3月 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/play-video-while-downloading.html">mp4视频实现边下载边播放</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/ppt-online.html" class="archive-article-date">
-  <time datetime="2016-03-23T07:01:00.000Z" itemprop="datePublished">3月 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ppt-online.html">ppt-online</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/vsftpd-config.html" class="archive-article-date">
-  <time datetime="2016-02-05T03:58:00.000Z" itemprop="datePublished">2月 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/vsftpd-config.html">vsftpd的安装配置</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/ssh-via-public-key.html" class="archive-article-date">
-  <time datetime="2015-12-23T16:12:00.000Z" itemprop="datePublished">12月 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ssh-via-public-key.html">服务器安全登录</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/pretty-webfont.html" class="archive-article-date">
-  <time datetime="2015-11-15T11:00:00.000Z" itemprop="datePublished">11月 15</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/pretty-webfont.html">优秀Web字体收集</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/ghost-on-raspberry.html" class="archive-article-date">
-  <time datetime="2015-11-07T16:45:00.000Z" itemprop="datePublished">11月 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ghost-on-raspberry.html">在树莓派上安装Ghost的一些坑</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">__('next') &raquo;</a>
-  </nav>
 </section>
         
           <aside id="sidebar">

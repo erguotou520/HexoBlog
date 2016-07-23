@@ -3,17 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | 大道至简</title>
+  <title>在OpenShift上安装Ghost | 大道至简</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="大道至简">
-<meta property="og:url" content="http://blog.erguotou.me/archives/index.html">
+  <meta name="description" content="使用OpenShift(以下简称OS)搭建Ghost环境的好处就是简单、免费，速度还不错。如果只是希望使用Ghost的用户不妨试试吧。
+###注册OS并登录这一步不做介绍，很简单。
+###创建Ghost1.在OS的控制台中切换到Applications页面，点击Add Application。2.在搜索输入框中输入ghost并回车，在搜索结果页面中点击Ghost 0.5.10(目前版本)。3.在P">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在OpenShift上安装Ghost">
+<meta property="og:url" content="http://blog.erguotou.me/ghost-on-openshift.html">
 <meta property="og:site_name" content="大道至简">
-<meta property="og:description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
+<meta property="og:description" content="使用OpenShift(以下简称OS)搭建Ghost环境的好处就是简单、免费，速度还不错。如果只是希望使用Ghost的用户不妨试试吧。
+###注册OS并登录这一步不做介绍，很简单。
+###创建Ghost1.在OS的控制台中切换到Applications页面，点击Add Application。2.在搜索输入框中输入ghost并回车，在搜索结果页面中点击Ghost 0.5.10(目前版本)。3.在P">
+<meta property="og:image" content="http://blog.erguotou.me/images/ghost/openshift-source-code.png">
+<meta property="og:updated_time" content="2016-07-23T12:09:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大道至简">
-<meta name="twitter:description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
+<meta name="twitter:title" content="在OpenShift上安装Ghost">
+<meta name="twitter:description" content="使用OpenShift(以下简称OS)搭建Ghost环境的好处就是简单、免费，速度还不错。如果只是希望使用Ghost的用户不妨试试吧。
+###注册OS并登录这一步不做介绍，很简单。
+###创建Ghost1.在OS的控制台中切换到Applications页面，点击Add Application。2.在搜索输入框中输入ghost并回车，在搜索结果页面中点击Ghost 0.5.10(目前版本)。3.在P">
+<meta name="twitter:image" content="http://blog.erguotou.me/images/ghost/openshift-source-code.png">
   
     <link rel="alternate" href="/atom.xml" title="大道至简" type="application/atom+xml">
   
@@ -66,225 +75,74 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/raspberry-pi-samba.html" class="archive-article-date">
-  <time datetime="2016-06-07T13:32:12.000Z" itemprop="datePublished">6月 7</time>
+        <section id="main"><article id="post-ghost-on-openshift" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/ghost-on-openshift.html" class="article-date">
+  <time datetime="2015-04-29T12:29:00.000Z" itemprop="datePublished">2015-04-29</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/raspberry-pi-samba.html">闲置树莓派捣腾记</a>
+    <h1 class="article-title" itemprop="name">
+      在OpenShift上安装Ghost
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>使用OpenShift(以下简称OS)搭建Ghost环境的好处就是简单、免费，速度还不错。如果只是希望使用Ghost的用户不妨试试吧。</p>
+<p>###注册OS并登录<br>这一步不做介绍，很简单。</p>
+<p>###创建Ghost<br>1.在OS的控制台中切换到<code>Applications</code>页面，点击<code>Add Application</code>。<br>2.在搜索输入框中输入<code>ghost</code>并回车，在搜索结果页面中点击<code>Ghost 0.5.10</code>(目前版本)。<br>3.在<code>Public URL</code>中输入一个唯一的二级域名，这里输入的内容不重要，后面可以使用自己的域名，其它默认就可以了，点击<code>Create Application</code>。<br>4.完成后的页面可以无视，重新点击<code>Applications</code>就可以看到已经创建好的Ghost博客了，点击进去可以看到系统给你分配的二级域名，点击此链接即可访问博客。</p>
+<p>###使用自定义的域名<br>1.在上面第4步的二级域名旁有一个<code>change</code>链接，点击之。<br>2.在新页面的<code>Domain name</code>里输入你想要绑定的域名，下面的ssl本文不做介绍，接着点击下面的<code>Save</code>按钮。<br>3.最后在你的域名的dns解析的地方加一条cname解析，cname的指向是之前系统给你分配的二级域名。配置好了以后等待一段时间，你就可以用你自定义的域名来访问Ghost博客了。</p>
+<p>###Ghost汉化与升级</p>
+<p>#####汉化<br>汉化我采用的是<a href="http://www.ghostchina.com/">GhostChina</a>提供的汉化版本。<br>1.首先去下载页面下载最新的版本。<br>2.然后再OS的控制台的应用界面里面找到<code>Source Code</code>。<br><img src="/images/ghost/openshift-source-code.png" alt="Source Code"><br>复制此地址。<br>3.使用git拷贝项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#xxxxxx是刚复制的地址</div><div class="line">git clone ssh://xxxxxx</div></pre></td></tr></table></figure>
+<p>4.将第1步下载的中文版的<code>/content/themes/casper-zh</code>目录下的所有文件拷贝到第3步clone的项目下的<code>/content/themes/casper</code>目录下并覆盖原文件。将中文版的<code>/core</code>目录下的所有文件拷贝到第3步clone的项目下的<code>/core</code>目录下并覆盖原文件。<br>5.在第3步clone的项目的根目录下执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add ./ --all</div><div class="line">git commit-m &quot;hanhua&quot;</div><div class="line">git push</div></pre></td></tr></table></figure></p>
+<p><em>在执行push前请在OS中添加自己电脑的ssh公钥，生成公钥的方法可参考<a href="http://blog.csdn.net/hustpzb/article/details/8230454/">Git SSH Key 生成步骤</a>，OS添加公钥的方法就是点击<code>Settings</code>–&gt;<code>Add a new key</code>，在<code>Key name</code>中输入一个名字，在<code>Paste the contents of your public key file</code>中输入你的公钥并保存。</em></p>
+<p>push完成后系统会自动重启，无需担心重启的问题，完成后再次访问你的域名吧。</p>
+<p>#####升级<br>升级请参照<a href="http://docs.ghostchina.com/zh/installation/upgrading/">更新 Ghost</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.erguotou.me/ghost-on-openshift.html" data-id="ciqz5a7id000d1asepu5mdut4" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ghost/">Ghost</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/attachment-in-ghost.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          在Ghost中使用附件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/ghost-swiftype-guide.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">使用Swiftype完成Ghost搜索功能</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/atom-frontend-plugins.html" class="archive-article-date">
-  <time datetime="2016-05-22T10:05:18.000Z" itemprop="datePublished">5月 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/atom-frontend-plugins.html">Atom前端开发配置</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/nodejs-share.html" class="archive-article-date">
-  <time datetime="2016-04-26T12:50:25.000Z" itemprop="datePublished">4月 26</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/nodejs-share.html">NodeJs分享</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/git-migration.html" class="archive-article-date">
-  <time datetime="2016-04-12T07:32:00.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/git-migration.html">Git迁移记录</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/play-video-while-downloading.html" class="archive-article-date">
-  <time datetime="2016-03-23T07:35:00.000Z" itemprop="datePublished">3月 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/play-video-while-downloading.html">mp4视频实现边下载边播放</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/ppt-online.html" class="archive-article-date">
-  <time datetime="2016-03-23T07:01:00.000Z" itemprop="datePublished">3月 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ppt-online.html">ppt-online</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/vsftpd-config.html" class="archive-article-date">
-  <time datetime="2016-02-05T03:58:00.000Z" itemprop="datePublished">2月 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/vsftpd-config.html">vsftpd的安装配置</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/ssh-via-public-key.html" class="archive-article-date">
-  <time datetime="2015-12-23T16:12:00.000Z" itemprop="datePublished">12月 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ssh-via-public-key.html">服务器安全登录</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/pretty-webfont.html" class="archive-article-date">
-  <time datetime="2015-11-15T11:00:00.000Z" itemprop="datePublished">11月 15</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/pretty-webfont.html">优秀Web字体收集</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/ghost-on-raspberry.html" class="archive-article-date">
-  <time datetime="2015-11-07T16:45:00.000Z" itemprop="datePublished">11月 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ghost-on-raspberry.html">在树莓派上安装Ghost的一些坑</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">__('next') &raquo;</a>
-  </nav>
 </section>
         
           <aside id="sidebar">

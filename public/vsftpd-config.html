@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>vsftpd的安装配置 | 大道至简</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="参考自http://www.cnblogs.com/whoamme/p/3494128.html
+
+1.安装相关工具包1yum -y install pam vsftpd db4 db4-utils
+2.创建一个不能登录的用户，用作ftp服务的虚拟用户1useradd -d /home/xxx -s /sbin/nologin vuser_ftp
+/home/xxx为用户根目录，/sbin/no">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vsftpd的安装配置">
+<meta property="og:url" content="http://blog.erguotou.me/vsftpd-config.html">
+<meta property="og:site_name" content="大道至简">
+<meta property="og:description" content="参考自http://www.cnblogs.com/whoamme/p/3494128.html
+
+1.安装相关工具包1yum -y install pam vsftpd db4 db4-utils
+2.创建一个不能登录的用户，用作ftp服务的虚拟用户1useradd -d /home/xxx -s /sbin/nologin vuser_ftp
+/home/xxx为用户根目录，/sbin/no">
+<meta property="og:updated_time" content="2016-07-23T11:43:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vsftpd的安装配置">
+<meta name="twitter:description" content="参考自http://www.cnblogs.com/whoamme/p/3494128.html
+
+1.安装相关工具包1yum -y install pam vsftpd db4 db4-utils
+2.创建一个不能登录的用户，用作ftp服务的虚拟用户1useradd -d /home/xxx -s /sbin/nologin vuser_ftp
+/home/xxx为用户根目录，/sbin/no">
+  
+    <link rel="alternate" href="/atom.xml" title="大道至简" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">大道至简</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Less is more</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.erguotou.me"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vsftpd-config" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/vsftpd-config.html" class="article-date">
+  <time datetime="2016-02-05T03:58:00.000Z" itemprop="datePublished">2016-02-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vsftpd的安装配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>参考自<a target="_blank" href="http://www.cnblogs.com/whoamme/p/3494128.html">http://www.cnblogs.com/whoamme/p/3494128.html</a></p>
+</blockquote>
+<p>1.安装相关工具包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install pam vsftpd db4 db4-utils</div></pre></td></tr></table></figure></p>
+<p>2.创建一个不能登录的用户，用作ftp服务的虚拟用户<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">useradd -d /home/xxx -s /sbin/nologin vuser_ftp</div></pre></td></tr></table></figure></p>
+<p><code>/home/xxx</code>为用户根目录，<code>/sbin/nologin</code>指定用户不能使用shell，该账号不能用于登录系统<br>这里使用<code>vuser_ftp</code>作为虚拟用户的映射对象，在web服务器中可以使用<code>httpd</code><br>这个服务的用户来作为虚拟用的映射。比如<code>www apapche web</code>，没大明白~<br>3.创建一个记录ftp虚拟用户的用户名和密码文件，如<code>login.txt</code><br>第一行用户名，第二行密码，以此类推<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vi /etc/vsftpd/login.txt</div><div class="line">user1</div><div class="line">pwd1</div><div class="line">user2</div><div class="line">pwd2</div></pre></td></tr></table></figure></p>
+<p>4.使用db_load 命令生成虚拟用户认证文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db_load -T -t hash -f /etc/vsftpd/login.txt /etc/vsftpd/vsftpd_login.db</div></pre></td></tr></table></figure></p>
+<p><code>vsftpd_login.db</code>文件是db_load命令生成的虚拟用户认证文件<br>5.备份vsftpd配置文件，再修改配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">vi /etc/vsftpd/vsftpd.conf</div><div class="line"></div><div class="line">anonymous_enable=NO</div><div class="line">local_enable=YES</div><div class="line">write_enable=YES</div><div class="line">local_umask=022</div><div class="line">dirmessage_enable=YES</div><div class="line">xferlog_enable=YES</div><div class="line">connect_from_port_20=YES</div><div class="line">xferlog_file=/var/log/vsftpd.log</div><div class="line">xferlog_std_format=YES</div><div class="line">listen=YES</div><div class="line">userlist_enable=YES</div><div class="line">tcp_wrappers=YES</div><div class="line">max_per_ip=5</div><div class="line">max_clients=100</div><div class="line"></div><div class="line">#### 下面是关于虚拟用户的配置</div><div class="line"></div><div class="line">guest_enable=YES #打开用户虚拟</div><div class="line">guest_username=vuser_ftp #将所有虚拟用户映射成vuer_ftp这个本地用户</div><div class="line">#此用户是之前新建的用户</div><div class="line">pam_service_name=ftp.vu #ftp用户的pam验证方式，默认是vsftpd，必须改掉。</div><div class="line">user_config_dir=/etc/vsftpd/vsftpd_user_conf #这里放置每个虚拟用户的配置文件</div></pre></td></tr></table></figure></p>
+<p>6.创建vsftpd.conf中提到的验证文件<br>使用<code>rpm -ql vsftpd</code>这个命令查找验证模块的例文，找到如下一段<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/share/doc/vsftpd-2.2.2/EXAMPLE/VIRTUAL_USERS/vsftpd.pam</div></pre></td></tr></table></figure></p>
+<p>将其拷贝到vsftpd.conf文件中配置的路径中并改变文件名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp /usr/share/doc/vsftpd-2.2.2/EXAMPLE/VIRTUAL_USERS/vsftpd.pam /etc/pam.d/ftp.vu</div></pre></td></tr></table></figure></p>
+<p>前面配置中的<code>pam_service_name=ftp.vu中ftp.vu</code>使用的是相对路径，绝对路径是<code>/etc/pam.d/ftp.vu</code></p>
+<p>上面这条命令就是把vsftpd程序自带的关于pam认证的模板文件拷贝到<code>pam.d</code>这个服务的工作目录，同时改变文件名为<code>ftp.vu</code>。<br><code>/etc/pam.d/</code>目录下已经有了一个<code>vsftpd.pam</code>文件，现在要做的是让vsftpd虚拟用户的这个功能用到的一个特殊的pam认证。还要修改下<code>ftp.vu</code>这个文件</p>
+<p>先来看下原文件的内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vi /usr/share/doc/vsftpd-2.2.2/EXAMPLE/VIRTUAL_USERS/vsftpd.pam</div><div class="line"></div><div class="line">auth required /lib/security/pam_userdb.so db=/etc/vsftpd/login</div><div class="line">account required /lib/security/pam_userdb.so db=/etc/vsftpd/login</div></pre></td></tr></table></figure></p>
+<p>将两处的<code>db=/etc/vsftpd/login</code>修改成<code>db=/etc/vsftpd/vsftpd_login</code>，文件都是以.db结尾的，但此处不要填写.db。同时由于我们的系统是64位的，还需要将配置中间的<code>/lib/</code>改为<code>/lib64/</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vi /etc/pam.d/ftp.vu</div><div class="line"></div><div class="line">auth required /lib64/security/pam_userdb.so db=/etc/vsftpd/vsftpd_login</div><div class="line">account required /lib64/security/pam_userdb.so db=/etc/vsftpd/vsftpd_login</div></pre></td></tr></table></figure></p>
+<p>7.创建<code>vsftpd.conf</code>中提到的虚拟用户配置目录<code>user_config_dir=/etc/vsftpd/vsftpd_user_conf</code>，以及在这个目录下面创建每个用户的权限配置文件<br>创建<code>/etc/vsftpd/vsftpd_user_conf</code>目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir /etc/vsftpd/vsftpd_user_conf</div></pre></td></tr></table></figure></p>
+<p>在<code>/etc/vsftpd/vsftpd_user_conf</code>目录下面分别创建之前在<code>login.txt</code>虚拟用户名和密码文件中提到的user1 user2 这两个虚拟用户的权限配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">vi /etc/vsftpd/vsftpd_user_conf/user1</div><div class="line"></div><div class="line">anon_world_readable_only=no #用户可以浏览和下载文件，不能设为yes，否则无法看到文件</div><div class="line">write_enable=yes #用户可以创建文件</div><div class="line">anon_upload_enable=yes #用户可以上传文件</div><div class="line">anon_mkdir_write_enable=yes #用户有创建和删除目录的权限</div><div class="line">anon_other_write_enable=yes #用户具有文件改名和删除文件的权限</div><div class="line">local_root=/home/xxx #指定这个虚拟FTP用户的家目录。这里的xxx是你网站的根目录</div></pre></td></tr></table></figure></p>
+<p>之后再创建user2的权限文件（略）<br>8.OK！结束！重启vsftpd服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service vsftpd restart</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.erguotou.me/vsftpd-config.html" data-id="ciqz5a7jd00161aser2d6hd78" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vsftpd/">vsftpd</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/ppt-online.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          ppt-online
+        
+      </div>
+    </a>
+  
+  
+    <a href="/ssh-via-public-key.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">服务器安全登录</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Api/">Api</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom-plugin/">Atom-plugin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fonts/">Fonts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Frontend/">Frontend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ghost/">Ghost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJs/">NodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry/">Raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swiftype/">Swiftype</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vps/">Vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vsftpd/">vsftpd</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Api/" style="font-size: 10px;">Api</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/Atom-plugin/" style="font-size: 10px;">Atom-plugin</a> <a href="/tags/Fonts/" style="font-size: 10px;">Fonts</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/Ghost/" style="font-size: 20px;">Ghost</a> <a href="/tags/Git/" style="font-size: 16.67px;">Git</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/NodeJs/" style="font-size: 10px;">NodeJs</a> <a href="/tags/Raspberry/" style="font-size: 13.33px;">Raspberry</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Swiftype/" style="font-size: 10px;">Swiftype</a> <a href="/tags/Vps/" style="font-size: 10px;">Vps</a> <a href="/tags/vsftpd/" style="font-size: 10px;">vsftpd</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/raspberry-pi-samba.html">闲置树莓派捣腾记</a>
+          </li>
+        
+          <li>
+            <a href="/atom-frontend-plugins.html">Atom前端开发配置</a>
+          </li>
+        
+          <li>
+            <a href="/nodejs-share.html">NodeJs分享</a>
+          </li>
+        
+          <li>
+            <a href="/git-migration.html">Git迁移记录</a>
+          </li>
+        
+          <li>
+            <a href="/play-video-while-downloading.html">mp4视频实现边下载边播放</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 二锅头<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

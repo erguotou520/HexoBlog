@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>大道至简</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="大道至简">
+<meta property="og:url" content="http://blog.erguotou.me/page/3/index.html">
+<meta property="og:site_name" content="大道至简">
+<meta property="og:description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大道至简">
+<meta name="twitter:description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
+  
+    <link rel="alternate" href="/atom.xml" title="大道至简" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">大道至简</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Less is more</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.erguotou.me"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-ghost-code-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/ghost-code-1.html" class="article-date">
+  <time datetime="2015-01-28T06:04:00.000Z" itemprop="datePublished">2015-01-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ghost-code-1.html">Ghost源码解读系列（一）目录结构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>本系列文章以Ghost0.5.8安装版本为基础，后续版本升级时可能会做升级记录日志</strong><br><em>由于个人水平和理解有限，可能部分地方没有给出分析或者解读有误，欢迎指正</em>  </p>
+<p>#1. Ghost目录结构<br>├content: 内容<br>　├apps: 以后Ghost开发的app会放在这个目录下，期待吧！<br>　├data: 数据文件夹，请勿修改此文件下任何内容，默认sqlite数据文件会存放与此<br>　├images: 图片文件夹，默认使用本地存储时，上传的图片会存于此处<br>　├themes: 主题文件夹，所有的主题文件夹存放于此，下面以默认的casper主题为例<br>　　├casper: 默认主题<br>　　　├assets: 资源目录，不做更多介绍<br>　　　├partials:<br>　　　author.hbs: 作者页面<br>　　　default.hbs:<br>　　　index.hbs: 首页<br>　　　page.hbs:<br>　　　post.hbs:<br>　　　tag.hbs:<br>├core: 核心模块<br>　├built: 用Grunt合并压缩后的js代码，不做展开介绍<br>　├client: 客户端代码，主要是js css font image等内容，后续详细介绍<br>　├server: 服务端代码，后续详细介绍<br>　├shared: 共享文件<br>　index.js: 服务器启动入口文件<br>.bower.json: bower文件配置<br>.config.example.js: 示例的配置文件<br>Gruntfile.js: grunt配置<br>index.js: 主入口函数，启动函数位置<br>LICENSE: LICENSE<br>package.json: 项目配置<br>PRIVACY.md: 隐私控制，可用的第三方功能说明，可以在config.js中修改<br>README.md: 项目说明文档  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.erguotou.me/ghost-code-1.html" data-id="ciqz5a7ib000b1asetr3m6ink" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ghost/">Ghost</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ghost-list" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/ghost-list.html" class="article-date">
+  <time datetime="2015-01-16T06:06:00.000Z" itemprop="datePublished">2015-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ghost-list.html">群友博文大合集</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><script><br>(function() {<br>    var bloggers = [<br>      {<br>        “name”: “hellojammy”,<br>        “avater”: “<a href="http://&quot;+&quot;hello1010.com/content/images/2015/01/0-1.jpg">http://&quot;+&quot;hello1010.com/content/images/2015/01/0-1.jpg</a>“,<br>        “tags”: [“移动开发”, “Web前端开发”, “微信公众号开发”, “ASP.NET”, “软件架构设计”],<br>        “site”: “<a href="http://&quot;+&quot;hello1010.com/">http://&quot;+&quot;hello1010.com/</a>“<br>      }, {<br>        “name”: “二锅头”,<br>        “avater”: “<a href="http://&quot;+&quot;blog.erguotou.me/content/images/2015/01/baili.png">http://&quot;+&quot;blog.erguotou.me/content/images/2015/01/baili.png</a>“,<br>        “tags”: [“WEB前端”, “杂记”],<br>        “site”: “<a href="http://&quot;+&quot;blog.erguotou.me/">http://&quot;+&quot;blog.erguotou.me/</a>“<br>      },{<br>        “name”: “WINDISCO”,<br>        “avater”: “<a href="http://&quot;+&quot;windisco.qiniudn.com/avatar_03.jpg">http://&quot;+&quot;windisco.qiniudn.com/avatar_03.jpg</a>“,<br>        “tags”: [“iOS开发”, “算法”, “游戏”],<br>        “site”: “<a href="http://&quot;+&quot;windisco.com/">http://&quot;+&quot;windisco.com/</a>“<br>      },{<br>        “name”: “iFriskit Pro”,<br>        “avater”: “<a href="http://&quot;+&quot;friskit-blog.qiniudn.com/b/32/aa62b93378a96475bc81927f19cfa.png">http://&quot;+&quot;friskit-blog.qiniudn.com/b/32/aa62b93378a96475bc81927f19cfa.png</a>“,<br>        “tags”: [“算法”, “机器学习与深度学习”, “各种开发etc”],<br>        “site”: “<a href="http://&quot;+&quot;friskit.me/">http://&quot;+&quot;friskit.me/</a>“<br>      },{<br>        “name”: “蒋佳李”,<br>        “avater”: “<a href="http://&quot;+&quot;www.9ute.com/content/images/2015/01/jiangjiali.png">http://&quot;+&quot;www.9ute.com/content/images/2015/01/jiangjiali.png</a>“,<br>        “tags”: [“音乐创作”, “录音制作”, “技术”],<br>        “site”: “<a href="http://&quot;+&quot;www.9ute.com/">http://&quot;+&quot;www.9ute.com/</a>“<br>      },{<br>        “name”: “神楽坂立华”,<br>        “avater”: “<a href="http://&quot;+&quot;www.moecloud.org/content/images/2015/06/images-1.jpg">http://&quot;+&quot;www.moecloud.org/content/images/2015/06/images-1.jpg</a>“,<br>        “tags”: [“平面设计”, “DIY”, “电子爱好者”],<br>        “site”: “<a href="http://&quot;+&quot;www.moecloud.org/">http://&quot;+&quot;www.moecloud.org/</a>“<br>      },{<br>        “name”: “anly_zhang”,<br>        “avater”: “<a href="http://&quot;+&quot;www.anlyblog.org/content/images/touxiang.jpg">http://&quot;+&quot;www.anlyblog.org/content/images/touxiang.jpg</a>“,<br>        “tags”: [“oracle”, “数据库”, “dba”],<br>        “site”: “<a href="http://&quot;+&quot;www.anlyblog.org/">http://&quot;+&quot;www.anlyblog.org/</a>“<br>      },<br>      /<em>*{<br>        “name”: “萌萌兔”,<br>        “avater”: “<a href="http://&quot;+&quot;blog.cuterabbit.cn/content/images/2015/01/color.png">http://&quot;+&quot;blog.cuterabbit.cn/content/images/2015/01/color.png</a>“,<br>        “tags”: [“儿童智能”, “定位手表”],<br>        “site”: “<a href="http://&quot;+&quot;blog.cuterabbit.cn/">http://&quot;+&quot;blog.cuterabbit.cn/</a>“<br>      }, </em>/<br>      {<br>        “name”: “duwei”,<br>        “avater”: “<a href="http://&quot;+&quot;mimg.127.net/p/js6/lib/img/noface.gif">http://&quot;+&quot;mimg.127.net/p/js6/lib/img/noface.gif</a>“,<br>        “tags”: [“web前端”],<br>        “site”: “<a href="http://&quot;+&quot;www.blog123.cc/">http://&quot;+&quot;www.blog123.cc/</a>“<br>      },{<br>        “name”: “Mido”,<br>        “avater”: “<a href="http://&quot;+&quot;i.imoe.moe/images/avatar.jpg">http://&quot;+&quot;i.imoe.moe/images/avatar.jpg</a>“,<br>        “tags”: [“程序”, “前端”],<br>        “site”: “<a href="http://&quot;+&quot;imoe.moe/">http://&quot;+&quot;imoe.moe/</a>“<br>      },{<br>        “name”: “Patrick”,<br>        “avater”: “<a href="http://&quot;+&quot;dev2patrick.com/content/images/2015/07/head-2.png">http://&quot;+&quot;dev2patrick.com/content/images/2015/07/head-2.png</a>“,<br>        “tags”: [“Android”, “iOS”, “开发”],<br>        “site”: “<a href="http://&quot;+&quot;dev2patrick.com/">http://&quot;+&quot;dev2patrick.com/</a>“<br>      },{<br>        “name”: “Cho”,<br>        “avater”: “<a href="http://&quot;+&quot;mimg.127.net/p/js6/lib/img/noface.gif">http://&quot;+&quot;mimg.127.net/p/js6/lib/img/noface.gif</a>“,<br>        “tags”: [“DIY”, “电子爱好者”],<br>        “site”: “<a href="http://&quot;+&quot;www.znotes.info/">http://&quot;+&quot;www.znotes.info/</a>“<br>      },{<br>        “name”: “乐道”,<br>        “avater”: “<a href="http://&quot;+&quot;hujunr.com/content/images/2015/02/logo.png">http://&quot;+&quot;hujunr.com/content/images/2015/02/logo.png</a>“,<br>        “tags”: [“杂文”],<br>        “site”: “<a href="http://&quot;+&quot;hujunr.com/">http://&quot;+&quot;hujunr.com/</a>“<br>      },{<br>        “name”: “伯翎飞云”,<br>        “avater”: “<a href="http://&quot;+&quot;jpiq.com/content/images/2015/03/8.gif">http://&quot;+&quot;jpiq.com/content/images/2015/03/8.gif</a>“,<br>        “tags”: [“杂文”],<br>        “site”: “<a href="http://&quot;+&quot;jpiq.com/">http://&quot;+&quot;jpiq.com/</a>“<br>      },{<br>        “name”: “君赏原创”,<br>        “avater”: “<a href="http://&quot;+&quot;mimg.127.net/p/js6/lib/img/noface.gif">http://&quot;+&quot;mimg.127.net/p/js6/lib/img/noface.gif</a>“,<br>        “tags”: [“paintcode”,”ios开发”],<br>        “site”: “<a href="http://&quot;+&quot;www.uiapple.com/">http://&quot;+&quot;www.uiapple.com/</a>“<br>      },{<br>        “name”: “歪歪羊”,<br>        “avater”: “<a href="http://&quot;+&quot;www.yysheep.com/content/images/2015/03/QQ--20150308193614.png">http://&quot;+&quot;www.yysheep.com/content/images/2015/03/QQ--20150308193614.png</a>“,<br>        “tags”: [“Java相关”,”互联网金融”],<br>        “site”: “<a href="http://&quot;+&quot;www.yysheep.com/">http://&quot;+&quot;www.yysheep.com/</a>“<br>      },{<br>        “name”: “颜值颇低”,<br>        “avater”: “<a href="http://&quot;+&quot;weblib.duapp.com/myicon.png">http://&quot;+&quot;weblib.duapp.com/myicon.png</a>“,<br>        “tags”: [“WEB研究”],<br>        “site”: “<a href="http://&quot;+&quot;webnn.cn/">http://&quot;+&quot;webnn.cn/</a>“<br>      },{<br>        “name”: “诺步网”,<br>        “avater”: “<a href="http://&quot;+&quot;mimg.127.net/p/js6/lib/img/noface.gif">http://&quot;+&quot;mimg.127.net/p/js6/lib/img/noface.gif</a>“,<br>        “tags”: [“drupal”,”前端”,”PhoneGap”,”微信开发”],<br>        “site”: “<a href="http://&quot;+&quot;nuobu.net/">http://&quot;+&quot;nuobu.net/</a>“<br>      },{<br>        “name”: “谭勇”,<br>        “avater”: “<a href="http://&quot;+&quot;mimg.127.net/p/js6/lib/img/noface.gif">http://&quot;+&quot;mimg.127.net/p/js6/lib/img/noface.gif</a>“,<br>        “tags”: [“杂文”],<br>        “site”: “<a href="http://&quot;+&quot;charstale.coding.io/">http://&quot;+&quot;charstale.coding.io/</a>“<br>      },{<br>        “name”: “言肆”,<br>        “avater”: “<a href="https://&quot;+&quot;suki.im/content/images/2015/06/momo1.png">https://&quot;+&quot;suki.im/content/images/2015/06/momo1.png</a>“,<br>        “tags”: [“WEB开发”, “Android”, “服务器运维”],<br>        “site”: “<a href="https://&quot;+&quot;suki.im/">https://&quot;+&quot;suki.im/</a>“<br>      },{<br>        “name”: “Cheney”,<br>        “avater”: “<a href="http://&quot;+&quot;www.yangchengyu.net/content/images/2015/04/---1.jpg">http://&quot;+&quot;www.yangchengyu.net/content/images/2015/04/---1.jpg</a>“,<br>        “tags”: [“iOS开发”, “Python开发”],<br>        “site”: “<a href="http://&quot;+&quot;www.yangchengyu.net/">http://&quot;+&quot;www.yangchengyu.net/</a>“<br>      }/<em>,{<br>        “name”: “pican”,<br>        “avater”: “<a href="http://&quot;+&quot;www.ipican.com/content/images/2015/05/default-1.jpeg">http://&quot;+&quot;www.ipican.com/content/images/2015/05/default-1.jpeg</a>“,<br>        “tags”: [“iOS开发”,”PHP开发”,”摄影”],<br>        “site”: “<a href="http://&quot;+&quot;www.ipican.com/">http://&quot;+&quot;www.ipican.com/</a>“<br>      },{<br>        “name”: “绿叶”,<br>        “avater”: “<a href="http://&quot;+&quot;www.lv-ye.com/content/images/2015/05/tx.png">http://&quot;+&quot;www.lv-ye.com/content/images/2015/05/tx.png</a>“,<br>        “tags”: [“WEB开发”,”程序”],<br>        “site”: “<a href="http://&quot;+&quot;www.lv-ye.com/">http://&quot;+&quot;www.lv-ye.com/</a>“<br>      }</em>/,{<br>        “name”: “董卓瑶”,<br>        “avater”: “<a href="http://&quot;+&quot;dongzhuoyao.com/content/images/2015/07/avatar.jpg">http://&quot;+&quot;dongzhuoyao.com/content/images/2015/07/avatar.jpg</a>“,<br>        “tags”: [“php框架源码分析”, “分布式”, “大数据”],<br>        “site”: “<a href="http://&quot;+&quot;dongzhuoyao.com/">http://&quot;+&quot;dongzhuoyao.com/</a>“<br>      },{<br>        “name”: “MengBo’ Li Blog”,<br>        “avater”: “<a href="http://&quot;+&quot;imdst.com/content/images/2015/05/3.jpg">http://&quot;+&quot;imdst.com/content/images/2015/05/3.jpg</a>“,<br>        “tags”: [“Linux”, “unix”, “mysql”, “python/shell”, “运维技术分享”],<br>        “site”: “<a href="http://&quot;+&quot;imdst.com/">http://&quot;+&quot;imdst.com/</a>“<br>      },{<br>        “name”: “Dream”,<br>        “avater”: “<a href="http://&quot;+&quot;q.qlogo.cn/qqapp/100229475/099CEF1841F448A7701E3908AE046B40/100">http://&quot;+&quot;q.qlogo.cn/qqapp/100229475/099CEF1841F448A7701E3908AE046B40/100</a>“,<br>        “tags”: [“运维”, “专注自动化”],<br>        “site”: “<a href="http://&quot;+&quot;www.thedream.pub/">http://&quot;+&quot;www.thedream.pub/</a>“<br>      },{<br>        “name”: “漫步禅意”,<br>        “avater”: “<a href="http://&quot;+&quot;ds.cdncache.org/avatar-50/527/99892.jpg">http://&quot;+&quot;ds.cdncache.org/avatar-50/527/99892.jpg</a>“,<br>        “tags”: [“架构设计”,”产品经理”, “程序员”],<br>        “site”: “<a href="http://&quot;+&quot;cocojog.com/">http://&quot;+&quot;cocojog.com/</a>“<br>      },{<br>        “name”: “Starriv”,<br>        “avater”: “<a href="http://&quot;+&quot;mimg.127.net/p/js6/lib/img/noface.gif">http://&quot;+&quot;mimg.127.net/p/js6/lib/img/noface.gif</a>“,<br>        “tags”: [“前端”, “后端”],<br>        “site”: “<a href="http://&quot;+&quot;www.starriv.com">http://&quot;+&quot;www.starriv.com</a>“<br>      },{<br>        “name”: “石古子”,<br>        “avater”: “<a href="http://&quot;+&quot;blog.cytbond.cn/content/images/2015/07/QQ--20150706143009-1.jpg">http://&quot;+&quot;blog.cytbond.cn/content/images/2015/07/QQ--20150706143009-1.jpg</a>“,<br>        “tags”: [“技术分享”, “Linux”],<br>        “site”: “<a href="http://&quot;+&quot;blog.cytbond.cn/">http://&quot;+&quot;blog.cytbond.cn/</a>“<br>      },{<br>        “name”: “云卷(juàn)云书”,<br>        “avater”: “<a href="http://&quot;+&quot;kingyf.com/content/images/2015/08/63879-1.png">http://&quot;+&quot;kingyf.com/content/images/2015/08/63879-1.png</a>“,<br>        “tags”: [“信息安全”, “Web服务”, “团队管理”, “前端技术”, “Java开发”],<br>        “site”: “<a href="http://&quot;+&quot;kingyf.com/">http://&quot;+&quot;kingyf.com/</a>“<br>      }<br>    ];<br>    var tempStr = ‘<div class="blogger"><img src=""><h5></h5><tag></tag><a href="" target="_blank"></a></div>‘;<br>    var t1 = setInterval(function(){<br>        if (typeof jQuery !== “undefined”) {<br>            clearInterval(t1);<br>            var js = document.createElement(‘script’);<br>            js.type= ‘text/javascript’;<br>            js.src= “<a href="http://&quot;+&quot;cdn.bootcss.com/jquery.isotope/2.0.0/isotope.pkgd.min.js">http://&quot;+&quot;cdn.bootcss.com/jquery.isotope/2.0.0/isotope.pkgd.min.js</a>“;<br>            document.getElementsByTagName(‘body’)[0].appendChild(js);<br>            js.onload = function(){<br>                $(function() {<br>                    var $container = $(‘#bloggers’);<br>                    $container.isotope({<br>                        itemSelector: ‘.blogger’,<br>                        masonry: {<br>                         isFitWidth :true<br>                        }<br>                    });<br>                    for (var i = 0; i &lt; bloggers.length; i++) {<br>                        var $t = $(tempStr);<br>                        $t.children(‘img’).attr(‘src’, bloggers[i].avater).next(‘h5’).text(bloggers[i].name).next(‘tag’).text(bloggers[i].tags.join(‘,’)).next(‘a’).attr(‘href’, bloggers[i].site).html(bloggers[i].site);<br>                        $container.isotope(‘insert’, $t);<br>                    }<br>                });<br>            }<br>        }<br>    }, 500);<br>})();<br></script></p>
+<p><style><br>    .post-template .post-header {<br>        text-align: center;<br>    }<br>    .post-template .post {<br>        max-width: none;<br>        width: 96%;<br>        margin: 0 2%;<br>    }</p>
+<pre><code>#bloggers {
+    margin: 0 auto;
+}
+.blogger {
+    position: relative;
+    margin: 10px 8px;
+    width: 280px;
+    box-shadow: 0 0 1px 1px #ccc;
+    display: block;
+    padding: 8px;
+    box-sizing: border-box;
+    float: left;
+}
+.blogger:hover {
+    box-shadow: 0 0 1px 1px #f60;
+}
+.blogger img {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    padding: 0;
+    border-radius: 50%;
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0 !important;
+    cursor: pointer;
+    transition: all .5s;
+    -moz-transition: all .5s;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+}
+.blogger img:hover {
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+}
+.blogger h5 {
+    display: inline-block;
+    margin: 0;
+    border-left: 50px solid transparent;
+    height: 40px;
+    line-height: 40px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    box-sizing: border-box;
+}
+.blogger tag, .blogger a {
+    display: block;
+    margin: 1%;
+    font-size: 14px;
+    line-height: 18px;
+    text-overflow: ellipsis;
+    width: 98%;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: top;
+}
+.blogger a {
+    display: inline-block;
+}
+.blogger tag:before {
+    content: &apos;&apos;;
+    display: inline-block;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpCNjQ0NjhERDIwMjA2ODExOTJCMEZCMzY4MDgyNUUyOCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFQkVFQzVCQjlENEQxMUU0QUZFRkIyOUNDQjQxQjIyNiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFQkVFQzVCQTlENEQxMUU0QUZFRkIyOUNDQjQxQjIyNiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M0IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkVFNjBDQzc2OUQ0QTExRTRCQUQxQkM4ODMzOUY5RkRBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkVFNjBDQzc3OUQ0QTExRTRCQUQxQkM4ODMzOUY5RkRBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+C7ncDwAAAuhJREFUeNqEVF1I01EUv/8P/24N2dTNteWmmKKgNGzzwTS2SR8M6SGD6D36eOmhpyQjeuzdh6CX9hBhFL0EWyMLH4oWDkFouo3BYuLcHBuT4dz3+h1hNm3mhcO999xzfud3zrn3iiqVivX09Ewxxi7XarUc+zt47LlUKuWNxWIe7GvsP0PMZrOnxsbGOvr7+08XCoUsdNz+gShWZTKZYWNjw+RyuWShUOgj1JXjgLjx8fEP1WpVgmOBGNTZQJceHh5eHRwcPL+5udnp8XheBwKB9zgrNwVyOp15zK0AYSQ8z+8f5PN5trS09B37hZGRkdFEIqFbXFxc8Pv9b3FcOAokTE9Pz1YqFQkOa4IguHd2dlrBTo011c4YiUS0qNEnrGU6nc5aKpVatre3gwhaOgTkcDjmcrmcuLKyctfr9T5fX1//DacZKhMZ9Pb26qPR6Bmk54aeU6vVFwEiJzCkf8CML5fL+93w+XxXUFQbUnLs7e2J0DMUn4EBm5iYMEmSdG95edmvVCp/WSyW62az+Q6yUB4wstvtc4ggGY1G08DAwDUUeFKhULQQEFJmNCMy6+7u1sbj8bPhcNjd19eXa29vt0LfsbW1tUYlFaxW6yMoWjEEjUajQGSh7lwXAiQBmCadTg+hex6DwZDp6uqygZUmmUwGBNDOwPECDOUEUGfSTAhUr9d37O7ungsGg19Q/BhqNiWXy0uCzWbzoQ5rALAjxbZGJkelnqpWq1WijiYw+wqwBMBTlBoZhQD2E0aTAOs8CYwagDK0oRlDuBovcGk/iw1X4RsMbhaLxVe4Q6PshEFgYKNDF4uZTCYrHrrmHLcKVjcQ9SXWl04Cg908OvyD0uWbnEeQwi3Qfgd2rN6ARoG+CnkK28f0XOhZiccES0Fug34KRvfBrpFFDrpZyPyhb6TpS4YjDLOYHwAsgfkJXV40IoP1Q9TQ+c9/1AyEXj51B45lyDNIGEdXIW8QwE2/RCNLGn8EGAA/Gu2TQqEmWgAAAABJRU5ErkJggg%3D%3D);
+    width: 18px;
+    height: 18px;
+    background-size: 100% 100%;
+    margin-right: 8px;
+}
+.blogger a:before {
+    content: &apos;&apos;;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-size: 100% 100%;
+    margin-right: 8px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjZFMzkzMDREOUQ0RTExRTRCMEE5OEU4MUE4Q0QxNTZBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjZFMzkzMDRFOUQ0RTExRTRCMEE5OEU4MUE4Q0QxNTZBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NkUzOTMwNEI5RDRFMTFFNEIwQTk4RTgxQThDRDE1NkEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NkUzOTMwNEM5RDRFMTFFNEIwQTk4RTgxQThDRDE1NkEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5OMX2LAAABV0lEQVR42pTSzStEURjH8Tneig1FNBvKTmoWSko0ChsLL4kslK1ssLDx0pSYnYVShplZs/E2YsEGf4PssPCy8Q8gub6nnlun23XnmVuf7p157v2d85xzTKz0awm9+MUP9j3Pu6ooIaASO/jGHN7RjZQxpkYbYgfMIR1Sa8VZmTIkgzcsB4u09cTtWRM0JWGpiHeqNUFd2JXnOMbcIuszyq1WE1SOTzTgAO43SSxiTbPQ/RjCCYYDIXdIsE4xE/LhNDpk5GPc4xCXOJcZDmDSHgNCHvwdcVvIynNW2olLO2n5vSEDvGICH8FZVCGPdee/epxiAT3/9W3bsvxZ7WHTqbfgRtakGUfFguw05/GFFadu12gbBRnI0+zKBRoj6rPY0rRWiAhJSotNmiC7xZ0h7/ThFu1R7bhBg7hGm1Mfl5BEsXXxg/wDOYIZvMhRqMMqHjVB9voTYADxfGp9UkgPWgAAAABJRU5ErkJggg%3D%3D);
+}
+</code></pre><p></style></p>
+<div id="bloggers"></div>
+
+
+<div style="clear:both;"></div>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.erguotou.me/ghost-list.html" data-id="ciqz5a7i500071ase1tlppxeu" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ghost/">Ghost</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-nginx-tomcat-iis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/nginx-tomcat-iis.html" class="article-date">
+  <time datetime="2015-01-14T08:46:00.000Z" itemprop="datePublished">2015-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/nginx-tomcat-iis.html">利用Nginx让IIS和tomcat共用80端口</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em>项目：《安徽省儿童医院》主网站（PHP开发）与微信（JAVA开发）共用服务器</em></p>
+<p>原来整合时使用的是jakarta桥接插件，但当时整合时就各种弄不懂，也是各种迷糊然后就好了，最终主网站用的域名是<a href="www.ahetyy.com">www.ahetyy.com</a>，微信端用的是<a href="http://211.149.198.47/etyy">211.149.198.47/etyy</a>。</p>
+<p>然后网站和微信一直都能使用，相安无事，但有一次莫名其妙地出了问题，不得其解。</p>
+<p>在修复时打算按照原来的方式来，可是发现又不会弄了，因为当初怎么弄好的都不记得。</p>
+<p>无奈之下在百度搜索时发现一篇<a href="http://www.cnblogs.com/wuyou/p/3455619.html">《IIS tomcat共用80端口解决一个IP多个域名：使用Nginx反向代理方式使两者兼容》</a>的文章，受其启发，准备改用Nginx来完成。</p>
+<p>####1.下载<br><a href="http://nginx.org/en/download.html">http://nginx.org/en/download.html</a> 我当时下载的是nginx/Windows-1.7.8 版本。</p>
+<p>####2.解压</p>
+<p>####3.修改配置<br><em>nginx的配置看起来还是比较复杂的，现在的配置只是保证能使用，但不一定是最好的</em></p>
+<p>修改Nginx的conf目录下的nginx.conf文件，修改server的配置如下：</p>
+<pre><code>server {
+  listen       80;
+  server_name  www.ahetyy.com;
+  location ^~ /etyy {
+      proxy_pass   http://localhost:8080/etyy;
+      proxy_set_header Host $host;  
+      proxy_set_header X-Real-IP $remote_addr;  
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+  location / {
+          proxy_pass   http://localhost:81;
+  }
+}
+</code></pre><p>其中server_name表示对外访问的域名，第一个location的规则是 任意以”/etyy”开头的请求都转发给<a href="http://localhost:8080/etyy">http://localhost:8080/etyy</a>也就是tomcat来处理，第二个location的规则是其余请求全都发给php的主网站处理。</p>
+<p>特别注意：第一个location下的配置中的proxy_set_header的配置是必须的，否则最后打开<a href="http://www.ahetyy.com/etyy">http://www.ahetyy.com/etyy</a>时页面请求的css和js路径都会是localhost:8080的，因为tomcat那边得到的请求就是localhost:8080的，需要将请求的头信息修改为真实请求的请求路径才行。（但是现在页面的base的路径上会有一个端口80，有点小小强迫症的我就忍了~）</p>
+<p>####4.运行<br>cmd切换到nginx.exe的目录下，启动– start nginx 停止– nginx -s stop，有时会结束不掉，我就会手动关闭进程~</p>
+<p>####5.设置Nginx以服务方式启动<br>（暂时没做，网上教程看着好复杂- -！），搞定！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.erguotou.me/nginx-tomcat-iis.html" data-id="ciqz5a7iq000p1asekjbzpnsk" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-svn-git-transfer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/svn-git-transfer.html" class="article-date">
+  <time datetime="2015-01-14T08:45:00.000Z" itemprop="datePublished">2015-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/svn-git-transfer.html">SVN、GIT数据迁移</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###SVN数据迁移<br>svn的管理使用的是Collabnet Subversion Edge。</p>
+<p>#####1.安装服务<br>在目标机器上安装Collabnet Subversion Edge,简称CSE</p>
+<p>#####2.复制版本库<br>将旧服务器上的repository全部复制到新服务器上</p>
+<p>#####3.导入数据<br>在新服务器上打开CSE的管理后台<a href="http://localhost:3343/csvn">http://localhost:3343/csvn</a>， 在“版本库”页面选择“发现版本库”，这样就把之前的版本库都导入进去了</p>
+<p>#####4.复制用户数据<br>从原机器中拷贝{安装路径} \data\conf下的svn_auth_file文件到新机器</p>
+<p>#####5.导入用户数据<br>修改新机器{安装路径}\data\csvn-production-hsqldb.script文件。复制原机器中类似</p>
+<p><code>INSERT INTO USER VALUES(1,2,&#39;admin user&#39;,&#39;admin@example.com&#39;,TRUE,&#39;f52c7457507a292a11bf8d274d720ee4&#39;,&#39;Super Administrator&#39;,&#39;admin&#39;)</code></p>
+<p>的语句到新服务器的对应文件。</p>
+<p>#####6.重置用户密码</p>
+<p>#####7.重启CSE服务即可<br></br></p>
+<p>###GIT数据迁移<br>GIT的数据迁移比较简单，GIT是采用mysmgit+copssh搭建的。</p>
+<p>#####1.安装环境<br>新机器上搭建GIT环境，并建立每个需要备份的项目的空仓库（好像不新建也是可以的）</p>
+<p>#####1.GIT仓库转移<br>选择一份最新版本的项目路径，执行</p>
+<p><code>git remote set-url origin 资源库地址</code></p>
+<p>#####2.GIT提交<br>直接将当前项目提交即可，这样新的仓库里也是有之前所有的提交记录的</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.erguotou.me/svn-git-transfer.html" data-id="ciqz5a7ja00151aset1zhvvlw" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Api/">Api</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom-plugin/">Atom-plugin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fonts/">Fonts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Frontend/">Frontend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ghost/">Ghost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJs/">NodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry/">Raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swiftype/">Swiftype</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vps/">Vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vsftpd/">vsftpd</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Api/" style="font-size: 10px;">Api</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/Atom-plugin/" style="font-size: 10px;">Atom-plugin</a> <a href="/tags/Fonts/" style="font-size: 10px;">Fonts</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/Ghost/" style="font-size: 20px;">Ghost</a> <a href="/tags/Git/" style="font-size: 16.67px;">Git</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/NodeJs/" style="font-size: 10px;">NodeJs</a> <a href="/tags/Raspberry/" style="font-size: 13.33px;">Raspberry</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Swiftype/" style="font-size: 10px;">Swiftype</a> <a href="/tags/Vps/" style="font-size: 10px;">Vps</a> <a href="/tags/vsftpd/" style="font-size: 10px;">vsftpd</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/raspberry-pi-samba.html">闲置树莓派捣腾记</a>
+          </li>
+        
+          <li>
+            <a href="/atom-frontend-plugins.html">Atom前端开发配置</a>
+          </li>
+        
+          <li>
+            <a href="/nodejs-share.html">NodeJs分享</a>
+          </li>
+        
+          <li>
+            <a href="/git-migration.html">Git迁移记录</a>
+          </li>
+        
+          <li>
+            <a href="/play-video-while-downloading.html">mp4视频实现边下载边播放</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 二锅头<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -3,17 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | 大道至简</title>
+  <title>SVN、GIT数据迁移 | 大道至简</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="大道至简">
-<meta property="og:url" content="http://blog.erguotou.me/archives/index.html">
+  <meta name="description" content="###SVN数据迁移svn的管理使用的是Collabnet Subversion Edge。
+#####1.安装服务在目标机器上安装Collabnet Subversion Edge,简称CSE
+#####2.复制版本库将旧服务器上的repository全部复制到新服务器上
+#####3.导入数据在新服务器上打开CSE的管理后台http://localhost:3343/csvn， 在“版本库”页">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVN、GIT数据迁移">
+<meta property="og:url" content="http://blog.erguotou.me/svn-git-transfer.html">
 <meta property="og:site_name" content="大道至简">
-<meta property="og:description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
+<meta property="og:description" content="###SVN数据迁移svn的管理使用的是Collabnet Subversion Edge。
+#####1.安装服务在目标机器上安装Collabnet Subversion Edge,简称CSE
+#####2.复制版本库将旧服务器上的repository全部复制到新服务器上
+#####3.导入数据在新服务器上打开CSE的管理后台http://localhost:3343/csvn， 在“版本库”页">
+<meta property="og:updated_time" content="2016-07-23T11:39:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大道至简">
-<meta name="twitter:description" content="抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。">
+<meta name="twitter:title" content="SVN、GIT数据迁移">
+<meta name="twitter:description" content="###SVN数据迁移svn的管理使用的是Collabnet Subversion Edge。
+#####1.安装服务在目标机器上安装Collabnet Subversion Edge,简称CSE
+#####2.复制版本库将旧服务器上的repository全部复制到新服务器上
+#####3.导入数据在新服务器上打开CSE的管理后台http://localhost:3343/csvn， 在“版本库”页">
   
     <link rel="alternate" href="/atom.xml" title="大道至简" type="application/atom+xml">
   
@@ -66,225 +76,73 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/raspberry-pi-samba.html" class="archive-article-date">
-  <time datetime="2016-06-07T13:32:12.000Z" itemprop="datePublished">6月 7</time>
+        <section id="main"><article id="post-svn-git-transfer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/svn-git-transfer.html" class="article-date">
+  <time datetime="2015-01-14T08:45:00.000Z" itemprop="datePublished">2015-01-14</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/raspberry-pi-samba.html">闲置树莓派捣腾记</a>
+    <h1 class="article-title" itemprop="name">
+      SVN、GIT数据迁移
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###SVN数据迁移<br>svn的管理使用的是Collabnet Subversion Edge。</p>
+<p>#####1.安装服务<br>在目标机器上安装Collabnet Subversion Edge,简称CSE</p>
+<p>#####2.复制版本库<br>将旧服务器上的repository全部复制到新服务器上</p>
+<p>#####3.导入数据<br>在新服务器上打开CSE的管理后台<a href="http://localhost:3343/csvn">http://localhost:3343/csvn</a>， 在“版本库”页面选择“发现版本库”，这样就把之前的版本库都导入进去了</p>
+<p>#####4.复制用户数据<br>从原机器中拷贝{安装路径} \data\conf下的svn_auth_file文件到新机器</p>
+<p>#####5.导入用户数据<br>修改新机器{安装路径}\data\csvn-production-hsqldb.script文件。复制原机器中类似</p>
+<p><code>INSERT INTO USER VALUES(1,2,&#39;admin user&#39;,&#39;admin@example.com&#39;,TRUE,&#39;f52c7457507a292a11bf8d274d720ee4&#39;,&#39;Super Administrator&#39;,&#39;admin&#39;)</code></p>
+<p>的语句到新服务器的对应文件。</p>
+<p>#####6.重置用户密码</p>
+<p>#####7.重启CSE服务即可<br></br></p>
+<p>###GIT数据迁移<br>GIT的数据迁移比较简单，GIT是采用mysmgit+copssh搭建的。</p>
+<p>#####1.安装环境<br>新机器上搭建GIT环境，并建立每个需要备份的项目的空仓库（好像不新建也是可以的）</p>
+<p>#####1.GIT仓库转移<br>选择一份最新版本的项目路径，执行</p>
+<p><code>git remote set-url origin 资源库地址</code></p>
+<p>#####2.GIT提交<br>直接将当前项目提交即可，这样新的仓库里也是有之前所有的提交记录的</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.erguotou.me/svn-git-transfer.html" data-id="ciqz5a7ja00151aset1zhvvlw" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/nginx-tomcat-iis.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          利用Nginx让IIS和tomcat共用80端口
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/atom-frontend-plugins.html" class="archive-article-date">
-  <time datetime="2016-05-22T10:05:18.000Z" itemprop="datePublished">5月 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/atom-frontend-plugins.html">Atom前端开发配置</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/nodejs-share.html" class="archive-article-date">
-  <time datetime="2016-04-26T12:50:25.000Z" itemprop="datePublished">4月 26</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/nodejs-share.html">NodeJs分享</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/git-migration.html" class="archive-article-date">
-  <time datetime="2016-04-12T07:32:00.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/git-migration.html">Git迁移记录</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/play-video-while-downloading.html" class="archive-article-date">
-  <time datetime="2016-03-23T07:35:00.000Z" itemprop="datePublished">3月 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/play-video-while-downloading.html">mp4视频实现边下载边播放</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/ppt-online.html" class="archive-article-date">
-  <time datetime="2016-03-23T07:01:00.000Z" itemprop="datePublished">3月 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ppt-online.html">ppt-online</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/vsftpd-config.html" class="archive-article-date">
-  <time datetime="2016-02-05T03:58:00.000Z" itemprop="datePublished">2月 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/vsftpd-config.html">vsftpd的安装配置</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/ssh-via-public-key.html" class="archive-article-date">
-  <time datetime="2015-12-23T16:12:00.000Z" itemprop="datePublished">12月 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ssh-via-public-key.html">服务器安全登录</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/pretty-webfont.html" class="archive-article-date">
-  <time datetime="2015-11-15T11:00:00.000Z" itemprop="datePublished">11月 15</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/pretty-webfont.html">优秀Web字体收集</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/ghost-on-raspberry.html" class="archive-article-date">
-  <time datetime="2015-11-07T16:45:00.000Z" itemprop="datePublished">11月 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ghost-on-raspberry.html">在树莓派上安装Ghost的一些坑</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">__('next') &raquo;</a>
-  </nav>
 </section>
         
           <aside id="sidebar">
