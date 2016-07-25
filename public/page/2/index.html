@@ -55,9 +55,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.erguotou.me"></form>
@@ -67,6 +67,52 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-ghost-on-raspberry" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/ghost-on-raspberry.html" class="article-date">
+  <time datetime="2015-11-07T16:45:00.000Z" itemprop="datePublished">2015-11-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ghost-on-raspberry.html">在树莓派上安装Ghost的一些坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近开始玩树莓派，自然要在小pi上装个node，跑个Ghost啊。中途遇到了一些小坑，这里记录一下。</p>
+<p>1.<code>raspbian</code>系统安装后默认只有大概4G左右的空间（可以使用<code>df -hl</code>查看磁盘空间），tf卡的其它空间浪费了，需要扩容到整个tf卡的大小。在<code>raspbian</code>中运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo raspi-config</div></pre></td></tr></table></figure></p>
+<p>选择<code>expand_rootfs</code>，按照提示操作并重启。</p>
+<p>2.删除了一些不需要的安装包。首先安装<code>wajig</code>（这个工具集成了apt-get/dpkg/aptitude等等）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install wajig -y</div></pre></td></tr></table></figure></p>
+<p>然后查看已安装的包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wajig large</div></pre></td></tr></table></figure></p>
+<p>找到后面几个用不到的且占用体积较大的删除掉，可一次性删除多个：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo aptitude remove xxxx xxxx xxxx</div></pre></td></tr></table></figure></p>
+<p>3.nodejs的<code>sqlite3</code>模块似乎没有arm平台的编译包，我也懒得自己编辑了，直接改成使用mysql了。</p>
+<p>4.其它没什么不一样的，使用<code>pm2</code>守护Ghost，使用<code>Nginx</code>做代理，运行，OK！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.erguotou.me/ghost-on-raspberry.html" data-id="cir25r4qe000b30se7nw8dnf2" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ghost/">Ghost</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Raspberry/">Raspberry</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-road-to-frontend" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -111,7 +157,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/road-to-frontend.html" data-id="ciqz5a7j2000z1ase7edsvwkg" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/road-to-frontend.html" data-id="cir25r4ro000z30seawxcba10" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Frontend/">Frontend</a></li></ul>
@@ -152,7 +198,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/comment-in-ghost.html" data-id="ciqz5a7i300061asevgsol0ba" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/comment-in-ghost.html" data-id="cir25r4s4001930seet3cie7j" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ghost/">Ghost</a></li></ul>
@@ -191,7 +237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/category-in-ghost.html" data-id="ciqz5a7hw00031ase71ukns7j" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/category-in-ghost.html" data-id="cir25r4pf000330se6hgiuba5" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ghost/">Ghost</a></li></ul>
@@ -232,7 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/attachment-in-ghost.html" data-id="ciqz5a7hq00011asezro02szj" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/attachment-in-ghost.html" data-id="cir25r4p7000130segxibf3qm" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ghost/">Ghost</a></li></ul>
@@ -281,7 +327,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/ghost-on-openshift.html" data-id="ciqz5a7id000d1asepu5mdut4" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/ghost-on-openshift.html" data-id="cir25r4qp000j30set6bn5hue" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ghost/">Ghost</a></li></ul>
@@ -323,7 +369,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/ghost-swiftype-guide.html" data-id="ciqz5a7ig000i1aseq5msyj40" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/ghost-swiftype-guide.html" data-id="cir25r4qg000d30se1bf8z4tl" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ghost/">Ghost</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swiftype/">Swiftype</a></li></ul>
@@ -379,7 +425,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/git-branch-management-strategy.html" data-id="ciqz5a7ii000l1asey8dv0tm6" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/git-branch-management-strategy.html" data-id="cir25r4ql000f30selbdollkn" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
@@ -517,7 +563,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/ghost-api.html" data-id="ciqz5a7hy00041aseh3b8exwv" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/ghost-api.html" data-id="cir25r4q9000830seuky5e0nl" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Api/">Api</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ghost/">Ghost</a></li></ul>
@@ -567,59 +613,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/some-remark.html" data-id="ciqz5a7j400111aseqn57nnwa" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/some-remark.html" data-id="cir25r4rq001130sedeym0rba" class="article-share-link">Delen</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ghost-on-banwagong" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/ghost-on-banwagong.html" class="article-date">
-  <time datetime="2015-02-05T04:35:00.000Z" itemprop="datePublished">2015-02-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ghost-on-banwagong.html">在搬瓦工上安装Ghost</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.前面的内容不做介绍，SSH连接上（本文以CentOS 6 64位系统做说明）<br>2.安装需要的环境，中间有确认的过程，直接输入y回车<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install libtool automake autoconf gcc-c++ openssl-devel</div></pre></td></tr></table></figure></p>
-<p>3.在/home目录下新建一个目录（名字随意，主要用于存放我们的文件，本例使用的是latazu）<code>latazu</code>，并下载我们需要的文件nodejs、ghost<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd /home</div><div class="line">mkdir latazu</div><div class="line">cd latazu</div><div class="line">wget http://nodejs.org/dist/v0.10.36/node-v0.10.36.tar.gz</div><div class="line">wget http://cdn.diancloud.com/ghost/releases/Ghost-0.5.8-zh.zip</div></pre></td></tr></table></figure></p>
-<p>4.编译安装nodejs（make的过程有点长，耐心等待）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">tar zxvf node-v0.10.36.tar.gz</div><div class="line">cd node-v0.10.36</div><div class="line">./configure</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure></p>
-<p>5.解压ghost文件，并配置ghost配置文件<code>config.js</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd ../</div><div class="line">unzip Ghost-0.5.8-zh.zip -d ghost</div><div class="line">cd ghost</div><div class="line">cp config.example.js config.js</div><div class="line">vi config.js</div></pre></td></tr></table></figure></p>
-<p>配置完成后保存（具体配置不做详细说明）<br>6.安装依赖文件（只安装生产环境需要的文件）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --production</div></pre></td></tr></table></figure></p>
-<p><em>如果npm过程中出现glibc版本过低的问题，请参考<a href="http://www.cnblogs.com/gw811/p/3676856.html">“libc.so.6: version `GLIBC_2.14’ not found”系统的glibc版本太低</a>升级glibc版本</em></p>
-<p>7.设置环境变量并启动Ghost（这里使用的是forever守护进程）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export NODE_ENV=production</div><div class="line">npm install -g forever</div><div class="line">forever start index.js</div></pre></td></tr></table></figure></p>
-<p>8.安装Nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rpm -Uvh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm</div><div class="line">yum install nginx</div></pre></td></tr></table></figure></p>
-<p>配置nginx（新建一个配置文件<code>ghost.conf</code>，下面有一个样例）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">mkdir /etc/nginx/logs</div><div class="line">vi /etc/nginx/conf.d/ghost.conf</div><div class="line"></div><div class="line">server &#123;</div><div class="line">	listen       80;</div><div class="line">    server_name  www.renshiwo.me renshiwo.me;</div><div class="line">	charset      utf-8;</div><div class="line">	access_log   logs/ghost.log;</div><div class="line">	location / &#123;</div><div class="line">		proxy_set_header X-Real-IP $remote_addr;</div><div class="line">		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</div><div class="line">		proxy_set_header Host $http_host;</div><div class="line">		proxy_set_header X-NginX-Proxy true;</div><div class="line"></div><div class="line">		proxy_pass http://127.0.0.1:2368;</div><div class="line">		proxy_redirect off;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>9.启动nginx，并设置开机自启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service start nginx</div><div class="line">chkconfig nginx on</div></pre></td></tr></table></figure></p>
-<p>OK!可以了，现在访问你的域名看看吧！哦~对了，不要忘记设置域名解析！</p>
-<p>其它后续操作<br>1.安装FTP <a href="http://noblog.xyz/conf-vsptdd-user/">vsftpd的安装配置</a><br>2.安装ShandowSocks（翻墙必备） <a href="http://teddysun.com/342.html">CentOS下shadowsocks一键安装脚本</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/ghost-on-banwagong.html" data-id="ciqz5a7i600081asehjv5pbr4" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ghost/">Ghost</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vps/">Vps</a></li></ul>
-
     </footer>
   </div>
   
@@ -641,9 +637,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Labels</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Api/">Api</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom-plugin/">Atom-plugin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fonts/">Fonts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Frontend/">Frontend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ghost/">Ghost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJs/">NodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry/">Raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swiftype/">Swiftype</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vps/">Vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vsftpd/">vsftpd</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Api/">Api</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom-plugin/">Atom-plugin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Firebase/">Firebase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fonts/">Fonts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Frontend/">Frontend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ghost/">Ghost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJs/">NodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry/">Raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swiftype/">Swiftype</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TravisCI/">TravisCI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vps/">Vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vsftpd/">vsftpd</a></li></ul>
     </div>
   </div>
 
@@ -651,18 +647,18 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Api/" style="font-size: 10px;">Api</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/Atom-plugin/" style="font-size: 10px;">Atom-plugin</a> <a href="/tags/Fonts/" style="font-size: 10px;">Fonts</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/Ghost/" style="font-size: 20px;">Ghost</a> <a href="/tags/Git/" style="font-size: 16.67px;">Git</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/NodeJs/" style="font-size: 10px;">NodeJs</a> <a href="/tags/Raspberry/" style="font-size: 13.33px;">Raspberry</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Swiftype/" style="font-size: 10px;">Swiftype</a> <a href="/tags/Vps/" style="font-size: 10px;">Vps</a> <a href="/tags/vsftpd/" style="font-size: 10px;">vsftpd</a>
+      <a href="/tags/Api/" style="font-size: 10px;">Api</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/Atom-plugin/" style="font-size: 10px;">Atom-plugin</a> <a href="/tags/Firebase/" style="font-size: 10px;">Firebase</a> <a href="/tags/Fonts/" style="font-size: 10px;">Fonts</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/Ghost/" style="font-size: 20px;">Ghost</a> <a href="/tags/Git/" style="font-size: 16.67px;">Git</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/NodeJs/" style="font-size: 10px;">NodeJs</a> <a href="/tags/Raspberry/" style="font-size: 13.33px;">Raspberry</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Swiftype/" style="font-size: 10px;">Swiftype</a> <a href="/tags/TravisCI/" style="font-size: 10px;">TravisCI</a> <a href="/tags/Vps/" style="font-size: 10px;">Vps</a> <a href="/tags/vsftpd/" style="font-size: 10px;">vsftpd</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li></ul>
     </div>
   </div>
 
@@ -670,9 +666,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/hexo-on-firebase.html">利用firebase打造极速静态博客</a>
+          </li>
         
           <li>
             <a href="/raspberry-pi-samba.html">闲置树莓派捣腾记</a>
@@ -690,10 +690,6 @@
             <a href="/git-migration.html">Git迁移记录</a>
           </li>
         
-          <li>
-            <a href="/play-video-while-downloading.html">mp4视频实现边下载边播放</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -707,7 +703,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 二锅头<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

@@ -55,9 +55,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.erguotou.me"></form>
@@ -67,6 +67,69 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-hexo-on-firebase" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo-on-firebase.html" class="article-date">
+  <time datetime="2016-07-25T06:38:24.000Z" itemprop="datePublished">2016-07-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo-on-firebase.html">利用firebase打造极速静态博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前博客一直是做的动态的，后台页面，添加博文，然后保存后查看博文。但最近VPS感觉不稳定加之价格有点小高（主要是穷），打算将vps上的所有东西都放在云端，使用免费资源（还不是因为穷）。第一步就是从博客开始。</p>
+<h3 id="Hexo介绍"><a href="#Hexo介绍" class="headerlink" title="Hexo介绍"></a>Hexo介绍</h3><p><code>Hexo</code>是由台湾的一名大学生创建的静态博客系统，它基于’NodeJs’，生成文章的速度非常快，这也是为什么选择它的原因。当然还有很多其它的系统，但是作为<code>NodeJs</code>阵营的我当然是选择它啦。</p>
+<h3 id="Hexo项目搭建"><a href="#Hexo项目搭建" class="headerlink" title="Hexo项目搭建"></a>Hexo项目搭建</h3><p>首先，安装<a href="https://hexo.io/zh-cn/docs/index.html">官方文档</a>过一遍，在本地安装搭建一个<code>Hexo</code>项目，例如我的<code>HexoBlog</code>。<br>这时运行<code>hexo server</code>并打开浏览器访问<code>http://localhost:4000</code>应该就可以访问到你搭建后的博客了，如果没有，请仔细阅读文档，重来一遍。<br>这里我稍微修改了下<code>_config.yml</code>文件，然后添加了deploy模块<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span> git</div><div class="line"><span class="attr">  repo:</span> https://github.com/erguotou520/HexoBlog.git</div><div class="line"><span class="attr">  branch:</span> gh-pages</div></pre></td></tr></table></figure></p>
+<p>这样以后deploy后的<code>public</code>文件夹里的内容会自动提交到<code>gh-pages</code>分支下。</p>
+<h3 id="数据迁移"><a href="#数据迁移" class="headerlink" title="数据迁移"></a>数据迁移</h3><p>最开始的博客是在<code>Ghost</code>上跑的，后来又是用的<code>pagekit</code>，到现在的<code>Hexo</code>，每次数据迁移都是手动复制粘贴，太麻烦了，即使它们可能提供了一些迁移工具，但是还是会存在不靠谱的情况，所以还是手动复制吧。<br>这里要提到<code>Hexo</code>的一个好处了，文章是以<code>markdown</code>格式的文件存储，而不是存在数据库中，对于我们是可视的，再配合上后面的git，可以实现文章的历史管理。</p>
+<h3 id="结合Github"><a href="#结合Github" class="headerlink" title="结合Github"></a>结合Github</h3><p>本地环境搭建好了之前就开始将它推送到github了，为什么放在github？一来是有个存储的地方，二来自带历史版本管理，三来可以实现自动化。<br>首先，添加hexo的git deploy插件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
+<p>接着在项目中添加一些必要的文件，因为<code>Hexo</code>的生成器并没有生成这些文件和内容。</p>
+<ol>
+<li>添加<code>.gitignore</code>，把<code>node_modules</code>和<code>.deploy_git</code>添加进来，后者是在添加<code>hexo-deployer-git</code>插件并执行<code>hexo deploy</code>命令时会生成。</li>
+<li>补充<code>package.json</code>文件，可以加上<code>description</code>等其它字段，可选</li>
+<li>添加<code>README.md</code>说明文件，可选</li>
+</ol>
+<p>OK，完成后开始推送。这个时候已经实现了hexo和github的结合，但是现在，每次添加完文章后都需要手动执行<code>hexo generate</code>和<code>hexo deploy</code>，是否可以更简单呢？</p>
+<h3 id="与Travis结合"><a href="#与Travis结合" class="headerlink" title="与Travis结合"></a>与Travis结合</h3><p>我们可以利用<code>TravisCI</code>的自动化测试来进行自动构建任务。网上也有很多介绍<code>Hexo</code>+<code>Github</code>的文章，简单来说，就是在项目根目录下添加<code>.travis.yml</code>，内容如下<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="attr">language:</span> node_js</div><div class="line"></div><div class="line"><span class="attr">node_js:</span></div><div class="line"><span class="bullet">  -</span> <span class="string">"6"</span></div><div class="line"></div><div class="line"><span class="attr">branches:</span></div><div class="line"><span class="attr">  only:</span></div><div class="line"><span class="bullet">    -</span> master</div><div class="line"></div><div class="line"><span class="attr">before_install:</span></div><div class="line"><span class="bullet">  -</span> npm install hexo-cli -g</div><div class="line"><span class="bullet">  -</span> git config --global push.default matching</div><div class="line"><span class="bullet">  -</span> git config --global user.name <span class="string">"erguotou"</span></div><div class="line"><span class="bullet">  -</span> git config --global user.email <span class="string">"erguotou525@gmail.com"</span></div><div class="line"><span class="bullet">  -</span> sed -i<span class="string">''</span> <span class="string">"/^ *repo/s~github\.com~$&#123;ACCESS_TOKEN&#125;@github.com~"</span> _config.yml</div><div class="line"></div><div class="line"><span class="attr">install:</span></div><div class="line"><span class="bullet">  -</span> npm install</div><div class="line"></div><div class="line"><span class="attr">script:</span></div><div class="line">  <span class="comment"># - git submodule init      # 用于更新主题</span></div><div class="line">  <span class="comment"># - git submodule update</span></div><div class="line"><span class="bullet">  -</span> hexo clean</div><div class="line"><span class="bullet">  -</span> hexo d -g</div><div class="line"></div><div class="line"><span class="attr">cache:</span></div><div class="line"><span class="attr">  directories:</span></div><div class="line"><span class="bullet">    -</span> node_modules</div></pre></td></tr></table></figure></p>
+<p>其中<code>{ACCESS_TOKEN}</code>就是下文要介绍的token。</p>
+<p>接着在github中生成一个用于自动提交用的token。点击github中头像–&gt;’Settings’–&gt;<code>Personal access tokens</code>–&gt;<code>Generate new token</code>生成一个给travis用的token（权限我只勾选了repo相关的）。<br>因为github提供了中使用token进行push的方式，这也是我为什么<code>_config.yml</code>文件中<code>deploy</code>模块用的repo是https地址的原因了。<br>生成token后将其添加到travis的环境变量中<code>ACCESS_TOKEN</code>=token。<br>最后提交所有文件，等待<code>TravisCI</code>的构建结果，此时应当完成了与<code>TravisCI</code>结合的功能，如果构建报错，请具体结合报错内容修改。</p>
+<h3 id="与Firebase结合"><a href="#与Firebase结合" class="headerlink" title="与Firebase结合"></a>与Firebase结合</h3><p>说到现在，我们都还没提到我们的主角<code>Firebase</code>。对于还不了解Firebase的同学建议先去看下网上的介绍。Firebase为我们提供了实时的云端存储和并提供全球CDN服务，我就是要利用它的CDN服务将我们的静态博客挂在CDN上。<br>首先，全局安装它的cli工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g firebase-tools</div></pre></td></tr></table></figure></p>
+<p>然后登录firebase<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 不带参数会登录报错</div><div class="line"># 如遇到翻墙问题请自行解决</div><div class="line">firebase login --no-localhost</div></pre></td></tr></table></figure></p>
+<p>接着进入项目根目录，执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">firebase init</div></pre></td></tr></table></figure></p>
+<p>安装提示完成初始化，Firebase会自动在项目根目录下创建<code>firebase.json</code>文件，我们保证<code>firebase.json</code>里的<code>public</code>值为<code>public</code>即可，因为<code>public</code>文件夹是<code>hexo</code>生成的博客的目录。<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"hosting"</span>: &#123;</div><div class="line">    <span class="attr">"public"</span>: <span class="string">"public"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>此时执行<code>firebase deploy</code>就可以将我们的博客推送上去了。但是我们需要结合<code>TravisCI</code>实现自动部署，所以在<code>.travis.yml</code>中添加firebase的自动部署模块<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attr">after_success:</span></div><div class="line"><span class="bullet">  -</span> firebase deploy --token $&#123;FIREBASE_TOKEN&#125;</div></pre></td></tr></table></figure></p>
+<p>其中<code>FIREBASE_TOKEN</code>是让<code>TravisCI</code>进行部署时的密钥，它需要我们通过下面的命令来生成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">firebase login:ci --no-localhost</div></pre></td></tr></table></figure></p>
+<p>登录验证成功后会得到一个token，复制它，在travis中添加环境变量<code>FIREBASE_TOKEN</code>，<code>value</code>为刚复制的token。<br>最后git提交推送，travis自动构建，firebase自动部署，OK，完美。</p>
+<h3 id="Firebase自定义域名"><a href="#Firebase自定义域名" class="headerlink" title="Firebase自定义域名"></a>Firebase自定义域名</h3><p>默认firebase会为我们提供一个域名访问地址，但我们一般会用自己的域名来访问。此时按照Firebase Hosting的文档提示，在我们的域名中添加2个txt记录完成域名拥有权的验证，验证完成后等待firebase颁发https证书（我睡了一晚，醒来之后就好了），最后按照提示，将我们自己的域名做一个cname，解析到firebase给我们提供的域名上就可以啦。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本文介绍了Hexo+Github+TravisCI+Firebase搭建一个免费的拥有https的全球cdn加速的静态博客，综合利用了现有的网上资源，整个搭建过程会遇到各种问题，但都被一一解决。当然，Hexo作为静态博客，也会有一些不足，但这些不足我们都可以使用插件系统来实现，这也是后面要做的内容。<br>后面打算利用Firebase的database功能实现一个简单的博客评论系统，然后是定义一个自己用的主题，默认的太难看啦。后面的还有很长的一段路要走呢～</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.erguotou.me/hexo-on-firebase.html" data-id="cir25r4qm000h30seahsfy4ve" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Firebase/">Firebase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TravisCI/">TravisCI</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-raspberry-pi-samba" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -119,7 +182,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/raspberry-pi-samba.html" data-id="ciqz5a7j0000x1ase7gb4nj6x" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/raspberry-pi-samba.html" data-id="cir25r4rf000s30se8zvxv1q7" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Raspberry/">Raspberry</a></li></ul>
@@ -160,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/atom-frontend-plugins.html" data-id="ciqz5a7hm00001aseatxfn55o" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/atom-frontend-plugins.html" data-id="cir25r4oz000030sen7ml97bx" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Atom/">Atom</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Atom-plugin/">Atom-plugin</a></li></ul>
@@ -252,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/nodejs-share.html" data-id="ciqz5a7jg00181ase12kuk1pf" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/nodejs-share.html" data-id="cir25r4qu000l30sejzxzxi2x" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJs/">NodeJs</a></li></ul>
@@ -302,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/git-migration.html" data-id="ciqz5a7il000n1asekb1y9awk" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/git-migration.html" data-id="cir25r4rk000u30se1u9estml" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
@@ -346,7 +409,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/play-video-while-downloading.html" data-id="ciqz5a7it000q1asex9sdp0ug" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/play-video-while-downloading.html" data-id="cir25r4qz000o30semqbpcu7y" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -381,14 +444,14 @@
         <p>在做科大学生骨干培训班这个项目时 ,由于需要用到在线浏览学生的ppt文件,为了实现这个问题,采用的解决方案是通过一个软件将其转换为flash进行播放.</p>
 <p>软件准备:链接:<a href="http://pan.baidu.com/s/1sjv5DPb">http://pan.baidu.com/s/1sjv5DPb</a></p>
 <p>解压之后,可以看到iSpring Presenter文件夹,iSpring Presenter 是以 PowerPoint 插件的形式工作的，下载解压后先运行 !)iSpringPresenterPortable.exe，选择安装后会自动添加插件，再打开 PowerPoint 就能看到了，支持 Microsoft PowerPoint 2003/2007/2010.</p>
-<p>安装完毕之后,打开一个ppt文件,这时ppt菜单工具栏会出现一个iSpring Presenter工具选项,点击切换到该工具选项,点击publish按钮,弹出一个对话框,general选项卡有个Player Template,可以选择一个适合的播放器模板,还有就是选择生成路径,其他选项卡设置可以不动,点击弹出框的按钮publish即可.具体如下图<br><img src="/content/images/2015/03/test.png" alt=""></p>
+<p>安装完毕之后,打开一个ppt文件,这时ppt菜单工具栏会出现一个iSpring Presenter工具选项,点击切换到该工具选项,点击publish按钮,弹出一个对话框,general选项卡有个Player Template,可以选择一个适合的播放器模板,还有就是选择生成路径,其他选项卡设置可以不动,点击弹出框的按钮publish即可.具体如下图<br><img src="/images/others/test.png" alt=""></p>
 <p>完了之后生成一个文件,里面有swf文件以及js 和html文件,在实际应用中,把html和js文件写成jsp形式,然后把jsp文件里面引用swf的路径替换为从数据库读取的路径即可.</p>
 <p>整个过程就是把ppt转swf文件,然后通过,软件提供的html和js整合一个公共的ppt在线播放页面,用来加载swf文件即可.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/ppt-online.html" data-id="ciqz5a7ix000s1aselrie9ign" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/ppt-online.html" data-id="cir25r4rm000x30se5f1gbhwf" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -441,7 +504,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/vsftpd-config.html" data-id="ciqz5a7jd00161aser2d6hd78" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/vsftpd-config.html" data-id="cir25r4rz001530selawi6z09" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vsftpd/">vsftpd</a></li></ul>
@@ -491,7 +554,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/ssh-via-public-key.html" data-id="ciqz5a7j700131ase21eg3qmx" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/ssh-via-public-key.html" data-id="cir25r4rv001430se8dnjppl3" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li></ul>
@@ -537,56 +600,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/pretty-webfont.html" data-id="ciqz5a7iy000u1asez5w28nb6" class="article-share-link">Partager</a>
+      <a data-url="http://blog.erguotou.me/pretty-webfont.html" data-id="cir25r4rl000w30sea7c3gg5l" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fonts/">Fonts</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ghost-on-raspberry" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/ghost-on-raspberry.html" class="article-date">
-  <time datetime="2015-11-07T16:45:00.000Z" itemprop="datePublished">2015-11-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ghost-on-raspberry.html">在树莓派上安装Ghost的一些坑</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近开始玩树莓派，自然要在小pi上装个node，跑个Ghost啊。中途遇到了一些小坑，这里记录一下。</p>
-<p>1.<code>raspbian</code>系统安装后默认只有大概4G左右的空间（可以使用<code>df -hl</code>查看磁盘空间），tf卡的其它空间浪费了，需要扩容到整个tf卡的大小。在<code>raspbian</code>中运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo raspi-config</div></pre></td></tr></table></figure></p>
-<p>选择<code>expand_rootfs</code>，按照提示操作并重启。</p>
-<p>2.删除了一些不需要的安装包。首先安装<code>wajig</code>（这个工具集成了apt-get/dpkg/aptitude等等）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install wajig -y</div></pre></td></tr></table></figure></p>
-<p>然后查看已安装的包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wajig large</div></pre></td></tr></table></figure></p>
-<p>找到后面几个用不到的且占用体积较大的删除掉，可一次性删除多个：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo aptitude remove xxxx xxxx xxxx</div></pre></td></tr></table></figure></p>
-<p>3.nodejs的<code>sqlite3</code>模块似乎没有arm平台的编译包，我也懒得自己编辑了，直接改成使用mysql了。</p>
-<p>4.其它没什么不一样的，使用<code>pm2</code>守护Ghost，使用<code>Nginx</code>做代理，运行，OK！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.erguotou.me/ghost-on-raspberry.html" data-id="ciqz5a7if000g1ase84odyex7" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ghost/">Ghost</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Raspberry/">Raspberry</a></li></ul>
 
     </footer>
   </div>
@@ -609,9 +626,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Labels</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Api/">Api</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom-plugin/">Atom-plugin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fonts/">Fonts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Frontend/">Frontend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ghost/">Ghost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJs/">NodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry/">Raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swiftype/">Swiftype</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vps/">Vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vsftpd/">vsftpd</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Api/">Api</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom-plugin/">Atom-plugin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Firebase/">Firebase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fonts/">Fonts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Frontend/">Frontend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ghost/">Ghost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJs/">NodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry/">Raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swiftype/">Swiftype</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TravisCI/">TravisCI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vps/">Vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vsftpd/">vsftpd</a></li></ul>
     </div>
   </div>
 
@@ -619,18 +636,18 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Api/" style="font-size: 10px;">Api</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/Atom-plugin/" style="font-size: 10px;">Atom-plugin</a> <a href="/tags/Fonts/" style="font-size: 10px;">Fonts</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/Ghost/" style="font-size: 20px;">Ghost</a> <a href="/tags/Git/" style="font-size: 16.67px;">Git</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/NodeJs/" style="font-size: 10px;">NodeJs</a> <a href="/tags/Raspberry/" style="font-size: 13.33px;">Raspberry</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Swiftype/" style="font-size: 10px;">Swiftype</a> <a href="/tags/Vps/" style="font-size: 10px;">Vps</a> <a href="/tags/vsftpd/" style="font-size: 10px;">vsftpd</a>
+      <a href="/tags/Api/" style="font-size: 10px;">Api</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/Atom-plugin/" style="font-size: 10px;">Atom-plugin</a> <a href="/tags/Firebase/" style="font-size: 10px;">Firebase</a> <a href="/tags/Fonts/" style="font-size: 10px;">Fonts</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/Ghost/" style="font-size: 20px;">Ghost</a> <a href="/tags/Git/" style="font-size: 16.67px;">Git</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/NodeJs/" style="font-size: 10px;">NodeJs</a> <a href="/tags/Raspberry/" style="font-size: 13.33px;">Raspberry</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Swiftype/" style="font-size: 10px;">Swiftype</a> <a href="/tags/TravisCI/" style="font-size: 10px;">TravisCI</a> <a href="/tags/Vps/" style="font-size: 10px;">Vps</a> <a href="/tags/vsftpd/" style="font-size: 10px;">vsftpd</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li></ul>
     </div>
   </div>
 
@@ -638,9 +655,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/hexo-on-firebase.html">利用firebase打造极速静态博客</a>
+          </li>
         
           <li>
             <a href="/raspberry-pi-samba.html">闲置树莓派捣腾记</a>
@@ -658,10 +679,6 @@
             <a href="/git-migration.html">Git迁移记录</a>
           </li>
         
-          <li>
-            <a href="/play-video-while-downloading.html">mp4视频实现边下载边播放</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -675,7 +692,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 二锅头<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
