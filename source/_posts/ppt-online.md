@@ -12,7 +12,7 @@ tags:
 解压之后,可以看到iSpring Presenter文件夹,iSpring Presenter 是以 PowerPoint 插件的形式工作的，下载解压后先运行 !)iSpringPresenterPortable.exe，选择安装后会自动添加插件，再打开 PowerPoint 就能看到了，支持 Microsoft PowerPoint 2003/2007/2010.
 
 安装完毕之后,打开一个ppt文件,这时ppt菜单工具栏会出现一个iSpring Presenter工具选项,点击切换到该工具选项,点击publish按钮,弹出一个对话框,general选项卡有个Player Template,可以选择一个适合的播放器模板,还有就是选择生成路径,其他选项卡设置可以不动,点击弹出框的按钮publish即可.具体如下图
-![](/content/images/2015/03/test.png)
+![](/images/others/test.png)
 
 完了之后生成一个文件,里面有swf文件以及js 和html文件,在实际应用中,把html和js文件写成jsp形式,然后把jsp文件里面引用swf的路径替换为从数据库读取的路径即可.
 
