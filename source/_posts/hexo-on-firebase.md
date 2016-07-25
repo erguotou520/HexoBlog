@@ -85,6 +85,7 @@ npm install -g firebase-tools
 然后登录firebase
 ```shell
 # 不带参数会登录报错
+# 如遇到翻墙问题请自行解决
 firebase login --no-localhost
 ```
 接着进入项目根目录，执行
@@ -92,10 +93,23 @@ firebase login --no-localhost
 firebase init
 ```
 安装提示完成初始化，Firebase会自动在项目根目录下创建`firebase.json`文件，我们保证`firebase.json`里的`public`值为`public`即可，因为`public`文件夹是`hexo`生成的博客的目录。
+```json
+{
+  "hosting": {
+    "public": "public"
+  }
+}
+```
 此时执行`firebase deploy`就可以将我们的博客推送上去了。但是我们需要结合`TravisCI`实现自动部署，所以在`.travis.yml`中添加firebase的自动部署模块
 ```yaml
-
+after_success:
+  - firebase deploy --token ${FIREBASE_TOKEN}
 ```
+其中`FIREBASE_TOKEN`是让`TravisCI`进行部署时的密钥，它需要我们通过下面的命令来生成
+```shell
+firebase login:ci --no-localhost
+```
+登录验证成功后会得到一个token，复制它，在travis中添加环境变量`FIREBASE_TOKEN`，`value`为刚复制的token。
 最后git提交推送，travis自动构建，firebase自动部署，OK，完美。
 ### Firebase自定义域名
 默认firebase会为我们提供一个域名访问地址，但我们一般会用自己的域名来访问。此时按照Firebase Hosting的文档提示，在我们的域名中添加2个txt记录完成域名拥有权的验证，验证完成后等待firebase颁发https证书（我睡了一晚，醒来之后就好了），最后按照提示，将我们自己的域名做一个cname，解析到firebase给我们提供的域名上就可以啦。
