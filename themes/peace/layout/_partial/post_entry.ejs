@@ -1,0 +1,5 @@
+<div>
+    <span><%- post.date.format("YYYY-MM-DD HH:mm:ss") %></span>
+    <pre><%- Object.keys(post) %></pre>
+    <a href="<%- url_for(post.path) %>"><%- post.title %></a>
+</div>

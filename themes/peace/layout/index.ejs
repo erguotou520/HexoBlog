@@ -1,0 +1,8 @@
+<head>
+  <title><%- config.title %></title>
+</head>
+<body>
+  <% site.posts.sort('data', 'desc').each(function(post) { %>
+    <%- partial('_partial/post_entry', {post: post}) %>
+  <% }) %>
+</body>
