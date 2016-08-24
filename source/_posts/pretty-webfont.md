@@ -18,3 +18,10 @@ p: {
   font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
 }
 ```
+
+- Source code
+```css
+pre: {
+  font-family: "Source Code Pro", Consolas, Monaco, Menlo, monospace;
+}
+```
