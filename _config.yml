@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 大道至简
-subtitle: Less is more
+title: 宁静方能致远
+subtitle: To access inner peace
 description: 抛弃复杂的尘世，忘却周边的烦恼，回归书写和阅读，放空心灵，做一个简单的自己。
 author: 二锅头
 language: zh-cn
@@ -64,7 +64,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: peace
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
