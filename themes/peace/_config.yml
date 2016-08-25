@@ -1,10 +1,16 @@
 # Benchmark
 bg_image_color: '#3A5B61'
-bg_image:
-  - images/bg.jpg
-  - images/bg.webp
+bg_image: 'images/bg.jpg'
 bg_color_from: '#80A1A8'
 bg_color_to: '#3A5B61'
+
+# Icons
+logo: 'images/logo.png'
+avatar: 'images/avatar.png'
+
+# Widget
+widget:
+  tag: true
 
 # Miscellaneous
 google_analytics:

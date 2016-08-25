@@ -1,19 +1,3 @@
-categories: Categories
-search: Search
-tags: Tags
-tagcloud: Tag Cloud
-tweets: Tweets
-prev: Prev
-next: Next
-comment: Comments
-archive_a: Archives
-archive_b: "Archives: %s"
-page: Page %d
-recent_posts: Recent Posts
-newer: Newer
-older: Older
-share: Share
-powered_by: Powered by
-rss_feed: RSS Feed
-category: Category
-tag: Tag
+widget_recent_posts: '最近文章 / RECENT ARTICLES'
+widget_archive: '归档 / ARCHIVES'
+widget_tag: '标签 / TAGS'
