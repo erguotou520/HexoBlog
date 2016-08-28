@@ -1,7 +1,8 @@
-<header <% if (theme.bg_image_color) {%>
+<header class="app-header<%=theme.bg_image?' js-lazy js-lazy-bg':''%>"
+<% if (theme.bg_image_color) {%>
   style="background: <%= theme.bg_image_color %>;"
 <% } %> <% if (theme.bg_image) {%>
-  data-bg="<%= theme.bg_image %>"
+  data-lazy="<%= theme.bg_image %>"
 <% } %>>
   <div class="bar clearfix">
     <img class="logo f-l" src="<%= theme.logo %>" alt="logo">
