@@ -4,6 +4,9 @@ bg_image: 'images/bg.jpg'
 bg_color_from: '#80A1A8'
 bg_color_to: '#3A5B61'
 
+# Google services
+useGoogle: false
+
 # Icons
 logo: 'images/logo.png'
 avatar: 'images/avatar.png'

@@ -4,42 +4,15 @@ html
 body
   margin 0
   padding 0
+@import "helper.styl"
 #app
   width 87.5rem
   margin 4.375rem auto 0
-#column-left
-#column-right
+.column-left
+.column-right
   display inline-block
-#column-left
+.column-left
   width 59.375rem
-  #header
-    position relative
-    height 21.875rem
-    text-align center
-    background-size cover
-    background-position center
-    .bar
-      margin 1.375rem
-    .logo
-      width 2.875rem
-      height @width
-    .avatar
-      width 2.5rem
-      margin-top .1875rem
-      background #fff
-    h1
-    .subtitle
-      position absolute
-      left 0
-      margin 0
-      color #fff
-    h1
-      bottom 4rem
-      font-size 2.25rem
-    .subtitle
-      bottom 1.5rem
-      font-size 1rem
-      font-style italic
-      font-family 'Monotype Corsiva'
-#column-right
+  @import "header.styl"
+.column-right
   width 28.125rem

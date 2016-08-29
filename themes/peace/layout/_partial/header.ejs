@@ -1,12 +1,12 @@
 <header class="app-header<%=theme.bg_image?' js-lazy js-lazy-bg':''%>"
 <% if (theme.bg_image_color) {%>
-  style="background: <%= theme.bg_image_color %>;"
+  style="background-color: <%= theme.bg_image_color %>;"
 <% } %> <% if (theme.bg_image) {%>
   data-lazy="<%= theme.bg_image %>"
 <% } %>>
   <div class="bar clearfix">
-    <img class="logo f-l" src="<%= theme.logo %>" alt="logo">
-    <img class="avatar f-r" src="<%= theme.avatar %>" alt="avatar" />
+    <a class="logo f-l" href=""><img src="<%= theme.logo %>" alt="logo"></a>
+    <a class="avatar f-r" href=""><img src="<%= theme.avatar %>" alt="avatar" /></a>
   </div>
   <h1><%= config.title %></h1>
   <h2 class="subtitle"><%= config.subtitle %></h2>
