@@ -1,3 +1,6 @@
+---
+layout: false
+---
 1、如何使用自动化构建工具的都做了什么内容，代码校验与单元测试，jshint配置了哪些。
 2、http相关知识get post有什么区别，https 如何加密解密、fillder如何抓取 https的包的。
 3、vue 与 angular 的区别，vue 如何做数据渲染处理的，如何实现声明周期。

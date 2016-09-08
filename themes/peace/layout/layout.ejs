@@ -2,7 +2,9 @@
 <html>
 <%- partial('_partial/head') %>
 <body>
-  <div id="app">
+  <div id="app"<% if(theme.bg_color_from) { %>
+    style=""
+    <% } %>>
     <%- partial('_partial/left') %>
     <%- partial('_partial/right') %>
   </div>
