@@ -9,8 +9,8 @@ tags:
 ---
 # CI
 ## 什么是CI
-![CI](https://pic2.zhimg.com/c5c8e6f40c7c133e22402c00bb7e1a25_b.png)
-饮用知乎上的一个回答
+![CI](/images/ci/flow.png)
+引用知乎上的一个回答
 > 作者：赵劼  
 > 链接：https://www.zhihu.com/question/23444990/answer/26995938  
 > 来源：知乎  
