@@ -152,6 +152,44 @@ tags:
   我们可以看到在`travis`中同时定义了Linux和Mac的构建任务，在`appveyor`中定义了Windows平台的构建任务。任务的大致流程都是根据当前的系统环境构建当前系统的安装包（打包App的任务由构建工具提供），然后自动发布到Gihub Release中，这样就实现了代码push->打包构建（全平台）->发布的完整过程，免去很多手动操作以及对系统环境的要求。
 - [vio-frontend]() T2Cloud的VIO产品前端代码，集成Gitlab CI实现自动编译并发布到poc环境，配置文件如下：
   ```yaml
+  stages:
+    - install_deps
+    - lint
+    # - test
+    - build
+    - deploy_poc
+  # 安装依赖
+  install_deps:
+    stage: install_deps
+    script:
+      - npm install --registry=https://registry.npm.taobao.org
+  lint:
+    stage: lint
+    script:
+      - npm run lint
+  # 运行测试用例
+  # test:
+  #   stage: test
+  #   only:
+  #     - develop
+  #     - master
+  #   script:
+  #     - npm run test
+  # 编译
+  build:
+    stage: build
+    only:
+      - develop
+      - master
+    script:
+      - npm run build
+  # 部署测试服务器
+  deploy_test:
+    stage: deploy_poc
+    only:
+      - develop
+    script:
+      - npm run deploy
   ```
 
 ## 总结
