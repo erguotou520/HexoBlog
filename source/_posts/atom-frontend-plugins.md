@@ -24,6 +24,7 @@ Community Packages (28) /Users/erguotou/.atom/packages
 ├── language-gitignore@0.3.0
 ├── language-vue@0.21.2
 ├── linter@2.1.0
+├── linter-ui-default@1.2.1
 ├── linter-eslint@8.1.4
 ├── linter-htmlhint@1.3.2
 ├── linter-ui-default@1.2.1
@@ -36,7 +37,7 @@ Community Packages (28) /Users/erguotou/.atom/packages
 ```
 
 ```shell
-apm install Stylus atom-beautify atom-material-ui autoclose-html docblockr editorconfig emmet file-icons language-gitignore language-vue linter linter-eslint linter-htmlhint local-history minimap minimap-highlight-selected pigments
+apm install Stylus atom-beautify atom-material-ui autoclose-html busy-signal docblockr editorconfig emmet file-icons intentions language-gitignore language-vue linter linter-ui-default linter-eslint linter-htmlhint local-history minimap minimap-highlight-selected pigments
 ```
 
 ## UI配置
