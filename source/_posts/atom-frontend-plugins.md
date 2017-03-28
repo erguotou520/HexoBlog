@@ -24,7 +24,6 @@ Community Packages (28) /Users/erguotou/.atom/packages
 ├── language-gitignore@0.3.0
 ├── language-vue@0.21.2
 ├── linter@2.1.0
-├── linter-ui-default@1.2.1
 ├── linter-eslint@8.1.4
 ├── linter-htmlhint@1.3.2
 ├── linter-ui-default@1.2.1
