@@ -10,14 +10,14 @@ tags:
   - CD
 ---
 # 利用dokku打造自己的私有云仓库和自动化部署
-1. 创建机器，选择`Ubuntu`系统，同时做好域名映射
+1. 创建机器，选择`Ubuntu`系统，同时做好域名映射  
 2. 安装`dokku`
   ```shell
   # 选择0.9.4版本，后面的版本都有些问题
   wget https://raw.githubusercontent.com/dokku/dokku/v0.9.4/bootstrap.sh
   sudo DOKKU_TAG=v0.9.4 bash bootstrap.sh
   ```
-  然后打开对应的域名，完成`dokku`的初始化
+  然后打开对应的域名，完成`dokku`的初始化  
 3. 创建`gogs`应用，参照[https://dokku.github.io/tutorials/deploying-gogs-to-dokku](https://dokku.github.io/tutorials/deploying-gogs-to-dokku)
   其中推送代码部分可以用`tag`部署方式，所有命令如下
   ```shell
@@ -46,22 +46,22 @@ tags:
   ```shell
   # server
   dokku apps:create drone
+  dokku mysql:create drone
+  dokku mysql:link drone drone
   docker pull drone/drone:latest
   docker tag drone/drone:latest dokku/drone:latest
-  dokku tags:deploy drone latest
+  # 配置drone的环境变量
+  dokku config:set drone DRONE_OPEN=false DRONE_DATABASE_DRIVER=mysql DRONE_DATABASE_DATASOURCE='root:password@tcp(1.2.3.4:3306)/drone?parseTime=true' DRONE_HOST=https://drone.erguotou.me DRONE_GOGS=true DRONE_GOGS_URL=https://gogs.erguotou.me DRONE_SECRET=secret DRONE_ADMIN=username,password
+  dokku tags:deploy drone latest
   dokku letsencrypt drone
-  dokku mysql:create drone
   # agent
   dokku apps:create drone-agent
   docker pull drone/agent:latest
   docker tag drone/agent:latest dokku/drone-agent:latest
-  dokku tags:deploy drone-agent latest
-  ```
-6. 配置`drone`环境变量
-  ```shell
-  dokku config:set drone DRONE_OPEN=false DRONE_DATABASE_DRIVER=mysql DRONE_DATABASE_DATASOURCE=root:password@tcp(1.2.3.4:3306)/drone?parseTime=true DRONE_HOST=https://drone.erguotou.me DRONE_GOGS=true DRONE_GOGS_URL=https://gogs.erguotou.me DRONE_SECRET=secret DRONE_ADMIN=username,password
+  # 配置agent的环境变量
   dokku config:set drone-agent DRONE_SERVER=wss://drone.erguotou.me/ws/broker DRONE_SECRET=secret
   dokku storage:mount drone-agent /var/run/docker.sock:/var/run/docker.sock
+  dokku tags:deploy drone-agent latest
   ```
 7. 检查应用运行情况
   可使用的命令
