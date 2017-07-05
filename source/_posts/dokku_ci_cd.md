@@ -1,3 +1,14 @@
+---
+title: 利用dokku打造自己的私有云仓库和自动化部署
+s: dokku_ci_cd
+date: 2017-07-09 18:15:00
+tags:
+  - dokku
+  - gogs
+  - drone
+  - CI
+  - CD
+---
 # 利用dokku打造自己的私有云仓库和自动化部署
 1. 创建机器，选择`Ubuntu`系统，同时做好域名映射
 2. 安装`dokku`
