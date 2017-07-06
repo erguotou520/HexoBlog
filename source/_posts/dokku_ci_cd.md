@@ -48,20 +48,23 @@ tags:
   dokku apps:create drone
   dokku mysql:create drone
   dokku mysql:link drone drone
-  docker pull drone/drone:latest
-  docker tag drone/drone:latest dokku/drone:latest
-  # 配置drone的环境变量
+  # 暂时不能使用最新版本，坑了很久
+  # docker pull drone/drone:latest
+  docker pull drone/drone:0.7.3
+  docker tag drone/drone:0.7.3 dokku/drone:0.7.3
+  # 配置drone的环境变量
   dokku config:set drone DRONE_OPEN=false DRONE_DATABASE_DRIVER=mysql DRONE_DATABASE_DATASOURCE='root:password@tcp(1.2.3.4:3306)/drone?parseTime=true' DRONE_HOST=https://drone.erguotou.me DRONE_GOGS=true DRONE_GOGS_URL=https://gogs.erguotou.me DRONE_SECRET=secret DRONE_ADMIN=username,password
-  dokku tags:deploy drone latest
+  dokku tags:deploy drone 0.7.3
   dokku letsencrypt drone
-  # agent
-  dokku apps:create drone-agent
-  docker pull drone/agent:latest
-  docker tag drone/agent:latest dokku/drone-agent:latest
+  # agent，暂时不能使用最新版，直接使用docker命令启动，看最新版源码里/ws/broker请求都没有了
+  # dokku apps:create drone-agent
+  # docker pull drone/agent:latest
+  # docker tag drone/agent:latest dokku/drone-agent:latest
+  docker run -d -e DRONE_SERVER=wss://drone.erguotou.me/ws/broker -e DRONE_SECRET=password -e DRONE_GOGS_PRIVATE_MODE=true -v /var/run/do cker.sock:/var/run/docker.sock --restart=always --name=drone-agent-docker drone/drone:0.7.3 agent
   # 配置agent的环境变量
   dokku config:set drone-agent DRONE_SERVER=wss://drone.erguotou.me/ws/broker DRONE_SECRET=secret
   dokku storage:mount drone-agent /var/run/docker.sock:/var/run/docker.sock
-  dokku tags:deploy drone-agent latest
+  dokku tags:deploy drone-agent latest
   ```
 7. 检查应用运行情况
   可使用的命令
