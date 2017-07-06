@@ -30,9 +30,10 @@ tags:
   dokku plugin:install https://github.com/dokku/dokku-mysql.git mysql
   dokku mysql:create gogs
   dokku mysql:link gogs gogs
-  docker pull gogs/gogs:latest
-  docker tag gogs/gogs:latest dokku/gogs:latest
-  dokku tags:deploy gogs latest
+  # 使用指定版本
+  docker pull gogs/gogs:0.11.4
+  docker tag gogs/gogs:0.11.4 dokku/gogs:0.11.4
+  dokku tags:deploy gogs 0.11.4
   ```
 4. 使用Let's Encrypt进行https加密
   ```shell
@@ -41,7 +42,7 @@ tags:
   dokku letsencrypt gogs
   dokku letsencrypt:cron-job --add
   ```
-  完成之后打开web页面完成`gogs`的`install`，注意配置页面的各设置（mysql的配置地址可以用`dokku mysql:info gogs`查看。即使设置错了，也可以后期使用`dokku enter gogs`，在`/data/gogs/conf/app.init`中直接修改）。
+  完成之后打开web页面完成`gogs`的`install`，注意配置页面的各设置（mysql的配置地址可以用`dokku mysql:info gogs`查看。即使设置错了，也可以后期使用`dokku enter gogs`，在`/data/gogs/conf/app.init`中直接修改）。  
 5. 创建`drone`应用，`drone`分`server`端和`agent`端
   ```shell
   # server
@@ -60,11 +61,11 @@ tags:
   # dokku apps:create drone-agent
   # docker pull drone/agent:latest
   # docker tag drone/agent:latest dokku/drone-agent:latest
-  docker run -d -e DRONE_SERVER=wss://drone.erguotou.me/ws/broker -e DRONE_SECRET=password -e DRONE_GOGS_PRIVATE_MODE=true -v /var/run/do cker.sock:/var/run/docker.sock --restart=always --name=drone-agent-docker drone/drone:0.7.3 agent
+  docker run -d -e DRONE_SERVER=wss://drone.erguotou.me/ws/broker -e DRONE_SECRET=password -v /var/run/docker.sock:/var/run/docker.sock --restart=always --name=drone-agent-docker drone/drone:0.7.3 agent
   # 配置agent的环境变量
   dokku config:set drone-agent DRONE_SERVER=wss://drone.erguotou.me/ws/broker DRONE_SECRET=secret
   dokku storage:mount drone-agent /var/run/docker.sock:/var/run/docker.sock
-  dokku tags:deploy drone-agent latest
+  # dokku tags:deploy drone-agent latest
   ```
 7. 检查应用运行情况
   可使用的命令
@@ -77,6 +78,6 @@ tags:
   dokku ps:start app
   ```
 8. 创建自己的应用
-  在`gogs`中创建仓库，编写`.drone.yml`（参考[http://docs.drone.io/getting-started/](http://docs.drone.io/getting-started/)），提交代码。系统将自动触发`drone`构建
+  在`gogs`中创建仓库，编写`.drone.yml`（参考[http://docs.drone.io/getting-started/](http://docs.drone.io/getting-started/)），提交代码。系统将自动触发`drone`构建  
 9. TODO:自动发布应用
   将上一步自动构建生成的应用自动打包部署
