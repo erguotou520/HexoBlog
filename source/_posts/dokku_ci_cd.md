@@ -42,7 +42,7 @@ tags:
   dokku letsencrypt gogs
   dokku letsencrypt:cron-job --add
   ```
-  完成之后打开web页面完成`gogs`的`install`，注意配置页面的各设置（mysql的配置地址可以用`dokku mysql:info gogs`查看。即使设置错了，也可以后期使用`dokku enter gogs`，在`/data/gogs/conf/app.init`中直接修改）。  
+  完成之后打开web页面完成`gogs`的`install`，注意配置页面的各设置（mysql的配置地址可以用`dokku mysql:info gogs`查看。即使设置错了，也可以后期使用`dokku enter gogs`，在`/data/gogs/conf/app.ini`中直接修改）。  
 5. 创建`drone`应用，`drone`分`server`端和`agent`端
   ```shell
   # server
@@ -54,7 +54,7 @@ tags:
   docker pull drone/drone:0.7.3
   docker tag drone/drone:0.7.3 dokku/drone:0.7.3
   # 配置drone的环境变量
-  dokku config:set drone DRONE_OPEN=false DRONE_DATABASE_DRIVER=mysql DRONE_DATABASE_DATASOURCE='root:password@tcp(1.2.3.4:3306)/drone?parseTime=true' DRONE_HOST=https://drone.erguotou.me DRONE_GOGS=true DRONE_GOGS_URL=https://gogs.erguotou.me DRONE_SECRET=secret DRONE_ADMIN=username,password
+  dokku config:set drone DRONE_OPEN=false DRONE_GOGS_PRIVATE_MODE=true DRONE_DATABASE_DRIVER=mysql DRONE_DATABASE_DATASOURCE='root:password@tcp(1.2.3.4:3306)/drone?parseTime=true' DRONE_HOST=https://drone.erguotou.me DRONE_GOGS=true DRONE_GOGS_URL=https://gogs.erguotou.me DRONE_SECRET=secret DRONE_ADMIN=username,password
   dokku tags:deploy drone 0.7.3
   dokku letsencrypt drone
   # agent，暂时不能使用最新版，直接使用docker命令启动，看最新版源码里/ws/broker请求都没有了
@@ -63,8 +63,8 @@ tags:
   # docker tag drone/agent:latest dokku/drone-agent:latest
   docker run -d -e DRONE_SERVER=wss://drone.erguotou.me/ws/broker -e DRONE_SECRET=password -v /var/run/docker.sock:/var/run/docker.sock --restart=always --name=drone-agent-docker drone/drone:0.7.3 agent
   # 配置agent的环境变量
-  dokku config:set drone-agent DRONE_SERVER=wss://drone.erguotou.me/ws/broker DRONE_SECRET=secret
-  dokku storage:mount drone-agent /var/run/docker.sock:/var/run/docker.sock
+  # dokku config:set drone-agent DRONE_SERVER=wss://drone.erguotou.me/ws/broker DRONE_SECRET=secret
+  # dokku storage:mount drone-agent /var/run/docker.sock:/var/run/docker.sock
   # dokku tags:deploy drone-agent latest
   ```
 7. 检查应用运行情况
