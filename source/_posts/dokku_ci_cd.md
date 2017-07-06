@@ -56,6 +56,8 @@ tags:
   # 配置drone的环境变量
   dokku config:set drone DRONE_OPEN=false DRONE_GOGS_PRIVATE_MODE=true DRONE_DATABASE_DRIVER=mysql DRONE_DATABASE_DATASOURCE='root:password@tcp(1.2.3.4:3306)/drone?parseTime=true' DRONE_HOST=https://drone.erguotou.me DRONE_GOGS=true DRONE_GOGS_URL=https://gogs.erguotou.me DRONE_SECRET=secret DRONE_ADMIN=username,password
   dokku tags:deploy drone 0.7.3
+  dokku proxy:ports-add drone http:80:8000
+  dokku proxy:ports-remove drone http:443:443 http:8000:8000 http:80:80
   dokku letsencrypt drone
   # agent，暂时不能使用最新版，直接使用docker命令启动，看最新版源码里/ws/broker请求都没有了
   # dokku apps:create drone-agent
