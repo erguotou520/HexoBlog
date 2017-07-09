@@ -80,6 +80,35 @@ tags:
   dokku ps:start app
   ```
 8. 创建自己的应用
-  在`gogs`中创建仓库，编写`.drone.yml`（参考[http://docs.drone.io/getting-started/](http://docs.drone.io/getting-started/)），提交代码。系统将自动触发`drone`构建  
-9. TODO:自动发布应用
-  将上一步自动构建生成的应用自动打包部署
+  在`dokku`中创建对应的app`dokku apps:create gift`，完成域名映射，配置`proxy:ports`，使用`Let's encrypt`插件进行https加密，这些步骤就不多说了。接着在gogs中创建对应的一个仓库，记得项目根目录下要有一个`.drone.yml`文件（参考[http://docs.drone.io/getting-started/](http://docs.drone.io/getting-started/)进行配置），然后提交代码。  
+9. 自动发布应用
+  上一步只能使用drone进行自动构建，要想将构建后的项目自动打包发布，还需要一些额外的操作（这里也是坑了自己好久，主要难题是如何将drone agent生成的文件发布到dokku git里，后来经人提醒可以通过共享ssh的方式，然后后续的共享ssh的操作也是摸索了好久才成功，可谓一路心酸）。
+  - 找1台虚机生成一份新的ssh公私钥对（也可以本地备份原来的，然后重新生成），`ssh-keygen -t rsa -C "dokku-deploy"`
+  - 将上一步生成的`id_rsa.pub`上传至服务器并添加到dokku中
+    ```shell
+    # local
+    scp ~/.ssh/id_rsa.pub root@erguotou.me:/root/deploy.pub
+    # server
+    dokku ssh-keys:add deploy ./deploy.pub
+    ```
+  - 项目根目录新建一个`ssh`目录，然后将上一步生成的ssh公私钥复制进去`cp ~/.ssh/id_rsa* ./ssh`
+  - 修改原来的`.drone.yml`，在原来build之后添加一些操作
+    ```shell
+    - rm -rf ~/.ssh
+    - mkdir -p ~/.ssh
+    - cp ssh/* ~/.ssh
+    - chmod 600 ~/.ssh/id_rsa # 特别要注意这3行
+    - chmod 644 ~/.ssh/id_rsa.pub
+    - ssh-keyscan erguotou.me >> ~/.ssh/known_hosts
+    - ssh-keyscan 45.77.42.201 >> ~/.ssh/known_hosts
+    - echo 'FROM ilyasemenov/dokku-static-site' > dist/Dockerfile # 静态项目的Dockerfile，后续要改成自定义的
+    - cd dist
+    - git config --global user.email "erguotou525@gmail.com"
+    - git config --global user.name "erguotou"
+    - git init
+    - git add ./ -A
+    - git commit -m "auto build"
+    - git remote add dokku dokku@erguotou.me:gift
+    - git push -u dokku master --force
+    ```
+  至此就完成了自动化部署的工作。
