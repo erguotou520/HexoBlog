@@ -1,8 +1,10 @@
 <% if (typeof(script) !== 'undefined' && script) { %>
 	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<div id="commentContainer"></div>
 	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 	<script>
 		var gitment = new Gitment({
+			id: window.location.pathname,
 			owner: '<%= theme.comment.gitment.owner %>',
 			repo: '<%= theme.comment.gitment.repo %>',
 			oauth: {
@@ -13,5 +15,4 @@
 		gitment.render('commentContainer')
 	</script>
 	<% } else { %>
-	<div id="commentContainer"></div>
 <% } %>

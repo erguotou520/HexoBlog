@@ -65,7 +65,7 @@ comment:
         client_secret: 0216a1a4c0ff0f5d8264f00582d697efe7ec2250 #your client secret
 
 # Share
-share: bdshare # options: jiathis, bdshare, addtoany, default
+share: default # options: jiathis, bdshare, addtoany, default
 
 # Plugins
 plugins:
