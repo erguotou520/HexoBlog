@@ -2,6 +2,7 @@
 title: CI简介和实际应用
 s: ci-intro
 date: 2017-01-16 23:06:00
+thumbnail: /images/ci/flow.png
 tags:
   - ci
   - travis ci
