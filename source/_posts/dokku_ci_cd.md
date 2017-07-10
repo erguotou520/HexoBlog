@@ -30,8 +30,8 @@ tags:
   dokku plugin:install https://github.com/dokku/dokku-mysql.git mysql
   dokku mysql:create gogs
   dokku mysql:link gogs gogs
-  # 使用指定版本
-  docker pull gogs/gogs:0.11.4
+  # 使用指定版本
+  docker pull gogs/gogs:0.11.4
   docker tag gogs/gogs:0.11.4 dokku/gogs:0.11.4
   dokku tags:deploy gogs 0.11.4
   ```
@@ -49,22 +49,22 @@ tags:
   dokku apps:create drone
   dokku mysql:create drone
   dokku mysql:link drone drone
-  # 暂时不能使用最新版本，坑了很久
-  # docker pull drone/drone:latest
+  # 暂时不能使用最新版本，坑了很久
+  # docker pull drone/drone:latest
   docker pull drone/drone:0.7.3
   docker tag drone/drone:0.7.3 dokku/drone:0.7.3
   # 配置drone的环境变量
   dokku config:set drone DRONE_OPEN=false DRONE_GOGS_PRIVATE_MODE=true DRONE_DATABASE_DRIVER=mysql DRONE_DATABASE_DATASOURCE='root:password@tcp(1.2.3.4:3306)/drone?parseTime=true' DRONE_HOST=https://drone.erguotou.me DRONE_GOGS=true DRONE_GOGS_URL=https://gogs.erguotou.me DRONE_SECRET=secret DRONE_ADMIN=username,password
-  dokku tags:deploy drone 0.7.3
+  dokku tags:deploy drone 0.7.3
   dokku proxy:ports-add drone http:80:8000
   dokku proxy:ports-remove drone http:443:443 http:8000:8000 http:80:80
   dokku letsencrypt drone
-  # agent，暂时不能使用最新版，直接使用docker命令启动，看最新版源码里/ws/broker请求都没有了
-  # dokku apps:create drone-agent
+  # agent，暂时不能使用最新版，直接使用docker命令启动，看最新版源码里/ws/broker请求都没有了
+  # dokku apps:create drone-agent
   # docker pull drone/agent:latest
   # docker tag drone/agent:latest dokku/drone-agent:latest
   docker run -d -e DRONE_SERVER=wss://drone.erguotou.me/ws/broker -e DRONE_SECRET=password -v /var/run/docker.sock:/var/run/docker.sock --restart=always --name=drone-agent-docker drone/drone:0.7.3 agent
-  # 配置agent的环境变量
+  # 配置agent的环境变量
   # dokku config:set drone-agent DRONE_SERVER=wss://drone.erguotou.me/ws/broker DRONE_SECRET=secret
   # dokku storage:mount drone-agent /var/run/docker.sock:/var/run/docker.sock
   # dokku tags:deploy drone-agent latest
@@ -73,17 +73,20 @@ tags:
   可使用的命令  
   ```shell
   dokku proxy:report app
-  dokku proxy:ports-remove app http:80:3000 
-  dokku proxy:ports-add app http:80:3000 
+  dokku proxy:ports-remove app http:80:3000
+  dokku proxy:ports-add app http:80:3000
   cat /home/dokku/app/nginx.conf
   dokku ps:stop app
   dokku ps:start app
   ```
 8. 创建自己的应用  
-  在`dokku`中创建对应的app`dokku apps:create gift`，完成域名映射，配置`proxy:ports`，使用`Let's encrypt`插件进行https加密，这些步骤就不多说了。接着在gogs中创建对应的一个仓库，记得项目根目录下要有一个`.drone.yml`文件（参考[http://docs.drone.io/getting-started/](http://docs.drone.io/getting-started/)进行配置），然后提交代码。  
+  在`dokku`中创建对应的app `dokku apps:create gift`，完成域名映射，配置`proxy:ports`，使用`Let's encrypt`插件进行https加密，这些步骤就不多说了。接着在gogs中创建对应的一个仓库，记得项目根目录下要有一个`.drone.yml`文件（参考[http://docs.drone.io/getting-started/](http://docs.drone.io/getting-started/)进行配置），然后提交代码。  
 9. 自动发布应用  
   上一步只能使用drone进行自动构建，要想将构建后的项目自动打包发布，还需要一些额外的操作（这里也是坑了自己好久，主要难题是如何将drone agent生成的文件发布到dokku git里，后来经人提醒可以通过共享ssh的方式，然后后续的共享ssh的操作也是摸索了好久才成功，可谓一路心酸）。
-  - 找1台虚机生成一份新的ssh公私钥对（也可以本地备份原来的，然后重新生成），`ssh-keygen -t rsa -C "dokku-deploy"`
+  - 找1台虚机生成一份新的ssh公私钥对（也可以本地备份原来的，然后重新生成）
+    ```shell
+    ssh-keygen -t rsa -C "dokku-deploy"
+    ```
   - 将上一步生成的`id_rsa.pub`上传至服务器并添加到dokku中
     ```shell
     # local
@@ -91,7 +94,10 @@ tags:
     # server
     dokku ssh-keys:add deploy ./deploy.pub
     ```
-  - 项目根目录新建一个`ssh`目录，然后将上一步生成的ssh公私钥复制进去`cp ~/.ssh/id_rsa* ./ssh`
+  - 项目根目录新建一个`ssh`目录，然后将上一步生成的ssh公私钥复制进去
+    ```shell
+    cp ~/.ssh/id_rsa* ./ssh
+    ```
   - 修改原来的`.drone.yml`，在原来build之后添加一些操作
     ```shell
     - rm -rf ~/.ssh
@@ -101,7 +107,7 @@ tags:
     - chmod 644 ~/.ssh/id_rsa.pub
     - ssh-keyscan erguotou.me >> ~/.ssh/known_hosts
     - ssh-keyscan 45.77.42.201 >> ~/.ssh/known_hosts
-    - echo 'FROM ilyasemenov/dokku-static-site' > dist/Dockerfile # 静态项目的Dockerfile，后续要改成自定义的
+    - echo 'FROM ilyasemenov/dokku-static-site' > dist/Dockerfile # 根据自己的项目选择合适的Dockerfile或者实现适合自己项目的Dockerfile，也可以使用buildpacks
     - cd dist
     - git config --global user.email "erguotou525@gmail.com"
     - git config --global user.name "erguotou"
@@ -111,4 +117,4 @@ tags:
     - git remote add dokku dokku@erguotou.me:gift
     - git push -u dokku master --force
     ```
-    至此就完成了自动化部署的工作。
+    至此就完成了自动化部署的工作，现在就可以访问[https://gift.erguotou.me](https://gift.erguotou.me)了。
