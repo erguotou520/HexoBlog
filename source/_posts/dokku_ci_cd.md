@@ -11,6 +11,8 @@ tags:
   - CD
 ---
 # 利用dokku打造自己的私有云仓库和自动化部署
+`dokku`是什么？一句话概括就是一个几百行shell代码的高可扩展性的类`Heroku`的单服务器PAAS平台，利用它可以简化很多docker操作，更加方便我们维护一个`docker driven`的平台。
+
 1. 创建机器，选择`Ubuntu`系统，同时做好域名映射  
 2. 安装`dokku`
   ```bash
