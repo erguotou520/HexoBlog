@@ -102,8 +102,9 @@ firebase init
 ```
 此时执行`firebase deploy`就可以将我们的博客推送上去了。但是我们需要结合`TravisCI`实现自动部署，所以在`.travis.yml`中添加firebase的自动部署模块
 ```yaml
+# 2017-07-10更新
 after_success:
-  - firebase deploy --token ${FIREBASE_TOKEN}
+  - firebase deploy --non-interactive --token ${FIREBASE_TOKEN}
 ```
 其中`FIREBASE_TOKEN`是让`TravisCI`进行部署时的密钥，它需要我们通过下面的命令来生成
 ```shell
