@@ -8,29 +8,29 @@ tags:
 搬瓦工的VPS要到期了，以前用着好难受的感觉，所以决定加点钱换个好点的，最后还是买了`Linode`。这里记录一下以一个更安全的方式连接VPS的设置过程。
 ## 新建用户
 首先新建用户，不使用`root`用户登录
-```shell
+```bash
 useradd -g root erguotou
 ```
 设置密码
-```shell
+```bash
 passwd erguotou
 ```
 添加到`root`组（不确定该步骤是否必须）
-```shell
+```bash
 vi /etc/sudoers
 ```
 找到
-```shell
+```bash
 ## Allow root to run any commands anywhere
 root    ALL=(ALL)     ALL
 ```
 在下面添加
-```shell
+```bash
 erguotou ALL=(ALL)     ALL
 ```
 ## 使用公私钥方式登录
 首先退出`root`用户，使用新建的用户登录，然后在用户目录下新建`.ssh/authorized_keys`文件。
-```shell
+```bash
 mkdir ~/.ssh
 touch ~/.ssh/authorized_keys
 chmod 700 ~/.ssh
@@ -39,15 +39,15 @@ chmod 700 ~/.ssh
 
 ## 禁root禁密码登录
 使用`root`用户执行
-```shell
+```bash
 vi /etc/ssh/sshd_config
 ```
 找到`PasswordAuthentication`配置，并改为`no`
-```shell
+```bash
 PasswordAuthentication no
 ```
 找到`PermitRootLogin`配置，并改为`no`
-```shell
+```bash
 PermitRootLogin no
 ```
 最后退出当前用户登录，然后尝试使用`root`登录，再尝试是否可以用密码方式登录。

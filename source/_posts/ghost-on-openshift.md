@@ -26,13 +26,13 @@ tags:
 复制此地址。  
 3.使用git拷贝项目
 
-```shell
+```bash
 #xxxxxx是刚复制的地址
 git clone ssh://xxxxxx
 ```
 4.将第1步下载的中文版的`/content/themes/casper-zh`目录下的所有文件拷贝到第3步clone的项目下的`/content/themes/casper`目录下并覆盖原文件。将中文版的`/core`目录下的所有文件拷贝到第3步clone的项目下的`/core`目录下并覆盖原文件。  
 5.在第3步clone的项目的根目录下执行
-```shell
+```bash
 git add ./ --all
 git commit-m "hanhua"
 git push

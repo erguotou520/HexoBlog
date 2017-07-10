@@ -14,7 +14,7 @@ tags:
 也找过DBA帮我看下，无果...  
 ## 现行解决方案
 现在采用的解决方案虽然有点麻烦，但好歹也是可行的。首先重新建个`Gogs`的服务，初始化安装（这次选择的是`sqlite`，因为那台服务器上没有mysql，也就懒得装了），重新建立组织和空仓库，建用户。然后通过clone之前的仓库并添加新的仓库地址最后push的方式来完成的。理论虽然简单，但中间还是遇到了一些小问题，这里记录下。下面是shell脚本（参考了[Push local Git repo to new remote including all branches and tags](http://stackoverflow.com/questions/6865302/push-local-git-repo-to-new-remote-including-all-branches-and-tags)）。
-```shell
+```bash
 #!/bin/sh
 sourceProtocal='http://'
 sourcePrefix='192.168.10.240:3000/'
@@ -45,7 +45,7 @@ done
 ## 添加ssh公钥
 ssh公钥是为了让我们和服务器通讯时免去输入用户名和密码的一种认证方式，详细可以查看[这篇文章](https://wiki.archlinux.org/index.php/SSH_keys_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))，我们改成ssh方式后需要将我们电脑的公钥上传至`Gogs`才能实现无需密码的`push`操作。
 1.生成公钥（已经生成过可以跳过）。如果电脑上安装了`Git`并且有`Git Bash`，那么可以打开`Git Bash`运行
-```shell
+```bash
 # -C 后面的是注释，可不传
 ssh-keygen -t rsa -C "youremail@xxx.com"
 ```
@@ -55,16 +55,16 @@ ssh-keygen -t rsa -C "youremail@xxx.com"
 点击右上角头像，选择`用户设置`，选择`管理 SSH 密钥`，点击`增加密钥`。`密钥名称`处随便填写个，然后在`密钥内容`中粘贴我们前面复制的内容，点击下面的`增加密钥`按钮完成添加。
 ## 工作副本的仓库地址修改
 1.进入原克隆的工作目录
-```shell
+```bash
 cd /path/to/your/workspace
 ```
 2.查看原工作副本的远程地址
-```shell
+```bash
 git remote -v
 ```
 可以看到之前的地址是以`http://`开头的，我们需要修改其为新的`ssh://`方式。  
 3.修改地址
-```shell
+```bash
 git remote set-url origin <git@192.168.10.240:org/repo.git>
 ```
 `org`和`repo`为上述`git remote -v`查看得到的组织名和仓库名，该地址也可以通过网页上复制得到

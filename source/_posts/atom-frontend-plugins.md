@@ -8,7 +8,7 @@ tags:
 ---
 ## Atom开发插件集合
 *2017-03-21更新，去除不常用的插件*
-```shell
+```bash
 apm list
 Community Packages (28) /Users/erguotou/.atom/packages
 ├── Stylus@3.1.0
@@ -35,7 +35,7 @@ Community Packages (28) /Users/erguotou/.atom/packages
 └── (empty)
 ```
 
-```shell
+```bash
 apm install Stylus atom-beautify atom-material-ui autoclose-html busy-signal docblockr editorconfig emmet file-icons intentions language-gitignore language-vue linter linter-ui-default linter-eslint linter-htmlhint local-history minimap minimap-highlight-selected pigments
 ```
 

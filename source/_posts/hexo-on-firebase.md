@@ -29,7 +29,7 @@ deploy:
 ### 结合Github
 本地环境搭建好了之前就开始将它推送到github了，为什么放在github？一来是有个存储的地方，二来自带历史版本管理，三来可以实现自动化。
 首先，添加hexo的git deploy插件。
-```shell
+```bash
 npm install hexo-deployer-git --save
 ```
 
@@ -80,17 +80,17 @@ cache:
 ### 与Firebase结合
 说到现在，我们都还没提到我们的主角`Firebase`。对于还不了解Firebase的同学建议先去看下网上的介绍。Firebase为我们提供了实时的云端存储和并提供全球CDN服务，我就是要利用它的CDN服务将我们的静态博客挂在CDN上。
 首先，全局安装它的cli工具
-```shell
+```bash
 npm install -g firebase-tools
 ```
 然后登录firebase
-```shell
+```bash
 # 不带参数会登录报错
 # 如遇到翻墙问题请自行解决
 firebase login --no-localhost
 ```
 接着进入项目根目录，执行
-```shell
+```bash
 firebase init
 ```
 安装提示完成初始化，Firebase会自动在项目根目录下创建`firebase.json`文件，我们保证`firebase.json`里的`public`值为`public`即可，因为`public`文件夹是`hexo`生成的博客的目录。
@@ -108,7 +108,7 @@ after_success:
   - firebase deploy --non-interactive --token ${FIREBASE_TOKEN}
 ```
 其中`FIREBASE_TOKEN`是让`TravisCI`进行部署时的密钥，它需要我们通过下面的命令来生成
-```shell
+```bash
 firebase login:ci --no-localhost
 ```
 登录验证成功后会得到一个token，复制它，在travis中添加环境变量`FIREBASE_TOKEN`，`value`为刚复制的token。
