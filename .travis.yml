@@ -25,7 +25,7 @@ script:
   - hexo d -g
 
 after_success:
-  - firebase deploy --token ${FIREBASE_TOKEN}
+  - firebase deploy --non-interactive --token ${FIREBASE_TOKEN}
 
 cache:
   directories:
