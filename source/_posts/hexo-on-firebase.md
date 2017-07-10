@@ -2,6 +2,7 @@
 title: 利用firebase打造极速静态博客
 s: hexo-on-firebase
 date: 2016-07-25 14:38:24
+thumbnail: https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png
 tags:
   - Hexo
   - TravisCI
