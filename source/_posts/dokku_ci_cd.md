@@ -66,7 +66,7 @@ tags:
   # dokku apps:create drone-agent
   # docker pull drone/agent:latest
   # docker tag drone/agent:latest dokku/drone-agent:latest
-  docker run -d -e DRONE_SERVER=wss://drone.erguotou.me/ws/broker -e DRONE_SECRET=password -v /var/run/docker.sock:/var/run/docker.sock --restart=always --name=drone-agent-docker drone/drone:0.7.3 agent
+  docker run -d -e DRONE_SERVER=wss://drone.erguotou.me/ws/broker -e DRONE_SECRET=password -e DRONE_TIMEOUT=15m -v /var/run/docker.sock:/var/run/docker.sock --restart=always --name=drone-agent-docker drone/drone:0.7.3 agent
   # 配置agent的环境变量
   # dokku config:set drone-agent DRONE_SERVER=wss://drone.erguotou.me/ws/broker DRONE_SECRET=secret
   # dokku storage:mount drone-agent /var/run/docker.sock:/var/run/docker.sock
