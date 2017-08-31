@@ -8,6 +8,7 @@ tags:
 ---
 ## Atom开发插件集合
 *2017-03-21更新，去除不常用的插件*
+*2017-08-31更新，添加highlight-selected插件*
 ```bash
 apm list
 Community Packages (28) /Users/erguotou/.atom/packages
@@ -20,6 +21,7 @@ Community Packages (28) /Users/erguotou/.atom/packages
 ├── editorconfig@2.2.2
 ├── emmet@2.4.3
 ├── file-icons@2.0.17
+├── highlight-selected@0.13.1
 ├── intentions@1.1.2
 ├── language-gitignore@0.3.0
 ├── language-vue@0.21.2
@@ -36,7 +38,7 @@ Community Packages (28) /Users/erguotou/.atom/packages
 ```
 
 ```bash
-apm install Stylus atom-beautify atom-material-ui autoclose-html busy-signal docblockr editorconfig emmet file-icons intentions language-gitignore language-vue linter linter-ui-default linter-eslint linter-htmlhint local-history minimap minimap-highlight-selected pigments
+apm install Stylus atom-beautify atom-material-ui autoclose-html busy-signal docblockr editorconfig emmet file-icons highlight-selected intentions language-gitignore language-vue linter linter-ui-default linter-eslint linter-htmlhint local-history minimap minimap-highlight-selected pigments
 ```
 
 ## UI配置
