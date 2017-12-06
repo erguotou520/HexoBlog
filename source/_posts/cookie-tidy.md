@@ -19,5 +19,8 @@ tags:
 
 其它情况未做测试，但可根据同源限制得出相关结果。
 
+## 测试文件
+[测试参考](https://gist.github.com/erguotou520/97aab008e765d80c772e5717ad01c1c1)
+
 ## 相关文章
 - [浏览器同源政策及其规避方法](http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html)
