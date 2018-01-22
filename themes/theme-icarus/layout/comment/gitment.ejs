@@ -1,6 +1,6 @@
 <% if (typeof(script) !== 'undefined' && script) { %>
 	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-	<div id="commentContainer"></div>
+	<!-- <div id="commentContainer"></div> -->
 	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 	<script>
 		var gitment = new Gitment({
@@ -12,7 +12,7 @@
 				client_secret: '<%= theme.comment.gitment.client_secret %>',
 			},
 		})
-		gitment.render('commentContainer')
+		gitment.render('comments')
 	</script>
 	<% } else { %>
 <% } %>

@@ -16,8 +16,6 @@ customize:
     profile:
         enabled: true # Whether to show profile bar
         avatar: css/images/avatar.png
-        avatar_width: 52
-        avatar_height: 76
         gravatar: # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
         author: 二锅头
         author_title: 前端开发攻城狮
@@ -69,7 +67,7 @@ share: default # options: jiathis, bdshare, addtoany, default
 
 # Plugins
 plugins:
-    lightgallery: true # options: true, false
+    lightgallery: false # options: true, false
     justifiedgallery: false # options: true, false
     google_analytics: # enter the tracking ID for your Google Analytics
     google_site_verification: # enter Google site verification code
