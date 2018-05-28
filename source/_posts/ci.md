@@ -8,17 +8,17 @@ tags:
   - travis ci
   - gitlab ci
 ---
-# CI
+
 ## 什么是CI
 ![CI](/images/ci/flow.png)
 引用知乎上的一个回答
-> 作者：赵劼  
-> 链接：https://www.zhihu.com/question/23444990/answer/26995938  
-> 来源：知乎  
+> 作者：赵劼
+> 链接：https://www.zhihu.com/question/23444990/answer/26995938
+> 来源：知乎
 > 著作权归作者所有，转载请联系作者获得授权。
 
-> 集成是指软件个人研发的部分向软件整体部分交付，以便尽早发现个人开发部分的问题；部署是代码尽快向可运行的开发/测试节交付，以便尽早测试；  
-交付是指研发尽快向客户交付，以便尽早发现生产环境中存在的问题。  
+> 集成是指软件个人研发的部分向软件整体部分交付，以便尽早发现个人开发部分的问题；部署是代码尽快向可运行的开发/测试节交付，以便尽早测试；
+交付是指研发尽快向客户交付，以便尽早发现生产环境中存在的问题。
 如果说等到所有东西都完成了才向下个环节交付，导致所有的问题只能再最后才爆发出来，解决成本巨大甚至无法解决。
 而所谓的持续，就是说每完成一个完整的部分，就向下个环节交付，发现问题可以马上调整。是的问题不会放大到其他部分和后面的环节。
 
@@ -40,7 +40,7 @@ tags:
 
 ## 项目实践
 - [vue-fullstack](https://github.com/erguotou520/vue-fullstack)
-  该项目为一个`vue`全栈项目模板，项目中使用`travis`做持续集成  
+  该项目为一个`vue`全栈项目模板，项目中使用`travis`做持续集成
   ```yaml
   language: node_js
   node_js:
@@ -64,9 +64,9 @@ tags:
       - ../test-fullstack/node_modules
       - $(npm config get prefix)/vue-cli
   ```
-  该配置文件中主要就做了一件事，根据当前模板生成一个项目文件并执行代码检查和构建操作，以此来简单地验证模板生成的正确性。  
+  该配置文件中主要就做了一件事，根据当前模板生成一个项目文件并执行代码检查和构建操作，以此来简单地验证模板生成的正确性。
   *TODO:最好可以添加一个文件结构验证的代码，另外后续会根据生成后的项目自动push到github的其它分支中，并通过heroku实现自动部署*
-- [electron-ssr](https://github.com/erguotou520/electron-ssr) 该项目是`ShadowsocksR`的一个多平台pc客户端，该项目同时使用了`travis`和`appveyor`用来构建不同平台上的安装包文件，简单的看下配置文件  
+- [electron-ssr](https://github.com/erguotou520/electron-ssr) 该项目是`ShadowsocksR`的一个多平台pc客户端，该项目同时使用了`travis`和`appveyor`用来构建不同平台上的安装包文件，简单的看下配置文件
   ```yaml
   # travis
   osx_image: xcode7.3

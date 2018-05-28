@@ -6,7 +6,6 @@ tags:
   - windows
   - 前端开发环境
 ---
-# 记新windows电脑打造前端开发环境流程
 ## 系统环境
 
 - 查看电脑配置（主要是CPU内存硬盘SSD这些），对于该配置能完成什么样的开发强度心里有数
@@ -72,7 +71,7 @@ Git现在几乎成了主流的版本控制工具，在开发之前我们需要�
 - 修改文件默认结尾格式
     ```bash
     git config core.eol lf
-    git config core.autocrlf input
+    git config core.autocrlf false
     ```
 
 ## VSCode

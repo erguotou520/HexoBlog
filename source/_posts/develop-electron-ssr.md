@@ -7,7 +7,6 @@ tags:
 keywords:
   electron,shadowsocks,shadowsocksr,electron-ssr,shadowsocksr客户端
 ---
-# 在开发electron-ssr过程中的经验总结
 
 首先是项目介绍，其实这个项目就是给`shadowsocksr-python`项目加一个GUI壳，所以它的功能就是为了FQ。[GitHub地址在这](https://github.com/erguotou520/electron-ssr)
 

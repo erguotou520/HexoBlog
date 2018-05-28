@@ -6,7 +6,7 @@ thumbnail: /images/others/chrome-inspect.png
 tags:
   - Debug
 ---
-# Windows下调试平板设备经验记录
+
 本文主要记录Android上的Chrome和IOS上的Safari浏览器的调试方法，方便以后查看。开始之前请自备梯子，下面会需要翻墙。
 ## Android设备调试
 借助于Chrome的inspect工具，我们可以调试Android中使用了WebView的应用，所以调试Chrome网页也是同样的道理。

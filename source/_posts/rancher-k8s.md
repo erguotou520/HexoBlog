@@ -8,9 +8,8 @@ tags:
   - kubernetes
   - k8s
 ---
-# 基于Rancher搭建k8s的集群环境
-本文主要纪录了在k8s的学习过程中我是如何搭建k8s集群环境的经历。  
-在学习和了解了k8s的一些基础概念我开始尝试去自己搭建一套集群环境，经过一段时间的尝试，我决定使用`rancher`来帮助搭建环境，并使用`rancher os`作为主机镜像。  
+本文主要纪录了在k8s的学习过程中我是如何搭建k8s集群环境的经历。
+在学习和了解了k8s的一些基础概念我开始尝试去自己搭建一套集群环境，经过一段时间的尝试，我决定使用`rancher`来帮助搭建环境，并使用`rancher os`作为主机镜像。
 你要问我为什么使用`rancher`搭建？因为简单啊！为什么使用`rancher os`作为主机镜像？因为小啊！
 
 ## 环境准备
@@ -66,6 +65,6 @@ tags:
 ```bash
 sudo docker run -d --restart=unless-stopped -p 8080:8080 rancher/server:stable
 ```
-等待一段时间后在本地打开浏览器访问`http://<rancher-server-ip>:8080`即可访问Rancher UI。  
-在web页面中的操作就不做详细介绍，大致就是添加环境，然后按照页面提示添加我们的3台`k8s node`主机，然后等待各种服务安装完成即可，[点击查看官方视频介绍（需翻墙）](https://player.vimeo.com/video/212648517?autoplay=1&title=0&byline=0)  
+等待一段时间后在本地打开浏览器访问`http://<rancher-server-ip>:8080`即可访问Rancher UI。
+在web页面中的操作就不做详细介绍，大致就是添加环境，然后按照页面提示添加我们的3台`k8s node`主机，然后等待各种服务安装完成即可，[点击查看官方视频介绍（需翻墙）](https://player.vimeo.com/video/212648517?autoplay=1&title=0&byline=0)
 PS：参考[](https://www.cnrancher.com/kubernetes-installation/)文章中**kubernetes环境管理**一节修改国内加速。
