@@ -16,27 +16,30 @@ tags:
 1. 创建机器，选择`Ubuntu`系统，同时做好域名映射
 2. 安装`dokku`
   ```bash
-  # 选择0.9.4版本，后面的版本都有些问题
-  wget https://raw.githubusercontent.com/dokku/dokku/v0.9.4/bootstrap.sh
-  sudo DOKKU_TAG=v0.9.4 bash bootstrap.sh
+  wget https://raw.githubusercontent.com/dokku/dokku/v0.14.5/bootstrap.sh
+  sudo DOKKU_TAG=v0.14.5 bash bootstrap.sh
   ```
   然后打开对应的域名，完成`dokku`的初始化
 3. 创建`gogs`应用，参照[https://dokku.github.io/tutorials/deploying-gogs-to-dokku](https://dokku.github.io/tutorials/deploying-gogs-to-dokku)
   其中推送代码部分可以用`tag`部署方式，所有命令如下
   ```bash
   dokku apps:create gogs
+  # 设置域名
+  dokku domains:add gogs gogs.erguotou.me
+  # 端口映射
   dokku proxy:ports-add gogs http:80:3000
   dokku docker-options:add gogs deploy -p 2222:22
   mkdir -p /var/lib/dokku/data/storage/gogs
   chown -R dokku:dokku /var/lib/dokku/data/storage/gogs
   dokku storage:mount gogs /var/lib/dokku/data/storage/gogs:/data
+  # 如果选择用mysql作为gogs数据库需要执行下面这些
   dokku plugin:install https://github.com/dokku/dokku-mysql.git mysql
   dokku mysql:create gogs
   dokku mysql:link gogs gogs
   # 使用指定版本
-  docker pull gogs/gogs:0.11.4
-  docker tag gogs/gogs:0.11.4 dokku/gogs:0.11.4
-  dokku tags:deploy gogs 0.11.4
+  docker pull gogs/gogs
+  docker tag gogs/gogs:latest dokku/gogs:latest
+  dokku tags:deploy gogs latest
   ```
 4. 使用Let's Encrypt进行https加密
   ```bash
@@ -45,7 +48,7 @@ tags:
   dokku letsencrypt gogs
   dokku letsencrypt:cron-job --add
   ```
-  完成之后打开web页面完成`gogs`的`install`，注意配置页面的各设置（mysql的配置地址可以用`dokku mysql:info gogs`查看。即使设置错了，也可以后期使用`dokku enter gogs`，在`/data/gogs/conf/app.ini`中直接修改）。
+  完成之后打开web页面完成`gogs`的`install`，注意配置页面的各设置（mysql的配置地址可以用`dokku mysql:info gogs`查看。即使设置错了，也可以后期使用`dokku enter gogs`，在`/data/gogs/conf/app.ini`中直接修改），其中`SSH 端口号`填`2222`，`HTTP 端口号`填`3000`，。
 5. 创建`drone`应用，`drone`分`server`端和`agent`端
   ```bash
   # server
