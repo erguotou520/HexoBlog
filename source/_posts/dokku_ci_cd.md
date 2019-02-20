@@ -52,24 +52,38 @@ tags:
 5. 创建`drone`应用，`drone`分`server`端和`agent`端
   ```bash
   # server
+  export RPC_SECRET=09asudjfkqwn41u2389ahnoqwjn123
   dokku apps:create drone
-  dokku mysql:create drone
-  dokku mysql:link drone drone
-  # 暂时不能使用最新版本，坑了很久
+  # 设置域名
+  dokku domains:add drone drone.erguotou.me
+  dokku proxy:ports-add drone http:80:80
+  # 这里同样适用sqlite作为数据库
+  # dokku mysql:create drone
+  # dokku mysql:link drone drone
+  ## 暂时不能使用最新版本，坑了很久
   # docker pull drone/drone:latest
-  docker pull drone/drone:0.7.3
-  docker tag drone/drone:0.7.3 dokku/drone:0.7.3
+  docker pull drone/drone:1.0.0-rc.5
+  docker tag drone/drone:1.0.0-rc.5 dokku/drone:1.0.0-rc.5
+  dokku storage:mount drone /var/run/docker.sock:/var/run/docker.sock
   # 配置drone的环境变量
-  dokku config:set drone DRONE_OPEN=false DRONE_GOGS_PRIVATE_MODE=true DRONE_DATABASE_DRIVER=mysql DRONE_DATABASE_DATASOURCE='root:password@tcp(1.2.3.4:3306)/drone?parseTime=true' DRONE_HOST=https://drone.erguotou.me DRONE_GOGS=true DRONE_GOGS_URL=https://gogs.erguotou.me DRONE_SECRET=secret DRONE_ADMIN=username,password
-  dokku tags:deploy drone 0.7.3
-  dokku proxy:ports-add drone http:80:8000
-  dokku proxy:ports-remove drone http:443:443 http:8000:8000 http:80:80
+  dokku config:set drone DRONE_GOGS_SERVER=https://gogs.erguotou.me DRONE_GIT_ALWAYS_AUTH=true DRONE_RUNNER_CAPACITY=1 DRONE_SERVER_PROTO=https DRONE_SERVER_HOST=drone.erguotou.me DRONE_RPC_SECRET=$RPC_SECRET
+  # dokku config:set drone DRONE_OPEN=false DRONE_GOGS_PRIVATE_MODE=true DRONE_DATABASE_DRIVER=mysql DRONE_DATABASE_DATASOURCE='root:password@tcp(1.2.3.4:3306)/drone?parseTime=true' DRONE_HOST=https://drone.erguotou.me DRONE_GOGS=true DRONE_GOGS_URL=https://gogs.erguotou.me DRONE_SECRET=secret DRONE_ADMIN=username,password
+  dokku tags:deploy drone 1.0.0-rc.5
+  # dokku proxy:ports-add drone http:80:8000
+  # dokku proxy:ports-remove drone http:443:443 http:8000:8000 http:80:80
   dokku letsencrypt drone
-  # agent，暂时不能使用最新版，直接使用docker命令启动，看最新版源码里/ws/broker请求都没有了
+  # agent
+  dokku apps:create drone-agent
+  dokku storage:mount drone-agent /var/run/docker.sock:/var/run/docker.sock
+  dokku config:set drone-agent DRONE_RPC_SERVER=https://drone.erguotou.me  DRONE_RPC_SECRET=$RPC_SECRET
+  docker pull drone/agent:1.0.0-rc.5
+  docker tag drone/agent:1.0.0-rc.5 dokku/drone-agent:1.0.0-rc.5
+  dokku tags:deploy drone-agent 1.0.0-rc.5
+  ## agent，暂时不能使用最新版，直接使用docker命令启动，看最新版源码里/ws/broker请求都没有了
   # dokku apps:create drone-agent
   # docker pull drone/agent:latest
   # docker tag drone/agent:latest dokku/drone-agent:latest
-  docker run -d -e DRONE_SERVER=wss://drone.erguotou.me/ws/broker -e DRONE_SECRET=password -e DRONE_TIMEOUT=15m -v /var/run/docker.sock:/var/run/docker.sock --restart=always --name=drone-agent-docker drone/drone:0.7.3 agent
+  # docker run -d -e DRONE_SERVER=wss://drone.erguotou.me/ws/broker -e DRONE_SECRET=password -e DRONE_TIMEOUT=15m -v /var/run/docker.sock:/var/run/docker.sock --restart=always --name=drone-agent-docker drone/drone:0.7.3 agent
   # 配置agent的环境变量
   # dokku config:set drone-agent DRONE_SERVER=wss://drone.erguotou.me/ws/broker DRONE_SECRET=secret
   # dokku storage:mount drone-agent /var/run/docker.sock:/var/run/docker.sock
@@ -86,7 +100,7 @@ tags:
   dokku ps:start app
   ```
 8. 创建自己的应用
-  在`dokku`中创建对应的app `dokku apps:create gift`，完成域名映射，配置`proxy:ports`，使用`Let's encrypt`插件进行https加密，这些步骤就不多说了。接着在gogs中创建对应的一个仓库，记得项目根目录下要有一个`.drone.yml`文件（参考[http://docs.drone.io/getting-started/](http://docs.drone.io/getting-started/)进行配置），然后提交代码。
+  在`dokku`中创建对应的app `dokku apps:create gift`，完成域名映射，配置`proxy:ports`，使用`Let's encrypt`插件进行https加密，这些步骤就不多说了。接着在gogs中创建对应的一个仓库，记得项目根目录下要有一个`.drone.yml`文件（参考[https://docs.drone.io/user-guide/](https://docs.drone.io/user-guide/)进行配置），然后提交代码。
 9. 自动发布应用
   上一步只能使用drone进行自动构建，要想将构建后的项目自动打包发布，还需要一些额外的操作（这里也是坑了自己好久，主要难题是如何将drone agent生成的文件发布到dokku git里，后来经人提醒可以通过共享ssh的方式，然后后续的共享ssh的操作也是摸索了好久才成功，可谓一路心酸）。
   - 找1台虚机生成一份新的ssh公私钥对（也可以本地备份原来的，然后重新生成）
