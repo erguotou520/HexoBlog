@@ -28,8 +28,8 @@ tags:
 - Cmder
 - Office工具
 - MacType（美化windows字体显示）
-- 迅雷极速版/FDM
-- IM工具 QQ 微信 钉钉
+- 迅雷极速版/FDM/Motrix
+- IM工具 QQ/TIM 微信 钉钉
 - VirtualBox
 - 其它工具 坚果云 Zerotier-One
 - 从坚果云的同步文件中安装ssr并添加订阅地址
@@ -57,7 +57,7 @@ windows下如果要获得流畅的命令行使用体验，`Cmder`那是必备的
 ## Git
 Git现在几乎成了主流的版本控制工具，在开发之前我们需要先对Git做个简单的配置
 
-- 配置Git 
+- 配置Git
     ```bash
     git config --global user.name "erguotou"
     git config --global user.email erguotou525@gmail.com
@@ -80,10 +80,14 @@ Git现在几乎成了主流的版本控制工具，在开发之前我们需要�
 - EditorConfig for VS Code
 - ESLint
 - HTML Snippets
+- language-postcss
+- PostCSS syntax
 - language-stylus
 - Path Intellisense
 - Prettier
 - Vetur
+- Beautify
+- 其它如Flutter/Dart/Docker/Docker Compose/DotENV/Python/英汉词典
 
 然后修改创建文件的默认结尾为`LF`，在用户配置中加入`"files.eol": "\n"`
 
@@ -102,3 +106,38 @@ yarn config set registry 'https://registry.npm.taobao.org'
 ## 高级玩法
 - AutoHotKey `AHK`为windows用户提供了更多的可能，开发时可以用它定义快捷输入、执行自动化操作，可以定义开机自启动脚本，显隐应用窗口等等
 - MacType Windows的ClearType字体很多时候看着都很难受，这时我们需要MacType来优化字体显示，可以参考这个做个自定义优化[](https://blog.csdn.net/w19981220/article/details/47993893)或者直接使用Candy改的MacType
+
+## 其它
+- 使用`ssh-keygen -t rsa`生成公私钥，并将公钥上传到Github/Bitbucket/Gitlab等
+- 使用`ssh-copy-id -i ~/.ssh/id_rsa.pub user@server.host`命令将公钥上传到服务器实现免密登录
+
+## 开发一段时间后使用到的一些工具
+- Photoshop CC
+- Cow 本地代理
+- GifCam 本地录屏并生成gif文件
+- navcat 数据库连接工具
+- oss-aliyun 连接阿里OSS
+- 15_Second_ADB_Installer 快速安装adb工具
+- Android SDK
+- besttrace 路由跟踪工具
+- charles-proxy/Fiddler 本地请求拦截
+- 网易云音乐
+- Dism 轻量级windows管理工具
+- DockerToolbox 没有用Docker for Windows，因为它和VirtualBox冲突
+- Golang
+- lean cli leancloud命令行工具
+- Medis redis连接工具
+- minio 本地oss服务
+- mingw-w64
+- mongodb/robo3t mongodb和其连接工具
+- ngrok 内网穿透工具
+- postman api测试工具
+- 搜狗输入法
+- TeamViewer/向日葵 远程连接工具
+- Telegram
+- TunSafe
+- Vagrant
+- 微信web开发者工具
+- windirstat 查看本地磁盘占用空间，磁盘清理就靠它定位了
+- WinSCP 远程连接和管理工具
+- 各种虚拟机镜像 Windows/Ubuntu等
