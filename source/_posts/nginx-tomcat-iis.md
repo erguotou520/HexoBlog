@@ -2,6 +2,7 @@
 title: 利用Nginx让IIS和tomcat共用80端口
 s: nginx-tomcat-iis
 date: 2015-01-14 16:46:00
+thumbnail: /images/server/nginx.png
 tags:
   - Nginx
 ---
@@ -14,13 +15,14 @@ tags:
 在修复时打算按照原来的方式来，可是发现又不会弄了，因为当初怎么弄好的都不记得。
 
 无奈之下在百度搜索时发现一篇[《IIS tomcat共用80端口解决一个IP多个域名：使用Nginx反向代理方式使两者兼容》](http://www.cnblogs.com/wuyou/p/3455619.html)的文章，受其启发，准备改用Nginx来完成。
+<!-- more -->
 
-####1.下载
+## 1.下载
 [http://nginx.org/en/download.html](http://nginx.org/en/download.html) 我当时下载的是nginx/Windows-1.7.8 版本。
 
-####2.解压
+## 2.解压
 
-####3.修改配置
+## 3.修改配置
 *nginx的配置看起来还是比较复杂的，现在的配置只是保证能使用，但不一定是最好的*
 
 修改Nginx的conf目录下的nginx.conf文件，修改server的配置如下：
@@ -30,8 +32,8 @@ tags:
       server_name  www.ahetyy.com;
       location ^~ /etyy {
           proxy_pass   http://localhost:8080/etyy;
-          proxy_set_header Host $host;  
-          proxy_set_header X-Real-IP $remote_addr;  
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
       }
       location / {
@@ -43,8 +45,8 @@ tags:
 
 特别注意：第一个location下的配置中的proxy_set_header的配置是必须的，否则最后打开[http://www.ahetyy.com/etyy](http://www.ahetyy.com/etyy)时页面请求的css和js路径都会是localhost:8080的，因为tomcat那边得到的请求就是localhost:8080的，需要将请求的头信息修改为真实请求的请求路径才行。（但是现在页面的base的路径上会有一个端口80，有点小小强迫症的我就忍了~）
 
-####4.运行
+## 4.运行
 cmd切换到nginx.exe的目录下，启动-- start nginx 停止-- nginx -s stop，有时会结束不掉，我就会手动关闭进程~
 
-####5.设置Nginx以服务方式启动
+## 5.设置Nginx以服务方式启动
 （暂时没做，网上教程看着好复杂- -！），搞定！

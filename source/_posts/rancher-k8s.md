@@ -2,6 +2,7 @@
 title: 基于Rancher搭建k8s的集群环境
 s: k8s-over-rancher
 date: 2018-03-21 09:38:11
+thumbnail: /images/rancher/logo.png
 tags:
   - rancher
   - rancher os
@@ -11,17 +12,20 @@ tags:
 本文主要纪录了在k8s的学习过程中我是如何搭建k8s集群环境的经历。
 在学习和了解了k8s的一些基础概念我开始尝试去自己搭建一套集群环境，经过一段时间的尝试，我决定使用`rancher`来帮助搭建环境，并使用`rancher os`作为主机镜像。
 你要问我为什么使用`rancher`搭建？因为简单啊！为什么使用`rancher os`作为主机镜像？因为小啊！
+<!-- more -->
 
 ## 环境准备
 
 - 官网下载好`rancheros.iso`文件
 - 4台虚拟机或者主机，根据实际业务场景增加或减少，机器用途如下：
-    | Hostname       | IP              | Role           | Configuration |
-    | :------------: | :-------------: | :------------: | :-----------: |
-    | rancher-server | 192.168.103.90  | rancher server | 1C1G8G        |
-    | k8s-node1      | 192.168.103.101 | k8s node       | 2C2G20G       |
-    | k8s-node2      | 192.168.103.102 | k8s node       | 2C2G20G       |
-    | k8s-node3      | 192.168.103.103 | k8s node       | 2C2G20G       |
+
+Hostname       | IP              | Role           | Configuration
+:------------: | :-------------: | :------------: | :-----------:
+rancher-server | 192.168.103.90  | rancher server | 1C1G8G
+k8s-node1      | 192.168.103.101 | k8s node       | 2C2G20G
+k8s-node2      | 192.168.103.102 | k8s node       | 2C2G20G
+k8s-node3      | 192.168.103.103 | k8s node       | 2C2G20G
+
 - 确认本机已生成ssh密钥对，然后在本机生成`cloud-config.yml`，用于ssh连接到node节点：
     ```bash
     echo -e "#cloud-config\nhostname: rancher-server\nssh_authorized_keys:\n - $(cat .ssh/id_rsa.pub)" > $HOME/cloud-config.yml

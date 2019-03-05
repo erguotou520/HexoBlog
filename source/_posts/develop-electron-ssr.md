@@ -2,6 +2,7 @@
 title: 记录在开发electron-ssr过程中遇到的问题
 s: develop-electron-ssr
 date: 2018-01-22 15:54:00
+thumbnail: /images/electron/ssr.png
 tags:
   - electron-ssr
 keywords:
@@ -15,6 +16,7 @@ keywords:
 ## 脚手架
 
 我们在开发一个完整的功能的时候往往不是从零开始做（因为那太费时间和经历了，还得自己维护项目框架），这里我是从[electron-vue](https://github.com/SimulatedGREG/electron-vue)项目初始化而来的。为什么用这个框架？跨平台用`electron`，前端开发用`vue`配合`webpack`，所以就选择了这个框架咯。
+<!-- more -->
 
 ## 开发前的约定
 

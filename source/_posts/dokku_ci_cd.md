@@ -2,7 +2,8 @@
 title: 利用dokku打造自己的私有云仓库和自动化部署
 s: dokku_ci_cd
 date: 2017-07-09 18:15:00
-thumbnail: https://raw.githubusercontent.com/dokku/dokku/v0.10.3/docs/assets/dokku.png
+# thumbnail: https://raw.githubusercontent.com/dokku/dokku/v0.10.3/docs/assets/dokku.png
+thumbnail: /images/cloud/dokku.png
 tags:
   - dokku
   - gogs
@@ -12,6 +13,7 @@ tags:
 ---
 
 `dokku`是什么？一句话概括就是一个几百行shell代码的高可扩展性的类`Heroku`的单服务器PAAS平台，利用它可以简化很多docker操作，更加方便我们维护一个`docker driven`的平台。
+<!-- more -->
 
 1. 创建机器，选择`Ubuntu`系统，同时做好域名映射
 2. 安装`dokku`
@@ -102,6 +104,7 @@ tags:
 8. 创建自己的应用
   在`dokku`中创建对应的app `dokku apps:create gift`，完成域名映射，配置`proxy:ports`，使用`Let's encrypt`插件进行https加密，这些步骤就不多说了。接着在gogs中创建对应的一个仓库，记得项目根目录下要有一个`.drone.yml`文件（参考[https://docs.drone.io/user-guide/](https://docs.drone.io/user-guide/)进行配置），然后提交代码。
 9. 自动发布应用
+  CD可以有很多种方法，具体还得根据部署环境决定。可以直接用`drone`中现有的插件去实现也可以自己去开发`drone`的插件。下面记录的是以前的骚操作完成的项目部署方案。
   上一步只能使用drone进行自动构建，要想将构建后的项目自动打包发布，还需要一些额外的操作（这里也是坑了自己好久，主要难题是如何将drone agent生成的文件发布到dokku git里，后来经人提醒可以通过共享ssh的方式，然后后续的共享ssh的操作也是摸索了好久才成功，可谓一路心酸）。
   - 找1台虚机生成一份新的ssh公私钥对（也可以本地备份原来的，然后重新生成）
     ```bash

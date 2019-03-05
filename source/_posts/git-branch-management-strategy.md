@@ -8,9 +8,9 @@ seo:
   description: GIT分支管理策略，非Git workflow，主分支Master，主分支有且只有一个，所有提供给用户使用的正式版本都在这个分支上发布。开发分支Develop，日常的开发工作应该都在这个分支上进行。
 ---
 [参照  http://www.ruanyifeng.com/blog/2012/07/git.html](http://www.ruanyifeng.com/blog/2012/07/git.html)
-##主分支Master
+## 主分支Master
 主分支有且只有一个，所有提供给用户使用的正式版本都在这个分支上发布。
-##开发分支Develop
+## 开发分支Develop
 日常的开发工作应该都在这个分支上进行。
 ```bash
 git checkout -b develop
@@ -21,7 +21,8 @@ git checkout master
 git merge --no-ff development
 ```
 注：这里的参数`--no-ff`是不进行快速合并(快速合并只是改变指针)的意思。
-##临时分支
+<!-- more -->
+## 临时分支
 前面介绍的是两条主要分支，一般正常情况下仓库中只存在这2个分支，但有时需要一些临时性的分支用于特定目的，这些分支在使用完成后应该删除掉，删除的命令为
 ```bash
 git branch -d temp-branch
@@ -31,7 +32,7 @@ git branch -d temp-branch
 git branch -D temp-branch
 ```
 注：临时分支不要提交到远程，在本地提交就可以了。
-###功能分支(feature)
+### 功能分支(feature)
 比如突然需要开发某个新的功能，但不是必需的，或者实现起来可能有些困难而直接放弃，或者是BOSS临时的想法，但不确定是否要加入到产品中，此时可以使用功能分支。
 ```bash
 git checkout -b feature-xxx develop
@@ -42,7 +43,7 @@ git checkout develop
 git merge --no-ff feature-xxx
 ```
 然后删除
-###预发布分支(release)
+### 预发布分支(release)
 当我们需要在正式发布版本前做一个测试的时候就需要预发布分支。使用过程和功能分支稍有差别，第一步创建
 ```bash
 git checkout -b release-xxx develop
@@ -56,7 +57,7 @@ git merge --no-ff release-xxx
 git tag -a xxx
 ```
 接着根据情况考虑是否需要合并到开发分支(比如我grunt构建后的代码就不需要)，最后说删除此分支。
-###修复bug分支
+### 修复bug分支
 项目正式发布后难免会有bug出现，此时就需要这样的分支，命名为`fixbug-xxx`，`xxx`一般是项目的bug管理中对应的bug编号。
 ```bash
 git checkout -b fixbug-xxx master
@@ -75,4 +76,4 @@ git tag -a xxx
 git checkout develop
 git merge --no-ff fixbug-xxx
 ```
-最后删除此分支
+最后删除此分支。

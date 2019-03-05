@@ -5,15 +5,16 @@ date: 2015-07-20 23:30:00
 tags:
   - Ghost
 ---
-有不少人问过ghost能不能上传附件的问题，当然大家可能都知道Ghost可以上传图片，使用`![]()`可以插入一个图片。然后有人就尝试在选择图片时上传一个普通文件，可惜这样系统会报错。  
+有不少人问过ghost能不能上传附件的问题，当然大家可能都知道Ghost可以上传图片，使用`![]()`可以插入一个图片。然后有人就尝试在选择图片时上传一个普通文件，可惜这样系统会报错。
   ![Ghost image format error](/images/ghost/ghost-image-format-error.png)
-　　这是因为ghost后台做了限制，当然，你可以改代码去掉这个限制，不过上传后的图片在image目录里，这与设计之初的本意不符。Ghost本就是一个极简的，专注于写作的博客系统，使用的是markdown来写作，因此也没有做上传附件这个功能。不过如果真的要在文章中使用附件怎么办呢？  
-　　其实很简单，附件也不过只是个网络资源，你只需要将资源的url引用下就可以了。一种是自己用apache建一个静态文件服务器，比如我这个<a href="http://media.erguotou.me/" target="_blank">我的简单媒体工具</a>。一种是使用云存储，然后获得文件的下载地址，比如使用<a href="http://www.qiniu.com/" target="_blank">七牛云存储</a>。  
+　　这是因为ghost后台做了限制，当然，你可以改代码去掉这个限制，不过上传后的图片在image目录里，这与设计之初的本意不符。Ghost本就是一个极简的，专注于写作的博客系统，使用的是markdown来写作，因此也没有做上传附件这个功能。不过如果真的要在文章中使用附件怎么办呢？
+<!-- more -->
+　　其实很简单，附件也不过只是个网络资源，你只需要将资源的url引用下就可以了。一种是自己用apache建一个静态文件服务器，比如我这个<a href="http://media.erguotou.me/" target="_blank">我的简单媒体工具</a>。一种是使用云存储，然后获得文件的下载地址，比如使用<a href="http://www.qiniu.com/" target="_blank">七牛云存储</a>。
 　　这里以使用七牛为例，首先建一个静态目录的空间
 ![Ghost image format error](/images/ghost/qiniu-new-block.png)，关于空间的设置不做介绍，点击“空间管理”再点击“上传”，建议添加一个前缀，完成附件的上传。![七牛上传](storage/blog_images/qiniu-upload.png)这时候在列表页面点击刚上传的文件，在右侧就可以获取到文件的外链。![Qiniu link](storage/blog_images/qiniu-link.png)
-　　通过上面2种方法得到了文件的外链后，只需要在博客中需要插入附件的地方插入`[your title](刚获取到的外链地址)`或者使用a标签`<a href="刚获取到的外链地址" target="_blank">链接显示的文字</a>`插入。a标签与markdown的语法相比，可以实现打开的页面是一个新的标签而不是覆盖当前的页面。最后，如果觉得默认的附件样式很丑，可以通过css来完善一下。下面附上我使用的附件。  
-[自己服务器上的](http://media.erguotou.me/files/VID_20150705_180232.mp4)  
-[七牛云存储的](http://7xkip3.dl1.z0.glb.clouddn.com/@/files/魔方原理及其应用.pdf)  
+　　通过上面2种方法得到了文件的外链后，只需要在博客中需要插入附件的地方插入`[your title](刚获取到的外链地址)`或者使用a标签`<a href="刚获取到的外链地址" target="_blank">链接显示的文字</a>`插入。a标签与markdown的语法相比，可以实现打开的页面是一个新的标签而不是覆盖当前的页面。最后，如果觉得默认的附件样式很丑，可以通过css来完善一下。下面附上我使用的附件。
+[自己服务器上的](http://media.erguotou.me/files/VID_20150705_180232.mp4)
+[七牛云存储的](http://7xkip3.dl1.z0.glb.clouddn.com/@/files/魔方原理及其应用.pdf)
 <style type="text/css">
 .attachments {
 	list-style: none;

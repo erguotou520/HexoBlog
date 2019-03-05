@@ -8,21 +8,24 @@ tags:
 ---
 # Ghost API 接口
 当前版本为0.5.8，后续更新的API不在其中。 本文写作时用的是英文版，下面所有涉及`language`为`en_US`的对应的中文版为`zh_CN`。
-下面所有的链接都是以`http://your.blog.site:port`开头，请注意。  
+下面所有的链接都是以`http://your.blog.site:port`开头，请注意。
 你可以使用Chrome的Postman工具进行调试
 ![](/images/ghost/postman.png)
+<!-- more -->
 ## 登录认证
 POST `/ghost/api/v0.1/authentication/token`
 ACCEPT json
 DATA
-```
-grant_type:password
-username:your.email@email.com(请替换为你的邮箱)
-password:your_password(请替换为你的登录密码)
-client_id:ghost-admin
+```js
+{
+  grant_type:password
+  username:your.email@email.com(请替换为你的邮箱)
+  password:your_password(请替换为你的登录密码)
+  client_id:ghost-admin
+}
 ```
 RESULT
-```
+```js
 {
   access_token: 'xxx',
   expires_in: 3600,
@@ -32,9 +35,11 @@ RESULT
 注意保存返回的结果
 ```
 如果登录错误，会返回错误结果
-```
-status: 404
-errors[0]: {message: 'xxx', type: 'xxxError'}
+```js
+{
+  status: 404
+  errors[0]: {message: 'xxx', type: 'xxxError'}
+}
 ```
 错误主要分为不存在的邮箱、错误的密码、密码输入错误次数过多几种
 注意：以下所有请求涉及用户权限的，都需要在HTTP请求的头中加入`access_token`的信息，请求格式为
@@ -48,7 +53,7 @@ GET `/ghost/api/v0.1/users/me/?status=all&include=roles`
 ACCEPT json
 Authorization 见上说明
 RESULT
-```
+```js
 {
 	accessibility: null
 	bio: null
@@ -78,7 +83,7 @@ RESULT
 下面列出的所有api路径都是由`/ghost/api/v0.1`开头，在调用时请自行追加
 ## 配置相关
 系统级的配置信息的json格式
-```
+```json
 {
     "key": "fileStorage",
     "value": true
@@ -88,11 +93,11 @@ RESULT
 * GET /configuration/:key 根据指定ID获取配置信息
 
 ## 文章相关
-新增文章的业务流程应该是(2,3步骤在Ghost中是监测输入间隔，然后发送请求)  
+新增文章的业务流程应该是(2,3步骤在Ghost中是监测输入间隔，然后发送请求)
 1. 获取标签等信息`/tags/?limit=all`
 2. 输入title后调用`/slugs/post/:inputed-title`会返回一个新的slug
 3. 输入正文时保存`/posts/?include=tags`，其中发送的数据格式为
-```
+```js
 {
     posts: [
         {
@@ -128,7 +133,7 @@ RESULT
 此请求返回的数据里面有一个id，保存id，下次在保存文章时的地址就是`/posts/:id?include=tags`
 
 文章的json结构体如下
-```
+```js
 {
   slug: "welcome-to-ghost", // 类似文章的链接
   status: "published", // 文章的状态 草稿 已发布等
@@ -162,7 +167,7 @@ RESULT
 
 ## 设置相关
 博客的设置数据的json格式
-```
+```js
 {
     "settings": [
         {
@@ -206,7 +211,7 @@ RESULT
 
 ## 用户相关
 用户数据的json格式
-```
+```js
 {
     email: "your.email@email.com",
     id: 1,
@@ -242,7 +247,7 @@ RESULT
 
 ## 标签相关
 标签数据的json格式
-```
+```js
 {
     "id": 1,
     "uuid": "xxxx-xxxx",
@@ -268,7 +273,7 @@ RESULT
 
 ## 角色相关
 角色数据的json格式
-```
+```json
 {
     "id": 1,
     "uuid": "1b925c9f-92f2-45b3-9828-9244adbaaddc",
@@ -287,7 +292,7 @@ RESULT
 
 ## 主题
 主题数据的json格式
-```
+```json
 {
     "uuid": "casper",
     "name": "Casper",
@@ -300,7 +305,7 @@ RESULT
 
 ## 通知相关
 通知信息的json结构
-```
+```js
 {
     notifications: [
         {

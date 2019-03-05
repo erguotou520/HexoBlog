@@ -2,6 +2,7 @@
 title: 记新windows电脑打造前端开发环境流程
 s: new-windows-develop-env
 date: 2018-05-21 15:33:45
+thumbnail: /images/windows/win10.png
 tags:
   - windows
   - 前端开发环境
@@ -13,6 +14,7 @@ tags:
 - 清理已安装工具，取消不常用的任务栏（比如IE浏览器，应用商店）
 - 规划分区，明确每个分区盘的用处
 
+<!-- more -->
 ## 工具下载
 下载以下常用工具并安装
 

@@ -2,6 +2,7 @@
 title: Atom前端开发配置
 s: atom-frontend-plugins
 date: 2016-05-22 18:05:18
+thumbnail: /images/others/atom.png
 tags:
   - Atom
   - Atom-plugin
@@ -36,6 +37,7 @@ Community Packages (28) /Users/erguotou/.atom/packages
 
 └── (empty)
 ```
+<!-- more -->
 
 ```bash
 apm install Stylus atom-beautify atom-material-ui autoclose-html busy-signal docblockr editorconfig emmet file-icons highlight-selected intentions language-gitignore language-vue linter linter-ui-default linter-eslint linter-htmlhint local-history minimap minimap-highlight-selected pigments

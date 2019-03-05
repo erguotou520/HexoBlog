@@ -2,11 +2,13 @@
 title: 闲置树莓派捣腾记
 s: raspberry-pi-samba
 date: 2016-06-07 21:32:12
-thumbnail: https://www.raspberrypi.org/app/uploads/2015/08/raspberry-pi-logo.png
+# thumbnail: https://www.raspberrypi.org/app/uploads/2015/08/raspberry-pi-logo.png
+thumbnail: /images/linux/raspberry.png
 tags:
   - Raspberry
 ---
 手上有一个树莓派，之前装个`openelec`看看视频什么的，后来因为一些原因废弃了。本来打算做私有云的，但是树莓派做私有云可能有些力不从心，等安定了后再捣腾私有云吧，到时可能黑群晖，也可能白群晖，也可能其它方案，都还不一定呢。现在先拿来玩耍玩耍做个共享弄个开源`ownCloud`还是可以的。废话不多说，进入正题。
+<!-- more -->
 
 ## 安装系统
 1. 使用`SDFormat`格掉SD卡。
@@ -31,7 +33,7 @@ tags:
 	```bash
     sudo apt-get install --fix-broken && sudo apt-get autoremove && sudo apt-get update && sudo apt-get install samba
     ```
-失败，然后卸载。
+  失败，然后卸载。
 	```bash
     sudo apt-get remove samba-common libwbclient0 tdb-tools`，卸载完成后重新安装`sudo apt-get install samba samba-common-bin
     ```
@@ -39,7 +41,7 @@ tags:
     ```bash
     sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
     ```
-然后修改配置文件`sudo vim /etc/samba/smb.conf`并删除默认的`home`共享。
+  然后修改配置文件`sudo vim /etc/samba/smb.conf`并删除默认的`home`共享。
 	```bash
     [share]
         comment = Raspberry smb
@@ -48,5 +50,5 @@ tags:
         writeable = yes
         create mask = 0664
         directory mask = 0775
-    ```
-为了简单，此处直接使用已有的`pi`用户。在`/home/pi`下新建`share`目录。完成后重启`samba`服务`sudo service samba restart`。到此就完成了`samba`的安装配置，可以在设备上拷贝文件测试了。
+  ```
+  为了简单，此处直接使用已有的`pi`用户。在`/home/pi`下新建`share`目录。完成后重启`samba`服务`sudo service samba restart`。到此就完成了`samba`的安装配置，可以在设备上拷贝文件测试了。

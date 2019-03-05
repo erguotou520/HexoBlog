@@ -2,12 +2,14 @@
 title: Windows下调试平板设备
 s: debug-pad
 date: 2016-08-31 13:56:00
-thumbnail: /images/others/chrome-inspect.png
+# thumbnail: /images/others/chrome-inspect.png
+thumbnail: /images/others/debug.png
 tags:
   - Debug
 ---
 
 本文主要记录Android上的Chrome和IOS上的Safari浏览器的调试方法，方便以后查看。开始之前请自备梯子，下面会需要翻墙。
+<!-- more -->
 ## Android设备调试
 借助于Chrome的inspect工具，我们可以调试Android中使用了WebView的应用，所以调试Chrome网页也是同样的道理。
 1. 安装ADB和驱动。网上有很多这方面的文章介绍，但是鉴于很多时候会出现各种问题，所以建议使用一键工具统一安装，[下载地址，需翻墙](http://forum.xda-developers.com/showthread.php?p=48915118#post48915118)。

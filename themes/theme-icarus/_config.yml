@@ -33,7 +33,7 @@ customize:
 # Widgets
 widgets:
     - recent_posts
-    - category
+    # - category
     - archive
     - tag
     - tagcloud
