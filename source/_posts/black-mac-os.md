@@ -2,7 +2,7 @@
 title: 黑苹果安装记录
 s: black-mac-os
 date: 2019-05-14 23:10:00
-thumbnail: /images/others/mac-install.png
+thumbnail: /images/others/mac-install.jpg
 tags:
   - os
   - mac
@@ -18,7 +18,7 @@ tags:
 黑苹果安装中最大的问题就是驱动问题，所以最好是安装[tonymacx86](https://www.tonymacx86.com/buyersguide/building-a-customac-hackintosh-the-ultimate-buyers-guide/)上推荐的配置去购买，但是我的机器已经是准备好的了，就跳过这一步，但是要通过搜索确认下自己的硬件安装黑苹果没有太大问题。我的主要配置如下：
 - Intel I5 8400
 - MSI B310M
-- 集成显卡
+- 集成显卡 Intel UHD 630
 
 另外你最好有一台白苹果，没有的话用Windows应该也可以，不过我更倾向于白苹果制作引导盘的方式。
 
@@ -59,7 +59,7 @@ tags:
     brew install git
     ```
   - Xcode 一些命令行工具需要
-  - Docker VSCode等
+  - Docker VSCode iTerm2 Alfred等
 
 ## 总结
 安装黑苹果不难，但需要新手花点时间学习研究，遇到问题通过日志搜索，多逛逛`tonymacx86`。
