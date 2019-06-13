@@ -8,8 +8,6 @@ tags:
   - centos
 ---
 
-# CentOS 7升级OpenSSH
-
 ## 当前状态
 
 查看openssh版本 `ssh -V`，查看openssl版本`openssl version`，记录当前版本号以便升级后做对比。
@@ -27,10 +25,15 @@ systemctl start xinetd
 # 允许root登录
 echo  'pts/0'  >>/etc/securetty
 echo 'pts/1' >>/etc/securetty
-service  xinetd  restart
+systemctl restart xinetd.service
 # 防火墙添加过滤
 firewall-cmd --add-service=telnet --zone=public --permanent
 # 确认下telnet是否可以登录成功
+```
+<!-- more -->
+## 开始安装
+
+```bash
 # 安装一些可能需要的库
 yum install zlib-devel -y pam-devel tcp_wrappers-devel gcc
 # 备份文件
@@ -49,11 +52,11 @@ wget http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.0p1.tar.gz
 tar zxvf openssh-8.0p1.tar.gz
 
 # 编译安装openssl-fips
-cd ../openssl-fips-2.0.16/
+cd ./openssl-fips-2.0.16/
 ./config && make && make install
 
 # 编译安装openssl
-cd openssl-1.0.2s/
+cd ../openssl-1.0.2s/
 ./config fips shared -fPIC
 make depend
 make && make install
@@ -65,6 +68,7 @@ echo "/usr/local/ssl/lib" >> /etc/ld.so.conf
 openssl version
 
 # 编译安装openssh
+cd ../openssh-8.0p1
 ./configure --prefix=/usr/ --sysconfdir=/etc/ssh  --with-openssl-includes=/usr/local/ssl/include --with-ssl-dir=/usr/local/ssl --with-zlib --with-md5-passwords --with-pam && make && make install
 # 修改ssh配置文件，修改PermitRootLogin为yes UseDNS为no
 vi /etc/ssh/sshd_config
@@ -73,17 +77,19 @@ cp -a contrib/redhat/sshd.pam /etc/pam.d/sshd.pam
 chmod +x /etc/init.d/sshd
 chkconfig --add sshd
 systemctl enable sshd
-systemctl enable sshd
 # 使用命令测试端口是否正常
 systemctl stop sshd
 netstat -lntp
 systemctl start sshd
 netstat -lntp
-# 重启
-reboot
-# 测试ssh版本是否升级成功
-ssh -V
-# 关闭telnet服务
+```
+
+## 安装完成后续
+
+安装完成后`reboot`重启下机器，然后测试下ssh版本是否升级成功
+`ssh -V`，测试ok后关闭telnet服务
+
+```bash
 systemctl disable xinetd.service
 systemctl stop xinetd.service
 systemctl disable telnet.socket
