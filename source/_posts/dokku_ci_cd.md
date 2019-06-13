@@ -40,8 +40,8 @@ tags:
   dokku mysql:link gogs gogs
   # 使用指定版本
   docker pull gogs/gogs
-  docker tag gogs/gogs:latest dokku/gogs:latest
-  dokku tags:deploy gogs latest
+  docker tag gogs/gogs dokku/gogs
+  dokku tags:deploy gogs
   ```
 4. 使用Let's Encrypt进行https加密
   ```bash
@@ -58,19 +58,22 @@ tags:
   dokku apps:create drone
   # 设置域名
   dokku domains:add drone drone.erguotou.me
-  dokku proxy:ports-add drone http:80:80
+  dokku proxy:ports-add drone http:80:80 https:443:80
   # 这里同样适用sqlite作为数据库
   # dokku mysql:create drone
   # dokku mysql:link drone drone
   ## 暂时不能使用最新版本，坑了很久
   # docker pull drone/drone:latest
-  docker pull drone/drone:1.0.0-rc.5
-  docker tag drone/drone:1.0.0-rc.5 dokku/drone:1.0.0-rc.5
+  docker pull drone/drone
+  docker tag drone/drone dokku/drone
   dokku storage:mount drone /var/run/docker.sock:/var/run/docker.sock
+  mkdir -p /var/lib/dokku/data/storage/drone
+  chown -R dokku:dokku /var/lib/dokku/data/storage/drone
+  dokku storage:mount drone /var/lib/dokku/data/storage/drone:/data
   # 配置drone的环境变量
   dokku config:set drone DRONE_GOGS_SERVER=https://gogs.erguotou.me DRONE_GIT_ALWAYS_AUTH=true DRONE_RUNNER_CAPACITY=1 DRONE_SERVER_PROTO=https DRONE_SERVER_HOST=drone.erguotou.me DRONE_RPC_SECRET=$RPC_SECRET
   # dokku config:set drone DRONE_OPEN=false DRONE_GOGS_PRIVATE_MODE=true DRONE_DATABASE_DRIVER=mysql DRONE_DATABASE_DATASOURCE='root:password@tcp(1.2.3.4:3306)/drone?parseTime=true' DRONE_HOST=https://drone.erguotou.me DRONE_GOGS=true DRONE_GOGS_URL=https://gogs.erguotou.me DRONE_SECRET=secret DRONE_ADMIN=username,password
-  dokku tags:deploy drone 1.0.0-rc.5
+  dokku tags:deploy drone
   # dokku proxy:ports-add drone http:80:8000
   # dokku proxy:ports-remove drone http:443:443 http:8000:8000 http:80:80
   dokku letsencrypt drone
@@ -78,9 +81,9 @@ tags:
   dokku apps:create drone-agent
   dokku storage:mount drone-agent /var/run/docker.sock:/var/run/docker.sock
   dokku config:set drone-agent DRONE_RPC_SERVER=https://drone.erguotou.me  DRONE_RPC_SECRET=$RPC_SECRET
-  docker pull drone/agent:1.0.0-rc.5
-  docker tag drone/agent:1.0.0-rc.5 dokku/drone-agent:1.0.0-rc.5
-  dokku tags:deploy drone-agent 1.0.0-rc.5
+  docker pull drone/agent
+  docker tag drone/agent dokku/drone-agent
+  dokku tags:deploy drone-agent
   ## agent，暂时不能使用最新版，直接使用docker命令启动，看最新版源码里/ws/broker请求都没有了
   # dokku apps:create drone-agent
   # docker pull drone/agent:latest
