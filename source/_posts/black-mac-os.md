@@ -10,6 +10,7 @@ tags:
 因工作原因换台电脑，作为开发人员，肯定是优先Mac的，其次是Linux系，但Linux系系统在软件工具生态上还有些不足，而Mac无疑是最佳选择。虽然黑苹果可能会遇到一些意外事故，但是也挡不住我对它的喜爱，哈哈。
 
 以下介绍基本都是参照[https://www.tonymacx86.com/threads/unibeast-install-macos-mojave-on-any-supported-intel-based-pc.259381/#create_unibeast](https://www.tonymacx86.com/threads/unibeast-install-macos-mojave-on-any-supported-intel-based-pc.259381/#create_unibeast)得来，有能力的还是去`tonymacx86`好好研究一番。
+<!-- more -->
 
 ## 安装前准备
 
@@ -33,7 +34,6 @@ tags:
 另外还需要在`tonymacx86`下载好`MultiBeast`和`UniBeast`工具，注意配合自己下载的系统版本。
 
 这里需要将白苹果的系统语言改为英语，这是`UniBeast`的强制性要求，改完后重启。
-<!-- more -->
 ## 安装流程
 
 1. 制作启动盘。插上U盘，在白苹果的磁盘工具中擦除U盘，格式选择Mac扩展（日志）。然后打开`UniBeast`按照流程进行启动盘制作，这里引导方式选择`UEFI`模式（一般新的电脑都是支持的）。制作完成后将`MultiBeast`应用拖到U盘中以备后用。
