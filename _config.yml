@@ -41,13 +41,14 @@ future: true
 # marked:
 #   gfm: true
 #   tables: true
-render:
-  html: true
-  xhtmlOut: false
-  breaks: true
-  linkify: true
-  typographer: true
-  quotes: '“”‘’'
+markdown:
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '“”‘’'
   plugins:
     - markdown-it-footnote
     - markdown-it-sup
@@ -58,7 +59,8 @@ render:
     level: 2
     collisionSuffix: 'v'
     permalink: true
-    permalinkClass: header-a
+    permalinkClass: header-anchor
+    permalinkSymbol: ¶
 highlight:
   enable: true
   line_number: true
