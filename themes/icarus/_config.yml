@@ -123,11 +123,11 @@ widgets:
         # Author name to be shown in the profile widget
         author: 二锅头
         # Title of the author to be shown in the profile widget
-        author_title: 前端老鸟
+        author_title: 不正经的前端
         # Author's current location to be shown in the profile widget
         location: China
         # Path or URL to the avatar to be shown in the profile widget
-        avatar: /images/avatar.png
+        avatar: /images/avatar.jpg
         # Email address for the Gravatar to be shown in the profile widget
         gravatar:
         # Path or URL for the follow button
