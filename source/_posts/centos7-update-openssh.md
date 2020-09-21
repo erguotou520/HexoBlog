@@ -2,6 +2,7 @@
 title: CentOS7升级OpenSSH
 s: centos7-update-openssh
 date: 2019-06-13 11:51:00
+cover: /images/server/openssh.gif
 thumbnail: /images/server/openssh.gif
 tags:
   - openssh

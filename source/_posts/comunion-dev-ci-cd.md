@@ -2,6 +2,7 @@
 title: 我是如何给Comunion开发环境做CI/CD的
 s: comunion-dev-ci-cd
 date: 2020-05-26 12:00:00
+cover: /images/comunion/logo.png
 thumbnail: /images/comunion/logo.png
 tags:
   - comunion

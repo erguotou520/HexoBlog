@@ -2,6 +2,7 @@
 title: 黑苹果安装记录
 s: black-mac-os
 date: 2019-05-14 23:10:00
+cover: /images/others/mac-install.jpg
 thumbnail: /images/others/mac-install.jpg
 tags:
   - os

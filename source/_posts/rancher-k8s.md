@@ -2,6 +2,7 @@
 title: 基于Rancher搭建k8s的集群环境
 s: k8s-over-rancher
 date: 2018-03-21 09:38:11
+cover: /images/rancher/logo.png
 thumbnail: /images/rancher/logo.png
 tags:
   - rancher

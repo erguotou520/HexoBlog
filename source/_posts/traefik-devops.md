@@ -2,6 +2,7 @@
 title: 利用Traefik搭建超简单的DevOps平台
 s: traefik-devops
 date: 2020-02-16 14:38:00
+cover: /images/devops/traefik-devops.jpg
 thumbnail: /images/devops/traefik-devops.jpg
 tags:
   - traefik

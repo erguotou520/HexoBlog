@@ -1,4 +1,9 @@
-node_modules
-.deploy_git
-public
-firebase-debug.log
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+.vscode/
+yarn.lock

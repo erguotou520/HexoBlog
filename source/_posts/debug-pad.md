@@ -3,6 +3,7 @@ title: Windows下调试平板设备
 s: debug-pad
 date: 2016-08-31 13:56:00
 # thumbnail: /images/others/chrome-inspect.png
+cover: /images/others/debug.png
 thumbnail: /images/others/debug.png
 tags:
   - Debug

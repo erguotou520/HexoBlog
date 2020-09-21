@@ -2,6 +2,7 @@
 title: Electron应用开发总结
 s: electron-app-summary
 date: 2019-02-26 10:30:00
+cover: /images/electron/logo.png
 thumbnail: /images/electron/logo.png
 tags:
   - electron

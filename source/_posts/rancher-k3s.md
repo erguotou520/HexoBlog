@@ -2,6 +2,7 @@
 title: 搭建一套k3s的集群环境
 s: k3s-over-rancher
 date: 2020-03-18 19:08:00
+cover: /images/rancher/k3s-rancher.png
 thumbnail: /images/rancher/k3s-rancher.png
 tags:
   - rancher

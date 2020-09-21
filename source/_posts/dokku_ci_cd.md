@@ -3,6 +3,7 @@ title: 利用dokku打造自己的私有云仓库和自动化部署
 s: dokku_ci_cd
 date: 2017-07-09 18:15:00
 # thumbnail: https://raw.githubusercontent.com/dokku/dokku/v0.10.3/docs/assets/dokku.png
+cover: /images/cloud/dokku.png
 thumbnail: /images/cloud/dokku.png
 tags:
   - dokku

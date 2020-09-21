@@ -2,6 +2,7 @@
 title: 利用Nginx让IIS和tomcat共用80端口
 s: nginx-tomcat-iis
 date: 2015-01-14 16:46:00
+cover: /images/server/nginx.png
 thumbnail: /images/server/nginx.png
 tags:
   - Nginx

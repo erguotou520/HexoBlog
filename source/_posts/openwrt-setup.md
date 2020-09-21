@@ -2,6 +2,7 @@
 title: 基于openwrt的家庭网络设置
 s: openwrt-setup
 date: 2020-04-05 13:29:00
+cover: /images/linux/openwrt.png
 thumbnail: /images/linux/openwrt.png
 tags:
   - openwrt

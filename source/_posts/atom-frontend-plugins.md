@@ -2,6 +2,7 @@
 title: Atom前端开发配置
 s: atom-frontend-plugins
 date: 2016-05-22 18:05:18
+cover: /images/others/atom.png
 thumbnail: /images/others/atom.png
 tags:
   - Atom

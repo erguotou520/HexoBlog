@@ -2,6 +2,7 @@
 title: 工作中遇到的cookie知识整理
 s: cookie-tidy
 date: 2017-12-06 11:05:00
+cover: /images/js/cookie.png
 thumbnail: /images/js/cookie.png
 tags:
   - Cookie

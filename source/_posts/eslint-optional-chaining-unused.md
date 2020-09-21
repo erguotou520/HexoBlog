@@ -2,6 +2,7 @@
 title: 解决Optinal chaining会报no-unused-exceptions的错误
 s: eslint-optional-chaining-unused
 date: 2020-06-10 15:30:00
+cover: /images/js/optional-chaining-unused.png
 thumbnail: /images/js/optional-chaining-unused.png
 tags:
   - eslint

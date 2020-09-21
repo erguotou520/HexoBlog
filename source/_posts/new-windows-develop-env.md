@@ -2,6 +2,7 @@
 title: 记新windows电脑打造前端开发环境流程
 s: new-windows-develop-env
 date: 2018-05-21 15:33:45
+cover: /images/windows/win10.png
 thumbnail: /images/windows/win10.png
 tags:
   - windows

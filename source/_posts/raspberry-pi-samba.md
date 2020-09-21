@@ -3,6 +3,7 @@ title: 闲置树莓派捣腾记
 s: raspberry-pi-samba
 date: 2016-06-07 21:32:12
 # thumbnail: https://www.raspberrypi.org/app/uploads/2015/08/raspberry-pi-logo.png
+cover: /images/linux/raspberry.png
 thumbnail: /images/linux/raspberry.png
 tags:
   - Raspberry

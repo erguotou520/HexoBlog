@@ -2,6 +2,7 @@
 title: 微信小程序开发填坑整理
 s: wechat-mina-note
 date: 2020-02-21 13:52:00
+cover: /images/wechat/mina.png
 thumbnail: /images/wechat/mina.png
 tags:
   - wechat

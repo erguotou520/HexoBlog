@@ -2,6 +2,7 @@
 title: 记录在开发electron-ssr过程中遇到的问题
 s: develop-electron-ssr
 date: 2018-01-22 15:54:00
+cover: /images/electron/ssr.png
 thumbnail: /images/electron/ssr.png
 tags:
   - electron-ssr
