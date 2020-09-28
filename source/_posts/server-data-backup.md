@@ -55,15 +55,19 @@ rclone --checksum sync /path/to/bitwarden/ OneDrive:/server/backup/path/to/bitwa
 [Unit]
 Description=BackupTimer
 
-[Timer]
-OnUnitActiveSec=*-*-* 04:00:00
-Unit=backup.service
-
 [Install]
 WantedBy=multi-user.target
 
 [Service]
 ExecStart=/bin/bash /path/to/backup.sh
+```
+
+在`/etc/systemd/system/`目录新建`backup.timer`，内容如下
+
+```
+[Timer]
+OnCalendar=*-*-* 04:00:00
+Unit=backup.service
 ```
 
 启动 service
@@ -73,7 +77,7 @@ systemctl start backup
 systemctl enable backup
 ```
 
-*以下内容为旧版备份方案*
+_以下内容为旧版备份方案_
 
 ### Gogs 备份
 
