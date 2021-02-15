@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>记新windows电脑打造前端开发环境流程 - 宁静方能致远</title><meta description="系统环境  查看电脑配置（主要是CPU内存硬盘SSD这些），对于该配置能完成什么样的开发强度心里有数 联网，设置固定IP（较推荐） 清理已安装工具，取消不常用的任务栏（比如IE浏览器，应用商店） 规划分区，明确每个分区盘的用处"><meta property="og:type" content="blog"><meta property="og:title" content="记新windows电脑打造前端开发环境流程"><meta property="og:url" content="https://blog.erguotou.me/new-windows-develop-env.html"><meta property="og:site_name" content="宁静方能致远"><meta property="og:description" content="系统环境  查看电脑配置（主要是CPU内存硬盘SSD这些），对于该配置能完成什么样的开发强度心里有数 联网，设置固定IP（较推荐） 清理已安装工具，取消不常用的任务栏（比如IE浏览器，应用商店） 规划分区，明确每个分区盘的用处"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://blog.erguotou.me/images/windows/win10.png"><meta property="article:published_time" content="2018-05-21T15:33:45.000Z"><meta property="article:author" content="二锅头"><meta property="article:tag" content="windows"><meta property="article:tag" content="前端开发环境"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/images/windows/win10.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.erguotou.me/new-windows-develop-env.html"},"headline":"宁静方能致远","image":["https://blog.erguotou.me/images/windows/win10.png"],"datePublished":"2018-05-21T15:33:45.000Z","author":{"@type":"Person","name":"二锅头"},"description":"系统环境  查看电脑配置（主要是CPU内存硬盘SSD这些），对于该配置能完成什么样的开发强度心里有数 联网，设置固定IP（较推荐） 清理已安装工具，取消不常用的任务栏（比如IE浏览器，应用商店） 规划分区，明确每个分区盘的用处"}</script><link rel="canonical" href="https://blog.erguotou.me/new-windows-develop-env.html"><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.9.0/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><script src="https://www.googletagmanager.com/gtag/js?id=UA-81237576-1" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'UA-81237576-1');</script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css"><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><meta name="generator" content="Hexo 5.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/images/favicon.png" alt="宁静方能致远" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">文章</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/images/windows/win10.png" alt="记新windows电脑打造前端开发环境流程"></span></div><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2018-05-21T15:33:45.000Z" title="2018-05-21T15:33:45.000Z">2018-05-21</time>发表</span><span class="level-item">9 分钟读完 (大约1278个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">记新windows电脑打造前端开发环境流程</h1><div class="content"><h2 id="系统环境">系统环境</h2>
+<ul>
+<li>查看电脑配置（主要是CPU内存硬盘SSD这些），对于该配置能完成什么样的开发强度心里有数</li>
+<li>联网，设置固定IP（较推荐）</li>
+<li>清理已安装工具，取消不常用的任务栏（比如IE浏览器，应用商店）</li>
+<li>规划分区，明确每个分区盘的用处</li>
+</ul>
+<a id="more"></a>
+<h2 id="工具下载">工具下载</h2>
+<p>下载以下常用工具并安装</p>
+<ul>
+<li>7z</li>
+<li>Chrome</li>
+<li>VSCode</li>
+<li>python</li>
+<li>Git（VSCode安装后再安装），SourceTree（图形化Git管理），BeyondCompare（Diff对比工具）</li>
+<li>NodeJs</li>
+<li>yarn</li>
+<li>Everything</li>
+<li>Wox（Everything和python安装后再安装）</li>
+<li>Cmder</li>
+<li>Office工具</li>
+<li>MacType（美化windows字体显示）</li>
+<li>迅雷极速版/FDM/Motrix</li>
+<li>IM工具 QQ/TIM 微信 钉钉</li>
+<li>VirtualBox</li>
+<li>其它工具 坚果云 Zerotier-One</li>
+<li>从坚果云的同步文件中安装ssr并添加订阅地址</li>
+</ul>
+<h2 id="Chrome">Chrome</h2>
+<p>前端开发浏览器是重头，所以要配置好浏览器的一些东西</p>
+<ul>
+<li>ssr运行后登录chrome同步扩展程序，确保常用的<code>vue-devtool</code> <code>Proxy SwitchSharp</code> <code>NIM(NodeJs调试管理工具)</code> <code>划词翻译</code>扩展已安装</li>
+<li>登录后等待同步书签</li>
+<li>为<code>Proxy SwitchSharp</code>导入坚果云同步的备份文件，并点击扩展图标选择自动模式，至此FQ已完成，后续可以科学上网</li>
+<li>设置 -&gt; 下载内容 -&gt; 下载前询问每个文件的保存位置 勾选上</li>
+</ul>
+<h2 id="Cmder">Cmder</h2>
+<p>windows下如果要获得流畅的命令行使用体验，<code>Cmder</code>那是必备的工具，后续的命令行操作也是使用该工具执行，安装后需要做一些简单的设置，参考<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/979db1a96f6d"></a></p>
+<ul>
+<li>注册右键菜单 管理员身份打开cmd并cd到<code>Cmder</code>目录，执行<code>Cmder.exe /REGISTER ALL</code></li>
+<li>设置启动目录 Settings -&gt; Startup - &gt; Task，修改{cmd::Cmder}项，把:<br>
+<code>cmd /k &quot;%ConEmuDir%\..\init.bat&quot;</code>改为<code>cmd /k &quot;%ConEmuDir%\..\init.bat&quot; -new_console:d:G:\workspace</code></li>
+<li>设置alias 打开<code>Cmder</code>安装目录下的<code>config/user-aliases.cmd</code>文件，添加常用的简写命令，比如  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gc = git commit -am <span class="variable">$1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>设置常用快捷键 在Settings -&gt; Keys &amp; Macro页面中搜索<code>split</code>，为split bottom设置快捷键<code>Ctrl+Shift+D</code>为split right设置快捷键<code>Ctrl+D</code>，保持和<code>iTerm2</code>一致。设置<code>Minimize/Restore (Quake-style hotkey also)</code>的快捷键为<code>Ctrl+F1</code>，这个可以用来快速显隐窗口。</li>
+</ul>
+<h2 id="Git">Git</h2>
+<p>Git现在几乎成了主流的版本控制工具，在开发之前我们需要先对Git做个简单的配置</p>
+<ul>
+<li>配置Git  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;erguotou&quot;</span></span><br><span class="line">git config --global user.email erguotou525@gmail.com</span><br></pre></td></tr></table></figure>
+</li>
+<li>生成本地公私钥  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+将生成的公钥复制到Github/Gitlab之类的仓库中。</li>
+<li>修改文件默认结尾格式  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config core.eol lf</span><br><span class="line">git config core.autocrlf <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="VSCode">VSCode</h2>
+<p>目前来看最火的编辑器，速度比<code>Atom</code>快很多，使用前先安装几个常用的插件</p>
+<ul>
+<li>EditorConfig for VS Code</li>
+<li>ESLint</li>
+<li>HTML Snippets</li>
+<li>language-postcss</li>
+<li>PostCSS syntax</li>
+<li>language-stylus</li>
+<li>Path Intellisense</li>
+<li>Prettier</li>
+<li>Vetur</li>
+<li>Beautify</li>
+<li>其它如Flutter/Dart/Docker/Docker Compose/DotENV/Python/英汉词典</li>
+</ul>
+<p>然后修改创建文件的默认结尾为<code>LF</code>，在用户配置中加入<code>&quot;files.eol&quot;: &quot;\n&quot;</code></p>
+<h2 id="NodeJs">NodeJs</h2>
+<p>前端开发必备，主要是换源，安装常用全局模块</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i -g nrm http-server</span><br><span class="line">nrm use taobao</span><br><span class="line">yarn config <span class="built_in">set</span> registry <span class="string">&#x27;https://registry.npm.taobao.org&#x27;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Everything-Wox">Everything &amp; Wox</h2>
+<p>类似Mac上的<code>Alfred</code>，配置简单，主要是改下快捷键为<code>Ctrl+~</code></p>
+<h2 id="高级玩法">高级玩法</h2>
+<ul>
+<li>AutoHotKey <code>AHK</code>为windows用户提供了更多的可能，开发时可以用它定义快捷输入、执行自动化操作，可以定义开机自启动脚本，显隐应用窗口等等</li>
+<li>MacType Windows的ClearType字体很多时候看着都很难受，这时我们需要MacType来优化字体显示，可以参考这个做个自定义优化<a target="_blank" rel="noopener" href="https://blog.csdn.net/w19981220/article/details/47993893"></a>或者直接使用Candy改的MacType</li>
+</ul>
+<h2 id="其它">其它</h2>
+<ul>
+<li>使用<code>ssh-keygen -t rsa</code>生成公私钥，并将公钥上传到Github/Bitbucket/Gitlab等</li>
+<li>使用<code>ssh-copy-id -i ~/.ssh/id_rsa.pub user@server.host</code>命令将公钥上传到服务器实现免密登录</li>
+</ul>
+<h2 id="开发一段时间后使用到的一些工具">开发一段时间后使用到的一些工具</h2>
+<ul>
+<li>Photoshop CC</li>
+<li>Cow 本地代理</li>
+<li>GifCam 本地录屏并生成gif文件</li>
+<li>navcat 数据库连接工具</li>
+<li>oss-aliyun 连接阿里OSS</li>
+<li>15_Second_ADB_Installer 快速安装adb工具</li>
+<li>Android SDK</li>
+<li>besttrace 路由跟踪工具</li>
+<li>charles-proxy/Fiddler 本地请求拦截</li>
+<li>网易云音乐</li>
+<li>Dism 轻量级windows管理工具</li>
+<li>DockerToolbox 没有用Docker for Windows，因为它和VirtualBox冲突</li>
+<li>Golang</li>
+<li>lean cli leancloud命令行工具</li>
+<li>Medis redis连接工具</li>
+<li>minio 本地oss服务</li>
+<li>mingw-w64</li>
+<li>mongodb/robo3t mongodb和其连接工具</li>
+<li>ngrok 内网穿透工具</li>
+<li>postman api测试工具</li>
+<li>搜狗输入法</li>
+<li>TeamViewer/向日葵 远程连接工具</li>
+<li>Telegram</li>
+<li>TunSafe</li>
+<li>Vagrant</li>
+<li>微信web开发者工具</li>
+<li>windirstat 查看本地磁盘占用空间，磁盘清理就靠它定位了</li>
+<li>WinSCP 远程连接和管理工具</li>
+<li>各种虚拟机镜像 Windows/Ubuntu等</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>记新windows电脑打造前端开发环境流程</p><p><a href="https://blog.erguotou.me/new-windows-develop-env.html">https://blog.erguotou.me/new-windows-develop-env.html</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>二锅头</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2018-05-21</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="" rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p></div></div></div></div></div><div class="article-tags size-small mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/windows/">windows</a><a class="link-muted mr-2" rel="tag" href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">前端开发环境</a></div><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/social-share.js/1.0.16/css/share.min.css"><div class="social-share"></div><script src="https://cdnjs.loli.net/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/electron-app-summary.html"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Electron应用开发总结</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/rancher-k8s.html"><span class="level-item">基于Rancher搭建k8s的集群环境</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="comment-container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+            id: '7cf21b49bdb13a7e634a6201ce246312',
+            repo: 'HexoBlog',
+            owner: 'erguotou520',
+            oauth: {
+                client_id: '2796247645eb3e1a75a2',
+                client_secret: '0216a1a4c0ff0f5d8264f00582d697efe7ec2250',
+            },
+            perPage: 20,
+            maxCommentHeight: 250
+        })
+        gitment.render('comment-container')</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/avatar.png" alt="二锅头"></figure><p class="title is-size-4 is-block line-height-inherit">二锅头</p><p class="is-size-6 is-block">不正经的前端</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">43</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">62</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="http://github.com/erguotou520" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="http://github.com/erguotou520"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/3D%E6%89%93%E5%8D%B0/"><span class="tag">3D打印</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Api/"><span class="tag">Api</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Arduino/"><span class="tag">Arduino</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Atom/"><span class="tag">Atom</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Atom-plugin/"><span class="tag">Atom-plugin</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CD/"><span class="tag">CD</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CI/"><span class="tag">CI</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Cookie/"><span class="tag">Cookie</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Debug/"><span class="tag">Debug</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Firebase/"><span class="tag">Firebase</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Fonts/"><span class="tag">Fonts</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Frontend/"><span class="tag">Frontend</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Ghost/"><span class="tag">Ghost</span><span class="tag is-grey-lightest">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Git/"><span class="tag">Git</span><span class="tag is-grey-lightest">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github/"><span class="tag">Github</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Nginx/"><span class="tag">Nginx</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/NodeJs/"><span class="tag">NodeJs</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Raspberry/"><span class="tag">Raspberry</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SSH/"><span class="tag">SSH</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/STM32/"><span class="tag">STM32</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Swiftype/"><span class="tag">Swiftype</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/TravisCI/"><span class="tag">TravisCI</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Vps/"><span class="tag">Vps</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/adguard-home/"><span class="tag">adguard home</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/backup/"><span class="tag">backup</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bitwarden/"><span class="tag">bitwarden</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cd/"><span class="tag">cd</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/centos/"><span class="tag">centos</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ci/"><span class="tag">ci</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/comunion/"><span class="tag">comunion</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/devops/"><span class="tag">devops</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/dokku/"><span class="tag">dokku</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/drone/"><span class="tag">drone</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/electron/"><span class="tag">electron</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/electron-ssr/"><span class="tag">electron-ssr</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/eslint/"><span class="tag">eslint</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/github-actions/"><span class="tag">github actions</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/gitlab-ci/"><span class="tag">gitlab ci</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/gogs/"><span class="tag">gogs</span><span class="tag is-grey-lightest">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/k3s/"><span class="tag">k3s</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/k8s/"><span class="tag">k8s</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/kubernetes/"><span class="tag">kubernetes</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mac/"><span class="tag">mac</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/openssh/"><span class="tag">openssh</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/openwrt/"><span class="tag">openwrt</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/optional-chaining/"><span class="tag">optional chaining</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/os/"><span class="tag">os</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/pppoe/"><span class="tag">pppoe</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/rancher/"><span class="tag">rancher</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/rancher-os/"><span class="tag">rancher os</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/rclone/"><span class="tag">rclone</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/registry/"><span class="tag">registry</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/summary/"><span class="tag">summary</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/traefik/"><span class="tag">traefik</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/travis-ci/"><span class="tag">travis ci</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/vsftpd/"><span class="tag">vsftpd</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/wechat/"><span class="tag">wechat</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/windows/"><span class="tag">windows</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"><span class="tag">前端开发环境</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"><span class="tag">小程序</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%A1%AC%E4%BB%B6/"><span class="tag">硬件</span><span class="tag is-grey-lightest">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/images/favicon.png" alt="宁静方能致远" height="28"></a><p class="size-small"><span>&copy; 2021 二锅头</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><div id="outdated"><h6>Your browser is out-of-date!</h6><p>Update your browser to view this website correctly.&amp;npsb;<a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p><p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">×</a></p></div><script src="https://cdnjs.loli.net/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js" defer></script><script>window.addEventListener("load", function () {
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'object-fit' // display on IE11 or below
+            });
+        });</script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
