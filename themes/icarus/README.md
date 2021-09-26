@@ -4,7 +4,7 @@
 <br>
 <a href="https://ppoffice.github.io/hexo-theme-icarus/">Preview</a> |
 <a href="https://ppoffice.github.io/hexo-theme-icarus/categories/">Documentation</a> |
-<a href="https://gitter.im/hexo-theme-icarus/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">Chat on Gitter</a>
+<a href="https://github.com/ppoffice/hexo-theme-icarus/discussions">Discuss on GitHub</a>
 <br>
 </p>
 
@@ -56,15 +56,15 @@ AddThis &middot; AddToAny &middot; Baidu Share &middot; Share.js &middot; ShareT
 Google Adsense &middot; Archives &middot; Categories &middot; External Site Links &middot; 
 Recent Posts &middot; Google Feedburner &middot; Tags &middot; Table of Contents
 
-**[Analytics](https://blog.zhangruipeng.me/hexo-theme-icarus/Plugins/Analytics/icarus-user-guide-web-analytics-plugins/)**
+**[Analytics](https://ppoffice.github.io/hexo-theme-icarus/Plugins/Analytics/icarus-user-guide-web-analytics-plugins/)**
 
-Baidu Statistics &middot; BuSuanZi Web Counter &middot; CNZZ Statistics &middot; Google Analytics &middot; 
-Hotjar
+Baidu Statistics &middot; Bing Webmaster &middot; BuSuanZi Web Counter &middot; CNZZ Statistics &middot;
+Google Analytics &middot; Hotjar &middot; StatCounter &middot; Twitter Conversion Tracking
 
 **[Other Plugins](https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/)**
 
-LightGallery &middot; Justified Gallery &middot; KaTeX &middot; MathJax &middot; Oudated Browser &middot;
-Page Loading Animations
+Cookie Consent &middot; LightGallery &middot; Justified Gallery &middot; KaTeX &middot; MathJax &middot;
+Oudated Browser &middot; Page Loading Animations
 
 ### Colorful Code Highlight
 
@@ -150,7 +150,7 @@ If you feel like to help us build a better Icarus, you can
 
 :black_nib: [Submit a tutorial](https://github.com/ppoffice/hexo-theme-icarus/new/site/source/_posts) |
 :earth_asia: [Add a translation](https://github.com/ppoffice/hexo-theme-icarus/tree/master/languages) |
-:triangular_flag_on_post: [Report a bug](https://github.com/ppoffice/hexo-theme-icarus/issues/new) |
+:triangular_flag_on_post: [Report a bug](https://github.com/ppoffice/hexo-theme-icarus/issues) |
 :electric_plug: [Suggest a new feature](https://github.com/ppoffice/hexo-theme-icarus/pulls)
 
 ## :memo: License

@@ -24,6 +24,7 @@ widget:
     subscribe_email: 'Berlangganan untuk pembaruan'
     subscribe: 'Berlangganan'
     adsense: 'Iklan'
+    followit: 'follow.it'
 article:
     created_at: 'Diposting&nbsp;%s'
     updated_at: 'Diperbarui&nbsp;%s'
@@ -50,6 +51,13 @@ plugin:
     backtotop: 'Kembali ke atas'
     visit_count: '%s&nbsp;kunjungan'
     visitor_count: 'Dikunjungi oleh %s pengguna'
+    cookie_consent:
+      message: Situs web ini menggunakan cookie untuk meningkatkan pengalaman Anda.
+      dismiss: Mengerti!
+      allow: Izinkan cookie
+      deny: Menolak
+      link: Belajarlah lagi
+      policy: Kebijakan Cookie
 search:
     search: 'Pencarian'
     hint: 'Tulis Sesuatu..'
