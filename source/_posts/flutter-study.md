@@ -2,6 +2,7 @@
 title: Flutter开发中遇到的问题总结
 s: flutter-practice
 date: 2021-09-26 16:27:00
+thumbnail: /images/flutter/thumbnail.jpg
 cover: /images/flutter/cover.jpg
 tags:
   - flutter
