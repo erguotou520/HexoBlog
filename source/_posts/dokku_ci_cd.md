@@ -7,10 +7,9 @@ cover: /images/cloud/dokku.png
 thumbnail: /images/cloud/dokku.png
 tags:
   - dokku
-  - gogs
-  - drone
-  - CI
-  - CD
+  - Gogs
+  - Drone
+  - CI/CD
 ---
 
 `dokku`是什么？一句话概括就是一个几百行shell代码的高可扩展性的类`Heroku`的单服务器PAAS平台，利用它可以简化很多docker操作，更加方便我们维护一个`docker driven`的平台。

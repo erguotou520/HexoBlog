@@ -5,10 +5,9 @@ date: 2020-05-26 12:00:00
 cover: /images/comunion/logo.png
 thumbnail: /images/comunion/logo.png
 tags:
-  - comunion
-  - ci
-  - cd
-  - github actions
+  - Comunion
+  - CI/CD
+  - Github Actions
 ---
 
 ## 项目介绍

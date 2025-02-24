@@ -83,6 +83,8 @@ hs -m spa -P "/api->后端地址" -W "/ws->即时通讯服务"
 
 ### 🎯 如何开始使用？
 
+项目地址：[https://github.com/erguotou520/http-server](https://github.com/erguotou520/http-server)
+
 ```bash
 # 一键安装
 curl hs.erguotou.me/install | bash
@@ -92,5 +94,3 @@ curl hs.erguotou.me/install | bash
 ```
 
 立即体验极简部署的魅力，让这个用Rust打造的神器解放你的生产力！⚡️
-
-[项目地址](https://github.com/erguotou520/http-server)

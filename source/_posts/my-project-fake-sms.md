@@ -13,17 +13,17 @@ tags:
 
 ## 💡 项目：fake-sms
 
-fake-sms 是一个用于测试基于短信的应用程序的模拟短信服务器，在项目开发时使用它来代替真实的短信发送，可以减少企业在测试环境中的成本。
+`fake-sms`是一个用于测试基于短信的应用程序的模拟短信服务器，在项目开发时使用它来代替真实的短信发送，可以减少企业在测试环境中的成本。
 
 默认情况下，`fake-sms` 与 `Casdoor go-sms-sender` 兼容。
 
 🌐 在线体验: https://fake-sms.erguotou.me （家中服务器，暂时关闭）
 
-## 预览
+## 🖼️ 预览
 
-![preview](https://github.com/erguotou520/fake-sms/blob/main/assets/screen1.png?raw=true)
+![apps](https://github.com/erguotou520/fake-sms/blob/main/assets/screen1.png?raw=true)
 
-![preview](https://github.com/erguotou520/fake-sms/blob/main/assets/notifications.png?raw=true)
+![notifications](https://github.com/erguotou520/fake-sms/blob/main/assets/notifications.png?raw=true)
 
 <!-- more -->
 
@@ -56,6 +56,8 @@ fake-sms 是一个用于测试基于短信的应用程序的模拟短信服务�
 
 ## 🛠️ 开发
 
+项目地址：[https://github.com/erguotou520/fake-sms](https://github.com/erguotou520/fake-sms)
+
 项目使用 bun 进行开发，首先需要安装：
 
 ```bash
@@ -84,7 +86,7 @@ cd packages/chrome-ext
 bun dev
 ```
 
-## 项目技术栈
+## 🔧 项目技术栈
 
 - 前端：Vite + React
 - 后端：Bun + ElysiaJS + Drizzle ORM

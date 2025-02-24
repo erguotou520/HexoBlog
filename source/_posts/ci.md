@@ -5,9 +5,9 @@ date: 2017-01-16 23:06:00
 cover: /images/ci/flow.png
 thumbnail: /images/ci/flow.png
 tags:
-  - ci
-  - travis ci
-  - gitlab ci
+  - CI
+  - Travis CI
+  - Gitlab CI
 ---
 
 ## 什么是CI
