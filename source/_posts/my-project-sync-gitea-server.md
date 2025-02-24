@@ -6,6 +6,7 @@ date: 2025-02-14 13:24:00
 # thumbnail:
 tags:
   - Bun
+  - ElysiaJS
   - gitea
   - CI/CD
 ---
@@ -45,7 +46,7 @@ tags:
 - `PORT`：服务器端口，默认为`7879`
 - `LOG_LEVEL`：服务器日志级别，默认为`info`
 - `JWT_SECRET`：JWT令牌的密钥
-- `PUBLIC_URL`：服务器的公共URL，用于接收 webhook 事件
+- `PUBLIC_URL`：本服务的公共URL，用于接收 webhook 事件
 - `ENABLE_LOG_IP`：是否在 webhook 事件中启用 IP 地址记录，默认为`false`
 - `GITEA_URL`：`Gitea` 服务器的 URL，作为所有应用的默认值
 - `GITEA_TOKEN`：`Gitea` 用户的令牌，作为所有应用的默认值，在`Gitea`的`用户设置`->`应用`中添加生成
