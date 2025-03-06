@@ -9,7 +9,10 @@ tags:
   - ElysiaJS
   - gitea
   - CI/CD
+  - 我开发的
 ---
+
+# 🚀 sync-gitea-server - 代码仓库同步工具
 
 我们开发时的代码仓库一般都放在阿里云效上，刚开始我们尝试使用云效自带的流水线来实践CI/CD流程，但是云效有很多限制，甚至绑定了阿里云的体系，导致很多场景没法实现自动化，于是我们将CI/CD流程迁移到内网实现。我们对比了一些开源方案，最终选择`Gitea`作为代码同步仓库，并使用`Gitea`自带的`Actions`来实现CI/CD流程。`Gitea`的几个特点正好符合我们的需求：
 
@@ -19,13 +22,11 @@ tags:
 
 唯一的问题是无法实现自动、实时地从云效同步代码到`Gitea`，于是我开发了`sync-gitea-server`项目，用于实现自动、实时地从云效同步代码到`Gitea`。项目的整体框架我是直接从之前的[fake-sms](https://github.com/erguotou520/fake-sms)项目中复制过来的，所以代码结构上会有很多相似的地方。
 
-## 💡 项目：sync-gitea-server
-
 `sync-gitea-server`是一个用于同步代码仓库的 webhook 服务器。当上游代码仓库（如云效）发生变更时，它会向此服务器发送webhook 事件，服务器随后调用`Gitea` API 来同步这些变更。
 
 通过这个服务器，我们可以实现代码仓库的自动、实时同步，无需人工干预。目前该项目已经在我们内网运行，新项目都已经接入，非常稳定。
 
-## 预览
+## 🖼️ 预览
 
 ![apps](https://github.com/erguotou520/sync-gitea-server/blob/main/assets/apps.png?raw=true)
 
