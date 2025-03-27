@@ -40,7 +40,7 @@ tags:
 
 ## 🔗 项目地址
 
-GitHub: [https://github.com/doremijs/igit](https://github.com/doremijs/igit)
+GitHub: [https://github.com/erguotou520/jd-cookie-helper](https://github.com/erguotou520/jd-cookie-helper)
 
 ## 📚 FAQ
 
@@ -58,7 +58,7 @@ xattr -r -d com.apple.quarantine /Applications/jd-cookie-helper.app
 
 Q3. 工具安全吗？会泄露账号吗？
 
-A: 数据完全本地存储，无云端同步，代码已开源，代码地址 [https://github.com/doremijs/igit](https://github.com/doremijs/igit)
+A: 数据完全本地存储，无云端同步，代码已开源，代码地址 [https://github.com/erguotou520/jd-cookie-helper](https://github.com/erguotou520/jd-cookie-helper)
 
 ## ⬇️ 立即下载体验
 
