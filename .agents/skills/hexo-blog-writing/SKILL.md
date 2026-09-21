@@ -14,6 +14,11 @@ description: 为「云帆在途」Hexo 博客（icarus 主题）撰写新文章�
 - 用户说"把这次排查/开发记录成文章"
 - 用户要求介绍自己开发的某个项目（README 转博客）
 
+## 博客目录
+
+当前博客项目采用 git 管理，**修改完成后 `git push` 即自动发布上线，无需手动构建**。
+添加/修改博客文章前请先 `git pull` 以保证数据不丢失。
+
 ## 第一步：确定文体
 
 本项目文章分两类，先和用户确认（或从素材判断）属于哪类：
@@ -135,11 +140,12 @@ GitHub: [https://github.com/...](https://github.com/...)
 
 ## 第四步：保存与发布
 
-1. 新文章用 `hexo new "文章标题"` 创建（scaffold 在 `scaffolds/post.md`，会生成 `source/_posts/<title>.md`），然后把文件名改成与 `s:` slug 一致的 kebab-case 英文文件名，再补全 front-matter。
-2. 本地图片放 `source/images/<分类>/`，正文用绝对路径引用。
-3. 验证：`npx hexo clean && npx hexo g` 确保无报错；需要时 `npx hexo s` 本地预览。
-4. 部署（仅当用户明确要求发布时）：`npx hexo d`（deployer-git 推 gh-pages 分支）。
-5. 草稿（未完成、不发布）放 `source/_drafts/`，不是 `_posts/`。
+1. 先 `git pull` 拉取最新内容，避免覆盖他人/其他设备的修改。
+2. 新文章用 `hexo new "文章标题"` 创建（scaffold 在 `scaffolds/post.md`，会生成 `source/_posts/<title>.md`），然后把文件名改成与 `s:` slug 一致的 kebab-case 英文文件名，再补全 front-matter。
+3. 本地图片放 `source/images/<分类>/`，正文用绝对路径引用。
+4. 验证：`npx hexo clean && npx hexo g` 确保无报错；需要时 `npx hexo s` 本地预览。
+5. 发布：`git add` / `git commit` / `git push`，push 后自动发布上线（无需手动构建）。
+6. 草稿（未完成、不发布）放 `source/_drafts/`，不是 `_posts/`。
 
 ## 规则（红线）
 
