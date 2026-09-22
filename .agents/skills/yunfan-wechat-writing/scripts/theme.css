@@ -1,54 +1,121 @@
-/* 云帆在途公众号主题 —— 简洁技术风（可自行调整） */
+/* 云帆在途公众号主题 —— 绿色胶囊风（主色 #009874，复刻自已发布文章样式） */
 section#nice {
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC",
-    "Microsoft YaHei", sans-serif;
+  font-family: -apple-system-font, BlinkMacSystemFont, "Helvetica Neue",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei",
+    Arial, sans-serif;
   font-size: 15px;
-  color: #333;
   line-height: 1.75;
-  letter-spacing: 0.5px;
-  word-break: break-word;
-  padding: 0 8px;
+  text-align: left;
 }
-section#nice p { margin: 0 0 12px; }
-section#nice h1, section#nice h2, section#nice h3, section#nice h4 {
-  margin: 28px 0 14px;
-  font-weight: 600;
-  line-height: 1.4;
+section#nice p { margin: 1.5em 8px; letter-spacing: 0.1em; color: #3f3f3f; }
+section#nice h1 {
+  display: table;
+  border-bottom: 2px solid #009874;
+  margin: 2em auto 1em;
+  color: #3f3f3f;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.5em 1em;
+  font-size: 21px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
 }
-section#nice h1 { font-size: 21px; text-align: center; }
-section#nice h2 { font-size: 18px; border-left: 4px solid #1e80ff; padding-left: 10px; }
-section#nice h3 { font-size: 16px; color: #1e80ff; }
-section#nice h4 { font-size: 15px; }
-section#nice ul, section#nice ol { margin: 0 0 12px; padding-left: 22px; }
-section#nice li { margin: 4px 0; }
-section#nice strong { color: #1e80ff; font-weight: 700; }
-section#nice a { color: #1e80ff; text-decoration: none; }
-section#nice blockquote {
-  margin: 0 0 12px; padding: 10px 14px;
-  border-left: 4px solid #42b983;
-  background: #f8f8f8; color: #666;
+section#nice h2 {
+  display: table;
+  margin: 4em auto 2em;
+  color: #fff;
+  background: #009874;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.3em 1.2em;
+  font-size: 19.5px;
+  border-radius: 8px 24px 8px 24px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
-section#nice blockquote p { margin: 0; }
+section#nice h3 {
+  margin: 2em 8px 0.75em 0;
+  color: #3f3f3f;
+  font-weight: bold;
+  padding-left: 12px;
+  font-size: 18px;
+  border-radius: 6px;
+  line-height: 2.4em;
+  border-left: 4px solid #009874;
+  border-right: 1px solid rgba(0, 152, 116, 0.1);
+  border-bottom: 1px solid rgba(0, 152, 116, 0.1);
+  border-top: 1px solid rgba(0, 152, 116, 0.1);
+  background: rgba(0, 152, 116, 0.08);
+}
+section#nice h4 {
+  margin: 2em 8px 0.75em 0;
+  color: #009874;
+  font-weight: bold;
+  font-size: 16px;
+}
+section#nice strong { color: #009874; font-weight: bold; font-size: inherit; }
+section#nice em { font-style: italic; color: #3f3f3f; }
+section#nice a { color: #009874; text-decoration: none; border-bottom: 1px solid rgba(0, 152, 116, 0.4); }
 section#nice code {
+  font-size: 90%;
+  color: #d14;
+  background: rgba(27, 31, 35, 0.05);
+  padding: 3px 5px;
+  border-radius: 4px;
   font-family: Menlo, Consolas, monospace;
-  font-size: 13px; color: #c7254e;
-  background: #f2f2f2; padding: 2px 5px; border-radius: 3px;
 }
 section#nice pre {
-  margin: 0 0 14px; padding: 12px; overflow-x: auto;
-  background: #282c36; border-radius: 5px;
+  color: #adbac7;
+  background: #22272e;
+  font-size: 90%;
+  overflow-x: auto;
+  border-radius: 8px;
+  line-height: 1.5;
+  margin: 10px 8px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 section#nice pre code {
-  display: block; color: #abb2bf; background: none;
-  font-size: 13px; line-height: 1.6; padding: 0;
+  color: #adbac7;
+  background: transparent;
+  padding: 12px 16px;
+  display: block;
+  font-size: 100%;
 }
-section#nice table {
-  width: 100%; border-collapse: collapse; margin: 0 0 14px;
-  font-size: 14px;
+section#nice blockquote {
+  border-left: 4px solid #009874;
+  border-radius: 6px;
+  background: #f7f7f7;
+  margin-bottom: 1em;
+  font-style: italic;
+  padding: 1em 1em 1em 2em;
+  color: rgba(0, 0, 0, 0.6);
+  border-bottom: 0.2px solid rgba(0, 0, 0, 0.04);
+  border-top: 0.2px solid rgba(0, 0, 0, 0.04);
+  border-right: 0.2px solid rgba(0, 0, 0, 0.04);
 }
-section#nice th, section#nice td {
-  border: 1px solid #e2e2e2; padding: 8px 10px; text-align: left;
+section#nice blockquote p { margin: 0; color: rgba(0, 0, 0, 0.6); }
+section#nice ul { margin-left: 0; color: #3f3f3f; list-style: none; padding-left: 1.5em; }
+section#nice ol { margin-left: 0; color: #3f3f3f; padding-left: 1.5em; }
+section#nice li { display: block; color: #3f3f3f; margin: 0.5em 8px; }
+section#nice ol li::before { content: none; }
+section#nice table { color: #3f3f3f; border-collapse: collapse; margin: 1em 8px; width: calc(100% - 16px); }
+section#nice th {
+  border: 1px solid #dfdfdf;
+  padding: 0.25em 0.5em;
+  color: #3f3f3f;
+  word-break: keep-all;
+  background: rgba(0, 0, 0, 0.05);
+  font-weight: bold;
 }
-section#nice th { background: #f5f7fa; font-weight: 600; }
-section#nice img { max-width: 100%; border-radius: 4px; }
-section#nice hr { border: none; border-top: 1px dashed #ccc; margin: 20px 0; }
+section#nice td { border: 1px solid #dfdfdf; padding: 0.25em 0.5em; color: #3f3f3f; word-break: keep-all; }
+section#nice img {
+  display: block;
+  max-width: 100%;
+  margin: 0.1em auto 0.5em;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+section#nice hr {
+  border: none;
+  height: 1px;
+  margin: 2em 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+}

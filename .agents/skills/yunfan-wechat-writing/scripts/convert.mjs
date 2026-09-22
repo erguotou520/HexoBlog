@@ -36,6 +36,16 @@ let html = marked.parse(body, { breaks: true, gfm: true });
 // 表格加公众号草稿属性，粘贴时可被编辑器正确识别
 html = html.replace(/<table>/g, '<table data-draft-node="block" data-draft-type="table" data-size="normal">');
 
+// 列表符号实体化：微信过滤 list-style 与 ::before 伪元素，
+// 圆点/序号必须作为文字写进 li 内容
+html = html.replace(/<li>/g, '<li><span>•&nbsp;</span>');
+// 有序列表去掉误加的圆点，改为文字序号
+html = html.replace(/<ol>([\s\S]*?)<\/ol>/g, (m, inner) => {
+  let n = 0;
+  inner = inner.replace(/<li><span>•&nbsp;<\/span>/g, () => `<li><span>${++n}.&nbsp;</span>`);
+  return `<ol>${inner}</ol>`;
+});
+
 const full = `<section id="nice">${html}</section>`;
 
 // 关键：全部样式内联到元素 style 属性
