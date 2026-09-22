@@ -101,7 +101,7 @@ description: 为「云帆在途」微信公众号撰写并排版文章。当用�
 
 ## 排版与发布（Markdown → 公众号 HTML）
 
-原理逆向自 mdnice 编辑器的"复制到公众号"：公众号编辑器会剥掉 `<style>` 标签和大部分 class，**只有内联到每个元素 `style` 属性上的样式能存活**。因此转换的核心是把主题 CSS 全部内联，并把剪贴板写成 `text/html` 格式。
+公众号编辑器会剥掉 `<style>` 标签和大部分 class，**只有内联到每个元素 `style` 属性上的样式能存活**。因此转换的核心是把主题 CSS 全部内联，并把剪贴板写成 `text/html` 格式。
 
 写完 Markdown 后依次执行：
 
@@ -115,11 +115,11 @@ python3 <skill目录>/scripts/clipboard.py 文章.wechat.html
 
 转换产物 `文章.wechat.html` 也可直接作为 `baoyu-post-to-wechat`（贴图/图文发布）或公众号后台粘贴的输入。
 
-脚本做了什么（对应 mdnice 的 `ND/MD/ID` 函数）：
+脚本做了什么：
 1. Markdown → HTML（marked）
 2. 套用主题 CSS（`scripts/theme.css`，可自行替换主题）
 3. juice 内联所有样式到元素 `style` 属性（`inlinePseudoElements` + `preserveImportant`）
 4. 顶层元素加 `data-tool` 标记、表格加公众号草稿属性
-5. 输出 html；`clipboard.py` 以 `NSPasteboardTypeHTML` 写入剪贴板（等效 mdnice 的 text/html 复制）
+5. 输出 html；`clipboard.py` 以 `NSPasteboardTypeHTML` 写入剪贴板，粘贴时保留富文本格式
 
 公式（MathJax/KaTeX）暂不支持——公众号需图片化公式，遇到时提示用户改用其它方案。

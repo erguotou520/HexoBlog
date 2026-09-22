@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 /**
  * Markdown → 公众号兼容 HTML
- * 原理逆向自 mdnice 编辑器"复制到公众号"：
- * 公众号编辑器剥离 <style> 标签与大部分 class，仅元素内联 style 能存活。
+ * 公众号编辑器剥离 <style> 标签与大部分 class，仅元素内联 style 能存活，
  * 因此核心步骤 = 渲染 HTML + juice 把主题 CSS 全部内联。
  */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
@@ -34,12 +33,12 @@ const body = md.replace(/^---\n[\s\S]*?\n---\n/, '');
 
 let html = marked.parse(body, { breaks: true, gfm: true });
 
-// 表格包一层，加公众号草稿属性（对应 mdnice PD() 中 table-container 处理）
+// 表格加公众号草稿属性，粘贴时可被编辑器正确识别
 html = html.replace(/<table>/g, '<table data-draft-node="block" data-draft-type="table" data-size="normal">');
 
 const full = `<section id="nice">${html}</section>`;
 
-// 关键：全部样式内联（等效 mdnice MD() 里的 inlineContent）
+// 关键：全部样式内联到元素 style 属性
 const out = juice(full, {
   extraCss: css,
   inlinePseudoElements: true,

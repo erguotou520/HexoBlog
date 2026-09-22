@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """把 HTML 以富文本（text/html）形式写入剪贴板，供公众号编辑器粘贴。
 用法: python3 clipboard.py /path/to/article.wechat.html
-等效 mdnice copyWechat 的 ID()（同时写 text/html + text/plain）。
-macOS 用 osascript/AppKit；其它平台退化为 pbcopy/xclip 的纯文本。
+同时兼容 text/html 与纯文本降级。
 """
 import sys
 
