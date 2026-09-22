@@ -49,6 +49,8 @@ module.exports = class extends Component {
             favicon
         } = head;
 
+        const noIndex = helper.is_archive() || helper.is_category() || helper.is_tag();
+
         const language = page.lang || page.language || config.language;
         const fontCssUrl = {
             default: fontcdn('Ubuntu:wght@400;600&family=Source+Code+Pro', 'css2'),
@@ -118,6 +120,7 @@ module.exports = class extends Component {
         return <head>
             <meta charset="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+            {noIndex ? <meta name="robots" content="noindex" /> : null}
             {meta && meta.length ? <MetaTags meta={meta} /> : null}
 
             <title>{getPageTitle(page, config.title, helper)}</title>
@@ -163,15 +166,15 @@ module.exports = class extends Component {
             {rss ? <link rel="alternate" href={url_for(rss)} title={config.title} type="application/atom+xml" /> : null}
             {favicon ? <link rel="icon" href={url_for(favicon)} /> : null}
             <link rel="stylesheet" href={iconcdn()} />
-            {hlTheme ? <link rel="stylesheet" href={cdn('highlight.js', '9.12.0', 'styles/' + hlTheme + '.css')} /> : null}
+            {hlTheme ? <link data-pjax rel="stylesheet" href={cdn('highlight.js', '11.7.0', 'styles/' + hlTheme + '.css')} /> : null}
             <link rel="stylesheet" href={fontCssUrl[variant]} />
-            <link rel="stylesheet" href={url_for('/css/' + variant + '.css')} />
+            <link data-pjax rel="stylesheet" href={url_for('/css/' + variant + '.css')} />
             <Plugins site={site} config={config} helper={helper} page={page} head={true} />
 
             {adsenseClientId ? <script data-ad-client={adsenseClientId}
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script> : null}
 
-            {followItVerificationCode ? <meta name="follow_it-verification-code" content={followItVerificationCode} /> : null}
+            {followItVerificationCode ? <meta name="follow.it-verification-code" content={followItVerificationCode} /> : null}
         </head>;
     }
 };
