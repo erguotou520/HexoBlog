@@ -103,7 +103,6 @@ plugins:
     mathjax: false
     outdated_browser: true
     progressbar: true
-    clipboard: true
 providers:
     cdn: loli
     fontcdn: loli
