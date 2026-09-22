@@ -20,6 +20,8 @@ tags:
 
 我们在使用`DeepSeek`时有时会让`DeepSeek`给我们生成一些流程图、架构图、泳道图、思维导图等等，而默认情况下`DeepSeek`网页上看到的都是文字。可能有些文章会告诉你将这些代码复制到能显示`Mermaid`的网址就可以看到图片了。但我这个工具就会自动帮你渲染图片，再也不需要复制到其它地方查看了。给你们看看效果：
 
+<!-- more -->
+
 ![流程图](https://files.mdnice.com/user/95143/1bf45a1d-08a7-483c-a550-b70e0af0c131.png)
 
 ![序列图](https://files.mdnice.com/user/95143/1897d675-26e6-47e5-a5f3-a4689bd37c07.png)
