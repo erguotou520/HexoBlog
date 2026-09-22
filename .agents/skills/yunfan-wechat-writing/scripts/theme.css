@@ -1,0 +1,54 @@
+/* 云帆在途公众号主题 —— 简洁技术风（可自行调整） */
+section#nice {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+  font-size: 15px;
+  color: #333;
+  line-height: 1.75;
+  letter-spacing: 0.5px;
+  word-break: break-word;
+  padding: 0 8px;
+}
+section#nice p { margin: 0 0 12px; }
+section#nice h1, section#nice h2, section#nice h3, section#nice h4 {
+  margin: 28px 0 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+section#nice h1 { font-size: 21px; text-align: center; }
+section#nice h2 { font-size: 18px; border-left: 4px solid #1e80ff; padding-left: 10px; }
+section#nice h3 { font-size: 16px; color: #1e80ff; }
+section#nice h4 { font-size: 15px; }
+section#nice ul, section#nice ol { margin: 0 0 12px; padding-left: 22px; }
+section#nice li { margin: 4px 0; }
+section#nice strong { color: #1e80ff; font-weight: 700; }
+section#nice a { color: #1e80ff; text-decoration: none; }
+section#nice blockquote {
+  margin: 0 0 12px; padding: 10px 14px;
+  border-left: 4px solid #42b983;
+  background: #f8f8f8; color: #666;
+}
+section#nice blockquote p { margin: 0; }
+section#nice code {
+  font-family: Menlo, Consolas, monospace;
+  font-size: 13px; color: #c7254e;
+  background: #f2f2f2; padding: 2px 5px; border-radius: 3px;
+}
+section#nice pre {
+  margin: 0 0 14px; padding: 12px; overflow-x: auto;
+  background: #282c36; border-radius: 5px;
+}
+section#nice pre code {
+  display: block; color: #abb2bf; background: none;
+  font-size: 13px; line-height: 1.6; padding: 0;
+}
+section#nice table {
+  width: 100%; border-collapse: collapse; margin: 0 0 14px;
+  font-size: 14px;
+}
+section#nice th, section#nice td {
+  border: 1px solid #e2e2e2; padding: 8px 10px; text-align: left;
+}
+section#nice th { background: #f5f7fa; font-weight: 600; }
+section#nice img { max-width: 100%; border-radius: 4px; }
+section#nice hr { border: none; border-top: 1px dashed #ccc; margin: 20px 0; }
