@@ -220,7 +220,7 @@ docker run -d --name sgl-router --network host --restart unless-stopped \
 | `--eviction-interval-secs` | 5 | 前缀树账本更快收敛，减少"账上说有、实际被逐" |
 | `--request-timeout-secs` | 1800 | 长上下文请求不被默认超时掐断 |
 
-重建 router 后实测：3 实例全部收到请求（从各自容器日志归因确认），单流 TTFT 0.12s、约 30 tok/s（6 并发时），单实例打满、其余闲置的现象消失。
+重建 router 后实测：3 实例全部收到请求（从各自容器日志归因确认），单实例打满、其余闲置的现象消失。单流速度精确复测（`usage.completion_tokens` 口径）：TTFT 0.06s、纯生成 ~80 tok/s（1-2 路背景并发时），引擎日志 210+ tok/s，与部署初期 ~171 tok/s 相当，性能无退化。另注意：流式压测如果按 SSE chunk 数/秒统计会低估约一半——投机解码下 1 个 chunk 平均携带 ~1.94 个 token，统计请用最终 `usage` 的 token 数。
 
 > 顺带一个测试脚本的坑：开了 `--reasoning-parser qwen3` 后，流式响应的思考内容在 `delta.reasoning_content` 里而不是 `delta.content`，压测脚本统计吐 token 时两个都要算，否则会误判"no content"。
 
