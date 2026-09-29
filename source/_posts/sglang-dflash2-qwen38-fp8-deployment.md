@@ -196,11 +196,33 @@ sgl-router 是个独立路由进程，自己不跑模型，只做"记账 + 分�
 ```bash
 docker run -d --name sgl-router --network host --restart unless-stopped \
   docker.m.daocloud.io/lmsysorg/sglang-router:v0.2.4 \
-  --worker-urls http://127.0.0.1:30000 http://127.0.0.1:30001 \
-  --host 0.0.0.0 --port 30002 --policy cache_aware
+  --worker-urls http://127.0.0.1:30000 http://127.0.0.1:30001 http://<node1-ip>:30000 \
+  --host 0.0.0.0 --port 30002 \
+  --policy cache_aware \
+  --balance-abs-threshold 1 --balance-rel-threshold 1.1 \
+  --eviction-interval-secs 5 --request-timeout-secs 1800
 ```
 
-> 注意 `--network host`：必须让 router 容器内能访问到宿主机的 worker 端口。另外 `latest` tag 不存在，Hub 上只有版本号 tag。
+> 注意 `--network host`：必须让 router 容器内能访问到宿主机的 worker 端口。另外 `latest` tag 不存在，Hub 上只有版本号 tag（截至写作时 v0.2.4 就是最新版，没有可升级的依赖）。
+
+### 踩坑：cache_aware 默认参数会把流量粘死在一台实例上
+
+上线跑了一周后线上反馈"连接失败、不吐 token"。排查发现：cache_aware 的负载再均衡由 `--balance-abs-threshold`（默认 16）控制——**两实例请求数差小于阈值时保持前缀亲和不分流**。结果 6 个长请求全部堆在一台实例上（token usage 71%、排队 2 个），另一台完全空闲；router 的健康检查打到打满的实例上偶发 503，新请求 prefill 排长队，表现就是"卡住不吐字"。
+
+中间还试过换成 `power_of_two` 策略：流量确实均衡了，但**彻底丢失会话亲和**——每个请求都按负载挑实例，多轮会话的前缀缓存白白浪费，单流速度肉眼可见变慢。所以 cache_aware 仍然是对的方向，问题只出在阈值太宽。
+
+最终调参（上面的部署命令里已带）：
+
+| 参数 | 值 | 作用 |
+|---|---|---|
+| `--balance-abs-threshold` | 1（默认 16） | 请求数差一超过 1 就允许分流，不再粘死 |
+| `--balance-rel-threshold` | 1.1（最低只能到 1.0） | 相对负载差 10% 即触发再均衡 |
+| `--eviction-interval-secs` | 5 | 前缀树账本更快收敛，减少"账上说有、实际被逐" |
+| `--request-timeout-secs` | 1800 | 长上下文请求不被默认超时掐断 |
+
+重建 router 后实测：3 实例全部收到请求（从各自容器日志归因确认），单流 TTFT 0.12s、约 30 tok/s（6 并发时），单实例打满、其余闲置的现象消失。
+
+> 顺带一个测试脚本的坑：开了 `--reasoning-parser qwen3` 后，流式响应的思考内容在 `delta.reasoning_content` 里而不是 `delta.content`，压测脚本统计吐 token 时两个都要算，否则会误判"no content"。
 
 ### 实测验证
 
