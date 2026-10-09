@@ -883,14 +883,6 @@ abbrev@^2.0.0:
   resolved "https://registry.npmjs.org/abbrev/-/abbrev-2.0.0.tgz"
   integrity sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==
 
-accepts@~1.3.5:
-  version "1.3.7"
-  resolved "https://registry.npmmirror.com/accepts/download/accepts-1.3.7.tgz"
-  integrity sha1-UxvHJlF6OytB+FACHGzBXqq1B80=
-  dependencies:
-    mime-types "~2.1.24"
-    negotiator "0.6.2"
-
 ajv@^8.12.0:
   version "8.20.0"
   resolved "https://registry.npmjs.org/ajv/-/ajv-8.20.0.tgz"
@@ -1036,10 +1028,10 @@ bulma-stylus@0.8.0:
   resolved "https://registry.npmjs.org/bulma-stylus/-/bulma-stylus-0.8.0.tgz"
   integrity sha512-9Q9BMPeHFyJ5EWh/tJPCcLDYEovKzUBOyMHsKEIyxSYEKG8wqt9RVuTumaJ2AfDjyHC9OifWKOfJSweKYD5IMQ==
 
-bytes@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npmmirror.com/bytes/download/bytes-3.0.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fbytes%2Fdownload%2Fbytes-3.0.0.tgz"
-  integrity sha1-0ygVQE1olpn4Wk6k+odV3ROpYEg=
+bytes@3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.2.tgz#8b0beeb98605adf1b128fa4386403c009e0221a5"
+  integrity sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==
 
 camel-case@^4.0.0, camel-case@^4.1.2:
   version "4.1.2"
@@ -1093,24 +1085,25 @@ commondir@^1.0.1:
   resolved "https://registry.npmjs.org/commondir/-/commondir-1.0.1.tgz"
   integrity sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==
 
-compressible@~2.0.16:
+compressible@~2.0.18:
   version "2.0.18"
-  resolved "https://registry.npmmirror.com/compressible/download/compressible-2.0.18.tgz?cache=0&sync_timestamp=1578286264482&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fcompressible%2Fdownload%2Fcompressible-2.0.18.tgz"
-  integrity sha1-r1PMprBw1MPAdQ+9dyhqbXzEb7o=
+  resolved "https://registry.yarnpkg.com/compressible/-/compressible-2.0.18.tgz#af53cca6b070d4c3c0750fbd77286a6d7cc46fba"
+  integrity sha512-AF3r7P5dWxL8MxyITRMlORQNaOA2IkAFaTr4k7BUumjPtRpGDTZpl0Pb1XCO6JeDCBdp126Cgs9sMxqSjgYyRg==
   dependencies:
     mime-db ">= 1.43.0 < 2"
 
 compression@^1.7.4:
-  version "1.7.4"
-  resolved "https://registry.npmmirror.com/compression/download/compression-1.7.4.tgz"
-  integrity sha1-lVI+/xcMpXwpoMpB5v4TH0Hlu48=
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/compression/-/compression-1.8.2.tgz#781397127ae2da00c0c5f7c76bda5b2a9b32a49f"
+  integrity sha512-o8vI5RE5A6EVVOd9o41jKp41aJom+QTEO/Bx8MYNjexMo/Bv2WOjUfZr+aL0WnYSgymUy6zeguqLTsIhV0gMvQ==
   dependencies:
-    accepts "~1.3.5"
-    bytes "3.0.0"
-    compressible "~2.0.16"
+    bytes "3.1.2"
+    compressible "~2.0.18"
     debug "2.6.9"
-    on-headers "~1.0.2"
-    safe-buffer "5.1.2"
+    destroy "1.2.0"
+    negotiator "~0.6.4"
+    on-headers "~1.1.0"
+    safe-buffer "5.2.1"
     vary "~1.1.2"
 
 concat-map@0.0.1:
@@ -2011,17 +2004,10 @@ micromatch@^4.0.4:
     braces "^3.0.3"
     picomatch "^2.3.1"
 
-mime-db@1.43.0, "mime-db@>= 1.43.0 < 2":
+"mime-db@>= 1.43.0 < 2":
   version "1.43.0"
   resolved "https://registry.npmmirror.com/mime-db/download/mime-db-1.43.0.tgz?cache=0&sync_timestamp=1578281104943&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fmime-db%2Fdownload%2Fmime-db-1.43.0.tgz"
   integrity sha1-ChLgUCZQ5HPXNVNQUOfI9OtPrlg=
-
-mime-types@~2.1.24:
-  version "2.1.26"
-  resolved "https://registry.npmmirror.com/mime-types/download/mime-types-2.1.26.tgz?cache=0&sync_timestamp=1578282585871&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fmime-types%2Fdownload%2Fmime-types-2.1.26.tgz"
-  integrity sha1-nJIfwJt+FJpl39wNpNIJlyALCgY=
-  dependencies:
-    mime-db "1.43.0"
 
 mime@1.6.0:
   version "1.6.0"
@@ -2098,10 +2084,10 @@ ms@2.1.3, ms@^2.1.3:
   resolved "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz"
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
 
-negotiator@0.6.2:
-  version "0.6.2"
-  resolved "https://registry.npmmirror.com/negotiator/download/negotiator-0.6.2.tgz"
-  integrity sha1-/qz3zPUlp3rpY0Q2pkiD/+yjRvs=
+negotiator@~0.6.4:
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.4.tgz#777948e2452651c570b712dd01c23e262713fff7"
+  integrity sha512-myRT3DiWPHqho5PrJaIRyaMv2kgYf0mUVgBNOYMuCH5Ki1yEiQaf/ZJuQ62nvpc44wL5WDbTX7yGJi1Neevw8w==
 
 nib@^1.2.0:
   version "1.2.0"
@@ -2148,11 +2134,6 @@ on-finished@~2.3.0:
   integrity sha1-IPEzZIGwg811M3mSoWlxqi2QaUc=
   dependencies:
     ee-first "1.1.1"
-
-on-headers@~1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmmirror.com/on-headers/download/on-headers-1.0.2.tgz"
-  integrity sha1-dysK5qqlJcOZ5Imt+tkMQD6zwo8=
 
 on-headers@~1.1.0:
   version "1.1.0"
@@ -2351,7 +2332,7 @@ safe-buffer@5.1.2:
   resolved "https://registry.npmmirror.com/safe-buffer/download/safe-buffer-5.1.2.tgz"
   integrity sha1-mR7GnSluAxN0fVm9/St0XDX4go0=
 
-safe-buffer@~5.2.0:
+safe-buffer@5.2.1, safe-buffer@~5.2.0:
   version "5.2.1"
   resolved "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.2.1.tgz"
   integrity sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==
